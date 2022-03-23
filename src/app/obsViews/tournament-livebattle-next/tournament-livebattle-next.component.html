@@ -1,0 +1,133 @@
+    <div class="animate__animated animate__fadeIn" *ngIf="loadingOver">       
+        <!-- <div class="bulls-eye"><img src="../../assets/img/family-tree.png">Tournament Bracket</div> -->
+        <div class="gradient-border">  
+            <div class="tournament" style="margin-top: 8px !important;" *ngIf="isServerOn">
+                <!-- <div *ngIf="hasEightTeams"> -->
+                    <div class="parent-container bracket" *ngIf="isQuarter" [ngClass]="{'animate__animated animate__fadeOutUp': !isQuarterVisible}">
+                        <div class="bracket d-flex" *ngFor="let Meci of MeciuriSferturi;let i = index" [attr.data-index]="i">
+                            <!-- <span>{{i+1}}.</span>  -->
+                            <div class="bracket-box isQuarter">
+                                <div class="row">
+                                    <div class="col" >
+                                        <img [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">
+                                        <h1 class="loserImg animate__animated animate__pulse" *ngIf="Meci.team2.hasWon">KO</h1>
+                                        <div class="col-12 highligh-dark div-header">{{Meci.team1.nume}}</div>  
+                                        <div class="parent-container">                                 
+                                            <div class="row">
+                                                <div class="col-12 div-header">Score : {{Meci.team1.scor}}</div>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>   
+                            <span><h2 style="font-family: 'TournamentVersus';font-size: 80px;">VS</h2></span>  
+                            <div class="bracket-box isQuarter">
+                                <div class="row">
+                                    <div class="col" >
+                                        <img [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
+                                        <h1 class="loserImg animate__animated animate__pulse" *ngIf="Meci.team1.hasWon">KO</h1>
+                                        <div class="col-12 highligh-dark div-header">{{Meci.team2.nume}}</div>   
+                                        <div class="parent-container">                               
+                                            <div class="row">
+                                                <div class="col-12 div-header">Score : {{Meci.team2.scor}}</div>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+                            </div>
+                        </div>    
+                    </div>   
+                    
+                    <div class="parent-container" *ngIf="!isQuarter"[ngClass]="{'animate__animated animate__fadeInUp': true}">
+                        <div class="bracket d-flex" *ngFor="let Meci of MeciuriSemiFinale;let i = index" [attr.data-index]="i">
+                            <!-- <span>{{i+5}}.</span>  -->
+                            <div class="bracket-box isSemis">
+                                <div class="row">
+                                    <div class="col" >
+                                        <img [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">
+                                        <h1 class="loserImg" *ngIf="Meci.team2.hasWon">KO</h1>
+                                        <div class="col-12 highligh-dark div-header">{{Meci.team1.nume}}</div>  
+                                        <div class="parent-container">                                 
+                                            <div class="row">
+                                                <div class="col-12 div-header">Score : {{Meci.team1.scor}}</div>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                    
+                            </div>  
+                            <span><h2 style="font-family: 'TournamentVersus';font-size: 80px;">VS</h2></span>    
+                            <div class="bracket-box isSemis">
+                                <div class="row">
+                                    <div class="col" >
+                                        <img [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
+                                        <h1 class="loserImg" *ngIf="Meci.team1.hasWon">KO</h1>
+                                        <div class="col-12 highligh-dark div-header">{{Meci.team2.nume}}</div>   
+                                        <div class="parent-container">                               
+                                            <div class="row">
+                                                <div class="col-12 div-header">Score : {{Meci.team2.scor}}</div>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                    
+                            </div>  
+                        </div>    
+                    </div>         
+
+                    <div class="parent-container" *ngIf="!isQuarter" [ngClass]="{'animate__animated animate__fadeInUp': true}">
+                        <div class="bracket d-flex">
+                            <!-- <span>7.</span>  -->
+                            <div class="bracket-box">
+                                <div class="row">
+                                    <div class="col" >
+                                        <img [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}">
+                                        <h1 class="loserImg animate__animated animate__bounceIn" *ngIf="MeciFinal.team2.hasWon">KO</h1>
+                                        <div class="col-12 highligh-dark div-header">{{MeciFinal.team1.nume}}</div>  
+                                        <div class="parent-container">                                 
+                                            <div class="row">
+                                                <div class="col-12 div-header">Score : {{MeciFinal.team1.scor}}</div>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                      
+                            </div>  
+                            <span><h2 style="font-family: 'TournamentVersus';font-size: 80px;">VS</h2></span>      
+                            <div class="bracket-box isSemis">
+                                <div class="row">
+                                    <div class="col" >
+                                        <img [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}">
+                                        <h1 class="loserImg animate__animated animate__bounceIn" *ngIf="MeciFinal.team1.hasWon">KO</h1>
+                                        <div class="col-12 highligh-dark div-header">{{MeciFinal.team2.nume}}</div>   
+                                        <div class="parent-container">                               
+                                            <div class="row">
+                                                <div class="col-12 div-header">Score : {{MeciFinal.team2.scor}}</div>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                   
+                            </div>  
+                        </div>    
+                    </div>  
+                    <div class="parent-container" *ngIf="!isQuarter" [ngClass]="{'animate__animated animate__fadeInUp': true}">
+                        <div class="bracket d-flex">   
+                            <span style="margin: 30px;"><img style="width: 40px;" src="assets/img/crown.png"><h2 style="font-family: 'TournamentVersus';font-size: 48px;margin-top: -20px;">winner</h2></span>   
+                            <div class="bracket-box  winner-single" style="height: 205px !important; width: 80% !important;">                    
+                                <div class="row">
+                                    <div class="col" *ngIf="MeciFinal.team1.hasWon">    
+                                        <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}"> 
+                                        <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team1.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
+                                        <div class="col-12 div-header">Tournament Score : {{scorTotal()}}  / {{MeciFinal.team2.payout.length * 2 * 7}}</div>                       
+                                        <!-- <div class="col-12 div-header">Scor Total {{MeciFinal.team1.scor}}</div>                        -->
+                                    </div>
+                                    <div class="col" *ngIf="MeciFinal.team2.hasWon">       
+                                        <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team1.nume}}"> 
+                                        <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team2.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
+                                        <div class="col-12 div-header">Tournament Score : {{scorTotal()}}  / {{MeciFinal.team2.payout.length * 2 * 7}}</div>                       
+                                        <!-- <div class="col-12 div-header">Scor Total {{MeciFinal.team2.scor}}</div>                        -->
+                                    </div>
+                                </div>                    
+                            </div>      
+                        </div>    
+                    </div> 
+                </div>        
+            </div>
+        </div>

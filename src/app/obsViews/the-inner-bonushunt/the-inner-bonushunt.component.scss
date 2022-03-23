@@ -1,0 +1,28 @@
+ body
+ {
+   overflow:hidden !important;
+   font-family: 'Rajdhani', sans-serif;
+   font-weight: lighter;
+   font-size: 88;
+ }
+
+ .scroll{
+    left: 0px;
+    position: absolute;
+    width: 92%;      
+    top:0;        
+  }
+
+  .scroll-anim
+  {
+    animation: scroll var(--animation-timer) linear 1s infinite;
+  }
+
+  @keyframes scroll {
+    100% { top:-100%; }
+}
+
+.col-txt
+{
+  font-size: 22px;
+}

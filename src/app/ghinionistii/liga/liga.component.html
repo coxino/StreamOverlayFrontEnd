@@ -1,0 +1,68 @@
+
+<div class="container-flex" style="margin: 50px;"> 
+    <h4>Adauga Utilizator Specialelor</h4>    
+    <div class="row">
+        <div class="col-2">
+            <div class="label"> Nume Utilizator
+                <input class="input-group-text" id="typeahead-basic" type="text" class="form-control"required [(ngModel)]="NewUser.nume"/>
+            </div>
+        </div>    
+        <div class="col-2">
+            <div class="label"> User Rank   {{NewUser.rank.sanse}}
+                <select (change)="setusersanse($event, rank.value)" #rank formControlName="website" class="form-control"> 
+                    <option *ngFor="let rank of rankList">{{rank.nume}}</option>  
+                </select>  
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="label"> Numar Sanse
+                <input class="input-group-text" id="typeahead-basic"  type="number" class="form-control"required [(ngModel)]="NewUser.rank.sanse"  readonly/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Salveaza
+                <button class="input-group-text" id="typeahead-basic" (click)="saveNewUser()" type="submit" class="form-control">Salveaza</button>
+            </div> 
+        </div>
+    </div>  
+    <br>
+    <div class="row" *ngFor="let user of UsersResults;let i = index" [attr.data-index]="i"> 
+        <div class="col-2">
+            <div class="label"> {{UsersResults.length-i}} Nume Viewer
+                <input class="input-group-text" readonly id="typeahead-basic" type="text" class="form-control" required [(ngModel)]="user.nume"/>
+            </div> 
+        </div>
+        <div class="col-3">
+            <div class="label"> User Rank   {{user.rank.sanse}}
+                <select (change)="setcurusersanse(user,$event, rank.value)" #rank formControlName="website" class="form-control"> 
+                    <option [selected]="rank.sanse == user.rank.sanse" *ngFor="let rank of rankList">{{rank.nume}}</option>  
+                </select>  
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row" *ngFor="let speciala of user.speciale;let i = index" [attr.data-index]="i">                               
+                <div class="col-2">
+                    <div class="label"> BET
+                        <input class="input-group-text" id="typeahead-basic"  type="text" class="form-control" required [(ngModel)]="speciala.buyIn"/>
+                    </div>
+                </div>
+                
+                <div class="col-2">
+                    <div class="label"> Bonus Pay
+                        <input class="input-group-text" id="typeahead-basic" (keydown.enter)="saveEdited(user)"  type="text" class="form-control" required [(ngModel)]="speciala.payed"/>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="label"> Multi
+                        <h3> {{ speciala.payed / speciala.buyIn | currency : 'X ' : 'symbol' : '1.0-2'}} </h3>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="label"> Delete
+                        <button class="input-group-text" id="typeahead-basic" (click)="sterge(user)" type="submit" class="form-control">Sterge</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

@@ -1,0 +1,32 @@
+:root {
+    --color1: hsl(224, 85%, 66%);
+    --color2: hsl(333, 85%, 66%);
+    --color3: hsl(221, 85%, 66%);
+    --color4: hsl(341, 85%, 66%);
+    --color5: hsl(82, 85%, 66%);
+    --color6: hsl(67, 85%, 66%);
+    --color7: hsl(120, 85%, 66%);
+    --overflow:hidden;
+    //--fontUrl:url("<c:url value='https://fonts.gstatic.com/s/lato/v20/S6u9w4BMUTPHh7USSwiPGQ.woff2'/>")  format('woff2');
+    --backgroundColor:#000;
+    --textColor:rgb(211, 24, 24);
+    --bordersColor:#ff87;
+    --bracketBackColor:#892;
+    --iconsBackColor:#f38;
+    --iconsForeColor:#1589;
+    --borderRadiusMain: 4px;
+    --borderRadiusInner: 4px;
+    --borderMainBorderColor: #008cff;
+    --animation-timer: 20s;
+    --animatedBorderColors: linear-gradient(
+        60deg,
+        var(--color1),
+        var(--color2),
+        var(--color3),
+        var(--color4),
+        var(--color5),
+        var(--color5),
+        var(--color6),
+        var(--color7)
+        );
+}

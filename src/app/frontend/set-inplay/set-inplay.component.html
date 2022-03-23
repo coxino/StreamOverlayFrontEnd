@@ -1,0 +1,78 @@
+<div class="container-fluid fixed">   
+    <h3> In Play game</h3>
+    * in bonus hunts and tournaments this is automaticaly updated *
+    <div class="row">
+        <div class="col-2">
+            <div class="label"> Game Name
+                <input id="typeahead-basic" (keydown.enter)="Save()" class="input-group-text" type="text" class="form-control"required [(ngModel)]="LiveGame.game.name" [ngbTypeahead]="search"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label" > Provider
+                <input class="input-group-text" placeholder="Leave Empty For Default" type="text" class="form-control"required [(ngModel)]="LiveGame.game.provider">
+            </div>            
+        </div>
+        <div class="col-2">
+            <div class="label" > Potential
+                <input class="input-group-text" type="text" placeholder="Leave Empty For Default" class="form-control"required [(ngModel)]="LiveGame.game.potential">
+            </div>            
+        </div>
+        <div class="col-2">
+            <div class="label" > Volatility
+                <input class="input-group-text" type="text" placeholder="Leave Empty For Default" class="form-control"required [(ngModel)]="LiveGame.game.volatility">
+            </div>            
+        </div>
+        <div class="col-2">
+            <div class="label"> Image(*will be implemented*)               
+                <input class="input-group-text" placeholder="Set Custom" type="text" class="form-control"required [(ngModel)]="LiveGame.game.image">
+                <img src="{{LiveGame.game.image}}">
+            </div>  
+        </div>        
+        <div class="col-1">
+            <div class="label"> Save(*Enter Key*)
+                <button class="btn btn-primary"  (click)="Save()" required>Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid fixed">   
+    <h3> Add game to bonushunt</h3>
+    <div class="row">
+        <div class="col-2">
+            <div class="label" > Bet
+                <input class="input-group-text" type="text" placeholder="Leave Empty For Default" class="form-control"required [(ngModel)]="LiveGameBet">
+            </div>            
+        </div>
+        <div class="col-1">
+            <div class="label"> Add to bonushunt
+                <button class="btn btn-primary"  (click)="AddTobonusHunt()" required>Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="margin-top: 150px;">
+    <h4>Rounds</h4>
+    *Add new if is one of your best pays or x, in bonus hunts this value is automaticaly added*<br>
+    *Update Older Values*<br>
+    *Some statistics will be made based on this status*<br>
+    <div class="row" *ngFor="let bonus of LiveGame.game.rounds;let i = index" [attr.data-index]="i">        
+        <div class="col-2">
+            <div class="label">  Bet
+                <input class="input-group-text"  (keydown.enter)="Save()" type="number" class="form-control"required [(ngModel)]="bonus.betSize"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label">  Payed
+                <input class="input-group-text"  (keydown.enter)="Save()" type="number"  class="form-control" cha required [(ngModel)]="bonus.payAmount"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label">  Multiplier
+                <input class="input-group-text" readonly type="number" class="form-control" required  [(ngModel)]="bonus.multiplier"/>
+            </div>
+        </div>      
+        <div class="label" > Add<br>  
+            <button class="btn btn-primary"  (click)="addNew()"> <i class="fa fa-plus" aria-hidden="true"></i> </button>
+        </div>  
+    </div>
+</div>

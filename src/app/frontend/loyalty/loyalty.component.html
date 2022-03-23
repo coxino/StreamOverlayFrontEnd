@@ -1,0 +1,123 @@
+
+<div class="container-flex" style="margin: 30px;">
+    <h1>Adauga Puncte tuturor</h1>
+    <div class="row">    
+        <div class="col-2">
+            <div class="label"> Numar de puncte
+                <input type="number" class="form-control" [(ngModel)]="ammountToAdd"/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Adauga tuturor
+                <button class="input-group-text" id="typeahead-basic" (click)="addpointsall()" type="submit" class="form-control">Adauga</button>
+            </div> 
+        </div>
+    </div>
+    <h1>Cauta Utilizator</h1>
+    <div class="row">
+        <div class="col-2">
+            <div class="label"> Cauta Utilizator
+                <input class="input-group-text" id="typeahead-basic"  (keydown.enter)="searchUser()" [ngbTypeahead]="search" type="text" class="form-control" required  *ngIf="byId == false" [(ngModel)]="UserToSearch"/>
+                <input class="input-group-text" id="typeahead-basic"  (keydown.enter)="searchUser()" [ngbTypeahead]="searchbyid" type="text" class="form-control" required  *ngIf="byId == true" [(ngModel)]="UserToSearch"/>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="label"> Search By ID<br>
+                <div class="toggle-switch" [class.toggle-on]="byId" [class.toggle-off]="!byId" (click)="toogleIsHunting()">
+                    <div class="toggle-wrap">
+                        <div class="toggle-bg-on"></div>
+                    </div>
+                    <div class="toggle-handler"></div>
+                </div>{{byId}}
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="label"> Show Ip Adress<br>
+                <div class="toggle-switch" [class.toggle-on]="ShowIpAdress" [class.toggle-off]="!ShowIpAdress" (click)="toogleShowIpAdress()">
+                    <div class="toggle-wrap">
+                        <div class="toggle-bg-on"></div>
+                    </div>
+                    <div class="toggle-handler"></div>
+                </div>{{ShowIpAdress}}
+            </div>
+        </div>
+    </div>
+    <h2>Edit Utilizator</h2>
+    <div class="row">
+        <div class="col-2">
+            <div class="label"> Youtube ID
+                <input type="text" class="form-control" [(ngModel)]="EditUser.id" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Name
+                <input type="text" class="form-control" [(ngModel)]="EditUser.name" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Nume Superbet
+                <input type="text" class="form-control" [(ngModel)]="EditUser.superbetName" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Email
+                <input type="text" data-toggle="tooltip" title="Coppy!" style="cursor: copy;" ngxClipboard [cbContent]="EditUser.email" class="form-control" value="{{EditUser.email | hash}}" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Puncte
+                <input type="number" class="form-control" [(ngModel)]="EditUser.inventory" (keydown.enter)="saveEdited()"/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Register IP
+                <input type="text" *ngIf="ShowIpAdress" class="form-control"  [(ngModel)]="EditUser.ipadress"readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Inregistrat
+                <input type="text" class="form-control" [(ngModel)]="EditUser.creationTime"readonly/>                
+            </div>
+        </div>
+    </div>
+    <h1>Toti Utilizatori</h1>
+    <div class="row" *ngFor="let user of UserLoyals;let i = index" [attr.data-index]="i">
+        <div class="col-2">
+            <div class="label"> {{i + 1}}. Youtube ID
+                <input type="text" class="form-control" [(ngModel)]="user.id" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Name
+                <input type="text" class="form-control" [(ngModel)]="user.name" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Email
+                <input type="text" data-toggle="tooltip" title="Coppy!" ngxClipboard [cbContent]="user.email" class="form-control" value="{{user.email | hash}}" readonly/>                
+            </div>
+        </div>
+        <div class="col-2" *ngIf="ShowIpAdress == false">
+            <div class="label"> Puncte
+                <input type="number"  class="form-control" [(ngModel)]="user.inventory" readonly/>                
+            </div>
+        </div>
+        <div class="col-2" *ngIf="ShowIpAdress">
+            <div class="label"> Register IP
+                <input type="text"  class="form-control" [(ngModel)]="user.ipadress" readonly/>                
+            </div>
+        </div>
+        <div class="col-2" *ngIf="ShowIpAdress">
+            <div class="label">Superbet
+                <div class="form-control">
+                    <input type="text"  class="form-control" value="user.superbetName" readonly/>                
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Inregistrat
+                <input type="text" class="form-control" [(ngModel)]="user.creationTime"readonly/>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="gradient-border">
+    <div class="betting-page">
+        <div class="title">
+            <h3>HOT WORDS</h3>
+        </div>
+        <!-- Break and foreach var betting option-->
+        <div class="content" *ngFor="let option of hotWords.slice(0,5); index as i;">
+            <div class="betting-option">
+                <div class="nume">{{i+1}}. {{option.word}} - {{option.degree}}°C
+    </div>
+    </div>
+    </div>
+    </div>
+</div>

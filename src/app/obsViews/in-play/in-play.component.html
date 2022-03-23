@@ -1,0 +1,49 @@
+
+    <div class="divide-box animate__animated animate__fadeInLeft" style="margin:10px; width: 96vw;height: 90vh;" *ngIf='showOff == true'><div class="gradient-border"> 
+        <div class="container-absolute"> {{inHuntNumber}} {{currentGame.name}} </div>   
+        <div class="container"> 
+            <div class="col-3 top-radius">
+                <div class="header-image" *ngIf='bonusHuntPreInfo.hunting==true' style="-webkit-mask-box-image: url(../../assets/img/play.png);"> </div>
+                <div class="header-image" *ngIf='bonusHuntPreInfo.hunting==false' style="-webkit-mask-box-image: url(../../assets/img/video-pause-button.png);"> </div>
+            </div>
+        </div>
+        <div class="container" style="margin-left: -120px;">             
+            <div class="row in-play-text" style="font-size: 22px;"> Statistici Joc</div> 
+            <div class="row in-play-text" style="font-size: 18px;"> Potential : {{currentGame.potential}}            </div>
+            <div class="row in-play-text" style="font-size: 18px;"> Volatilitate : {{currentGame.volatility}}            </div>              
+            <div class="row in-play-text" style="font-size: 18px;"> Provider : {{currentGame.provider}}             </div>
+        </div>
+        <div class="container">      
+            <div class="row in-play-text" style="font-size: 22px;"> Istoric Joc</div>              
+            <div class="row in-play-text" style="font-size: 18px;"> Joc : {{currentGame.name}}</div>              
+            <div class="row in-play-text" style="font-size: 18px;"> Top Plata : {{gameHighestPay.PayAmount | currency:currencyCode:'symbol':'.0'}}({{gameHighestPay.BetSize}})</div>              
+            <div class="row in-play-text" style="font-size: 18px;"> Top Multi : {{gameHighestX.Multiplier}}({{gameHighestX.BetSize | currency:currencyCode:'symbol':'.0'}}) </div>  
+        </div>
+        <!-- <div class="col-3 top-radius">
+            <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/refresh.png);"> </div>
+        </div> -->
+    </div>
+</div>
+
+    <div class="divide-box animate__animated animate__fadeInLeft" style="margin:10px; width: 96vw;height: 90vh;" *ngIf='showOff == false'><div class="gradient-border"> 
+        <div class="container-absolute"> {{inHuntNumber}} {{currentGame.name}} </div> 
+    
+        <div class="container"  style="margin-left: 30px;">
+            <div class="row" style="font-size: 28px;"> Statistici Live </div>
+            <div class="row in-play-text" style="font-size: 18px;"> Miza Medie: {{bonusHuntPreInfo.averageBet}}</div>              
+            <div class="row in-play-text" style="font-size: 18px;"> Medie Castig: {{bonusHuntPreInfo.averageWin}}</div>  
+            <div class="row in-play-text" style="font-size: 18px;"> Medie Multi: {{bonusHuntPreInfo.averageMulti}}</div>  
+        </div>            
+        <div class="container">
+            <div class="row" *ngIf='bonusHuntPreInfo.hunting==false' style="font-size: 28px;">  {{inHuntNumber}} Deschise </div>
+            <div class="row" *ngIf='bonusHuntPreInfo.hunting==true' style="font-size: 28px;">  {{inHuntNumber.split("/")[1]}} Prinse </div>
+            <div class="row in-play-text" style="font-size: 18px;"> Pierdere :{{bonusHuntPreInfo.totalLoss}}</div>  
+            <div class="row in-play-text" style="font-size: 18px;"> Top Castig: {{bonusHuntPreInfo.bestPayValue}}</div>  
+            <div class="row in-play-text" style="font-size: 18px;"> Avg X Recup:{{bonusHuntPreInfo.averageMultiToBreakEven}}</div>  
+        </div>
+        <div class="col-3 top-radius">
+            <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/pie-chart.png);"> </div>
+        </div>
+    </div>   
+</div>     
+

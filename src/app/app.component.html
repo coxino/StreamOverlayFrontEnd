@@ -1,0 +1,45 @@
+<!-- Image and text -->
+<nav class="navbar navbar-expand-sm bg-dark" *ngIf="disableNav">
+    <a class="navbar-brand" href="#">     
+      Streamag
+    </a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/setInplay" *ngIf="isLogedIn">In Play</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tranzactiiedit" *ngIf="isLogedIn">Generals</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/loyaltyfe" *ngIf="isLogedIn">Loyalty</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/bonusHuntEdit" *ngIf="isLogedIn">Bonus Hunt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tournamentEdit" *ngIf="isLogedIn">Tournament</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/customTheme" *ngIf="isLogedIn">Edit Theme</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/obsconfig" *ngIf="isLogedIn">Obs Config</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ligaspecialelor" >Liga Specialelor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/version/log" >Update Log</a>
+        </li>       
+        <li class="nav-item logout">
+          <button class="btn btn-outline-success my-5 my-sm-0" (click)="login()" *ngIf="!isLogedIn"><i class="fa fa-sign-in" aria-hidden="true">Login</i></button>
+        </li>
+        <li class="nav-item logout">
+          <button class="btn btn-outline-success my-5 my-sm-0" (click)="logout()" *ngIf="isLogedIn"><i class="fa fa-sign-out" aria-hidden="true">LogOut</i></button>
+        </li>
+      </ul>      
+</nav>
+
+<router-outlet></router-outlet>
+
+

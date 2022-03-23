@@ -1,0 +1,43 @@
+.betting-page
+{
+    font-family: 'Rajdhani';
+    
+    .title
+    {        
+        text-align: center;
+        font-size: xx-large;
+        font-weight: lighter;
+    }
+    
+    .content
+    {
+       
+        .betting-option
+        { 
+            font-family: 'Rajdhani' !important;
+            .nume
+            {
+                font-size: x-large;
+                overflow: hidden;  
+                max-width: 80%;            
+            }
+            span{
+                font-size: xx-large;
+            }
+            
+            .option
+            { 
+                font-size: x-large;
+                text-transform: lowercase !important;
+                color: chocolate;
+            }
+            
+            .totalvotes
+            {  
+                font-size: xx-large;  
+                font-weight: lighter;    
+                text-align: right;
+            }
+        }
+    }
+}

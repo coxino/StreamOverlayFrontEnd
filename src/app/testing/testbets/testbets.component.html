@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-2" style="margin-left: 120px;">
+        <div class="label"> User Name                
+            <input class="input-group-text" type="text" class="form-control"required [(ngModel)]="user">
+            
+        </div>
+    </div>  
+    <div class="col-2" style="margin-left: 120px;">
+        <div class="label"> Bet                
+            <input class="input-group-text" type="number" class="form-control"required [(ngModel)]="bet">
+            
+        </div>
+    </div>   
+    <div class="col-2" style="margin-left: 120px;">
+        <div class="label"> Option                
+            <input class="input-group-text" type="text" class="form-control"required [(ngModel)]="option">
+            
+        </div>
+    </div>        
+    <div class="col-2" style="margin-left: 40px;">
+        <div class="label"> Create Betting From BH Value
+            <button class="btn btn-primary" (click)="betAsUser()" required>Bet</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2" style="margin-left: 120px;">
+        <div class="label"> Option                
+            <input class="input-group-text" type="text" class="form-control"required [(ngModel)]="option">
+            
+        </div>
+    </div> 
+    <div class="col-2" style="margin-left: 40px;">
+        <div class="label"> Set Winner
+            <button class="btn btn-primary" (click)="setWinner()" required>Set Winner</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-2" style="margin-left: 40px;">
+    <div class="label"> TEST MASIVE BETS
+        <button class="btn btn-primary" (click)="apiUpdateTESTOption()" required>TEST MASIVE BETS</button>
+    </div>
+</div>

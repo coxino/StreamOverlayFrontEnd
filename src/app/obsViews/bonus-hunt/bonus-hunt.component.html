@@ -1,0 +1,54 @@
+<div class="animate__animated animate__fadeInRight">  
+  <div class="gradient-border">   
+      <div class="bonus-hunt bonus-hunt-grid">
+        <div class="bonus-hunt-header"> 
+          <div class="container ">
+            <div class="row">
+              <div class="col-3 top-radius">
+                <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/target2.png);"> </div>
+              </div>
+              <div class="col-3 top-radius">
+                <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/target.png);"> </div>
+              </div>
+              <div class="col-3 top-radius">
+                <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/play-button.png);"> </div>
+              </div>
+              <div class="col-3 top-radius">
+                <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/refund.png);"> </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3 bottom-radius">
+                <h3 class="bh-value">#{{bonusHunt.huntNumber}}</h3>       
+              </div>
+              <div class="col-3 bottom-radius">
+               <h3 class="bh-value">{{bonusHunt.bonuses.length}}  </h3>       
+              </div>
+              <div class="col-3 bottom-radius">
+              <h3 class="bh-value">{{bonusHunt.huntValue | currency:currencyCode:' ':'.0'}}   </h3>   
+              </div>
+              <div class="col-3 bottom-radius">
+                <h3 class="bh-value">{{ bonusHunt.bonuses | sum:'payed' | currency:currencyCode:' ':'.0'}}   </h3>              
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div style="text-align:center; margin-top: 18px;">  
+          <div class="container ">
+            <div class="row col-bg">
+              <div class="col-6 col-hd">Name</div>       
+              <div class="col-2 col-hd">Bet</div>         
+              <div class="col-2 col-hd">Pay</div>         
+              <div class="col-1 col-hd">X</div>  
+            </div>
+          </div>          
+          </div>          
+          <div class="container"> 
+            <div id="outerdiv">
+                <iframe id="inneriframe" [ngStyle]="{'height': customHeight}" [src]="href | safe">   
+                </iframe>    
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
