@@ -1,0 +1,42 @@
+import { OnInit, AfterViewInit, EventEmitter } from '@angular/core';
+export interface Item {
+    text: string;
+    fillStyle: string;
+    id: any;
+}
+export declare enum TextAlignment {
+    INNER = "inner",
+    OUTER = "outer",
+    CENTER = "center"
+}
+export declare enum TextOrientation {
+    HORIZONTAL = "horizontal",
+    VERTICAL = "vertical",
+    CURVED = "curved"
+}
+export declare class NgxWheelComponent implements OnInit, AfterViewInit {
+    constructor();
+    height: number;
+    idToLandOn: any;
+    width: number;
+    items: Item[];
+    spinDuration: number;
+    spinAmount: number;
+    innerRadius: number;
+    pointerStrokeColor: string;
+    pointerFillColor: string;
+    disableSpinOnClick: boolean;
+    textOrientation: TextOrientation;
+    textAlignment: TextAlignment;
+    onSpinStart: EventEmitter<any>;
+    onSpinComplete: EventEmitter<any>;
+    wheel: any;
+    completedSpin: boolean;
+    isSpinning: boolean;
+    reset(): void;
+    ngOnInit(): void;
+    spin(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    drawPointer(): void;
+}

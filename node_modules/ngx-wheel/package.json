@@ -1,0 +1,63 @@
+{
+  "_from": "ngx-wheel",
+  "_id": "ngx-wheel@4.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-I1qenedijNeF2+0GBqNsWH8QmjxL7si9dNPE3TnqhdyL4s21kcC9DZH6V1d7+VEJu6unzeVU4sGypbdwWtr2mQ==",
+  "_location": "/ngx-wheel",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ngx-wheel",
+    "name": "ngx-wheel",
+    "escapedName": "ngx-wheel",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ngx-wheel/-/ngx-wheel-4.0.5.tgz",
+  "_shasum": "79915f0a9825a6113d6dd5061a40c324230bdee8",
+  "_spec": "ngx-wheel",
+  "_where": "D:\\StreamTheme\\StreamOverlay",
+  "bugs": {
+    "url": "https://github.com/Sayegh7/ngx-wheel/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "## [Click here for demo](https://ngx-wheel.web.app/)",
+  "es2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/ngx-wheel.js",
+  "es2015": "fesm2015/ngx-wheel.js",
+  "esm2015": "esm2015/ngx-wheel.js",
+  "esm5": "esm5/ngx-wheel.js",
+  "fesm2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/ngx-wheel.js",
+  "fesm2015": "fesm2015/ngx-wheel.js",
+  "fesm5": "fesm5/ngx-wheel.js",
+  "homepage": "https://ngx-wheel.web.app/",
+  "main": "bundles/ngx-wheel.umd.js",
+  "metadata": "ngx-wheel.metadata.json",
+  "module": "fesm5/ngx-wheel.js",
+  "name": "ngx-wheel",
+  "peerDependencies": {
+    "@angular/common": "^9.1.7",
+    "@angular/core": "^9.1.7",
+    "tslib": "^1.10.0"
+  },
+  "repository": {
+    "url": "git+https://github.com/Sayegh7/ngx-wheel.git"
+  },
+  "sideEffects": false,
+  "typings": "ngx-wheel.d.ts",
+  "version": "4.0.5",
+  "__processed_by_ivy_ngcc__": {
+    "es2015": "12.2.5",
+    "fesm2015": "12.2.5",
+    "typings": "12.2.5"
+  },
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
+  }
+}

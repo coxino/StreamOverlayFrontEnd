@@ -1,0 +1,1 @@
+{"version":3,"file":"ngx-wheel.module.d.ts","sources":["ngx-wheel.module.d.ts"],"names":[],"mappings":";;AAAA;;;;AACA","sourcesContent":["export declare class NgxWheelModule {\n}\n"]}
