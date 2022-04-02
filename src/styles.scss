@@ -19,13 +19,20 @@
         font-family: "LemonMilkMedium";
         src: local("LemonMilkMedium"), url(assets/fonts/LEMONMILK-Medium.otf) format("truetype");
     } 
+
+    @font-face {        
+        font-weight: Regular;
+        font-family: "HelveticaLocal";
+        src: local("HelveticaLocal"), url(assets/helvetica_condensed.ttf) format("truetype");
+    } 
     
     body 
     {         
         background-color: rgba(0, 0, 0, 0); 
         margin: 0px auto; 
-        overflow:var(--overflow);
-        font-family: 'Rajdhani', sans-serif;
+        overflow:var(--overflow);        
+        font-weight: Regular;
+        font-family: 'HelveticaLocal', 'Arial', sans-serif;
     }
     
     .header-box
@@ -52,10 +59,10 @@
     }
     
     h5{
-        font-family: 'Rajdhani', sans-serif;
+        font-family: 'HelveticaLocal', 'Arial', sans-serif;
     }
     h4{
-        font-family: 'Rajdhani', sans-serif;
+        font-family: 'HelveticaLocal', 'Arial', sans-serif;
     }   
     
     .header-image
@@ -227,7 +234,7 @@
             overflow:hidden !important; 
             font-size: small;
             text-align: center !important;              
-            font-family: 'Rajdhani';
+            font-family: 'HelveticaLocal', 'Arial', sans-serif;
             border-radius: 10px;
             
             img{    
@@ -239,7 +246,7 @@
             } 
             
             span{
-                font-family: 'Rajdhani';
+                font-family: 'HelveticaLocal', 'Arial', sans-serif;
             }
         }        
         
