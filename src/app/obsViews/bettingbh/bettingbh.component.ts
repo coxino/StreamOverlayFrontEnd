@@ -13,17 +13,54 @@ export class BettingbhComponent implements OnInit {
   totalVoturi = 0;
   totalFise = 0;
   timer = "";
-  startTime = Date.now();
-  beturi: BettingModel[] = [];
-  timer$ = interval(3000);
-  timer2$ = interval(1000);
   seconds:number = 1200;
+  beturi: BettingModel;
+  timer$ = interval(2000);
+  timer2$ = interval(1000);
   loadingOver = false;
+  IsAnimatedBorder = false;
+  
+  //didRefreshed = false;
   serverRequest(){
-    this.intervalRequest.apiGetRequest(Settings.LiveBetting).subscribe((data:any) =>{	 
-      this.beturi = data;
-      this.totalVoturi = this.beturi.map(x=>x.voturi).reduce((x,y)=> x+y);
-      this.totalFise = this.beturi.map(x=>x.totalPariat).reduce((x,y)=> x+y);
+    this.intervalRequest.apiGetRequest(Settings.LiveBetting).subscribe((data:any) =>{	
+      var xcnt = 0;
+      
+      this.beturi.maxBet = data.maxBet;
+      this.beturi.voteTitle = data.voteTitle;
+
+      if(this.beturi.options.length > 0){
+        this.beturi.options.forEach(bet => { 
+          if(bet.nume != data[xcnt].nume)
+          {
+            this.beturi.options =  [];
+            return;
+          }
+          bet.isVisible = data[xcnt].isVisible;
+          bet.optiune = data[xcnt].optiune;
+          bet.progress = data[xcnt].progress;
+          bet.totalPariat = data[xcnt].totalPariat;
+          bet.voturi = data[xcnt].voturi;
+          xcnt++;    
+          if(bet.isVisible == false && bet.didRefreshed == false){
+            var newInterval = interval(1000).subscribe(obs=>{
+              bet.didRefreshed = true;
+            });
+          }        
+        });
+      }
+      else
+      {
+        this.beturi = data;
+        this.beturi.options.forEach(bet => { 
+          if(bet.isVisible == false && bet.didRefreshed == false){
+            var newInterval = interval(1000).subscribe(obs=>{
+              bet.didRefreshed = true;
+            });
+          }
+        });
+      }
+      this.totalVoturi = this.beturi.options.map(x=>x.voturi).reduce((x,y)=> x+y);
+      this.totalFise = this.beturi.options.map(x=>x.totalPariat).reduce((x,y)=> x+y);
       if(this.loadingOver == false)
       {
         this.loadingOver = true;
@@ -41,9 +78,12 @@ export class BettingbhComponent implements OnInit {
       var secs = this.seconds - (minutes * 60);
       this.timer = minutes + ":" + secs.toString();
     });
+    this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+      this.IsAnimatedBorder = data.Options.animatedBorder;    
+    });
   }
   
   ngOnInit(): void {
   }
-
+  
 }

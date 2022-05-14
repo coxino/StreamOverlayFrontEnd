@@ -44,6 +44,7 @@ export class Settings{
         //BETTING
         public static readonly CreateBetFromTournament = "betting/createFromTournament";
         public static readonly CreateBetFromBonushunt = "betting/createFromBonushunt";
+        public static readonly UpdateBetting = "betting/replace";
         public static readonly BetAsUser = "betting/updateOption";
         public static readonly SetWinner = "betting/setwinner";
         

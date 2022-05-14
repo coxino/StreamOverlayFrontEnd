@@ -33,10 +33,10 @@
             </div>
             <div class="label"> Border Radius : {{Theme.Options.borderRadius}} <!-- todo add ngchanged --> 
                 <input type="range" min="0" max="40"  class="form-control" required  [(ngModel)]="Theme.Options.borderRadius"  />
-            </div>
-            <!-- <div class="label"> Border Radius : {{Theme.Options.animatedBorder}}
-                <input type="checkbox" class="form-control" required  [(ngModel)]="Theme.Options.animatedBorder"  />
-            </div> -->
+            </div> <h3>
+            <div class="label" style="height: 50px;background-color: aqua;">
+                Use Animated Border  <input type="checkbox" style="position: absolute; margin-top: -34px; height: 50px;background-color: aqua;" class="form-control"  [(ngModel)]="Theme.Options.animatedBorder"/>
+            </div></h3> 
             
             <div class="label" *ngIf="!Theme.Options.animatedBorder"> BorderColor
                 <input ejs-colorpicker type="color" class="form-control" id="colorpicker" required [(value)]="Theme.Options.borderMainBorderColor" name="colorpicker"/>

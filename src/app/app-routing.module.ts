@@ -32,6 +32,7 @@ import { LigainnerComponent } from './ghinionistii/ligainner/ligainner.component
 import { GiveawayComponent } from './frontend/giveaway/giveaway.component';
 import { SpinningwheelComponent } from './obsViews/spinningwheel/spinningwheel.component';
 import { PaysafewheelComponent } from './paysafewheel/paysafewheel.component';
+import { BettingEditComponent } from './frontend/betting-edit/betting-edit.component';
 
 const routes: Routes = [  
   { path: '', component: MainpageComponent },
@@ -73,7 +74,8 @@ const routes: Routes = [
   { path: 'customTheme', component: CustomThemeEditorComponent },
   { path: 'bonusHuntEdit', component: BonushuntEditorComponent },
   { path: 'tournamentEdit', component: TournamentComponent },
-  { path: 'givewayTimer', component: GiveawayComponent }
+  { path: 'givewayTimer', component: GiveawayComponent },
+  { path: 'bettingedit', component: BettingEditComponent },
 ];
 
 @NgModule({

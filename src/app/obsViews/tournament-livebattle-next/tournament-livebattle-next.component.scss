@@ -1,13 +1,14 @@
 .loserImg
 {
+    z-index: 9999;
     position: absolute;
-    top: -30px;
-    left: 35px;
+    top: -70%;
+    right: 10px;
     font-size: 186px;
-    font-weight: lighter;
+    font-weight:bolder !important;
     color: red;
     font-family: TournamentVersus;
-    animation-iteration-count:1;
+    animation-iteration-count:0;
 }
 
 .div-header

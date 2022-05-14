@@ -55,6 +55,13 @@
             </div>
         </div>
         <div class="col-2">
+            <div class="label"> Member Level
+                <select type="text" (change)="setLevel($event, rank.value)" #rank class="form-control">  
+                    <option [selected]="rank.memberLevel == EditUser.memberLevel" *ngFor="let rank of memberLevels" >{{rank.nume}}</option> 
+                </select>           
+            </div>
+        </div>
+        <div class="col-2">
             <div class="label"> Nume Superbet
                 <input type="text" class="form-control" [(ngModel)]="EditUser.superbetName" readonly/>                
             </div>

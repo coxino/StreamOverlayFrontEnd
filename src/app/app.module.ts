@@ -52,6 +52,7 @@ import { GiveawayComponent } from './frontend/giveaway/giveaway.component';
 import { SpinningwheelComponent } from './obsViews/spinningwheel/spinningwheel.component';
 import { NgxWheelModule } from 'ngx-wheel';
 import { PaysafewheelComponent } from './paysafewheel/paysafewheel.component';
+import { BettingEditComponent } from './frontend/betting-edit/betting-edit.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { PaysafewheelComponent } from './paysafewheel/paysafewheel.component';
     LigainnerComponent,
     GiveawayComponent,
     SpinningwheelComponent,
-    PaysafewheelComponent
+    PaysafewheelComponent,
+    BettingEditComponent
     ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
@@ -9,11 +8,17 @@ import { LigaUser } from 'src/assets/database/Models/LigaUser';
 import { Meci } from 'src/assets/database/Models/Meci';
 import { TournamentModel } from 'src/assets/database/Models/Tournament';
 import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
+import { BettingModel } from 'src/models/betting-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  updateBetting(beturi:BettingModel) {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.UpdateBetting,beturi,{headers});
+  }
   setGiveawayWinner() {
     return this.httpClient.get(Settings.ApiServer + Settings.GiveAwaysSetWinner);
   }
@@ -133,11 +138,11 @@ export class IntervalRequestService {
     return this.httpClient.post<any>(Settings.ApiServer + Settings.BonusBuyTournamentUpdate,tournament,{headers});
     
   }
-  apiCreateTournament(fights: number,buyValue:number) {
+  apiCreateTournament(fights: number,buyValue:number,TournamentModel:TournamentModel) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
     
-    var body ={fights:fights,buyValue:buyValue};
+    var body ={fights:fights,buyValue:buyValue,TournamentModel:TournamentModel};
     
     return this.httpClient.post<any>(Settings.ApiServer + Settings.BonusBuyTournamentCreate,body,{headers});
     

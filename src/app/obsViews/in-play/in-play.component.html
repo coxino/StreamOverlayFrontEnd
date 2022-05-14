@@ -1,5 +1,5 @@
 
-    <div class="divide-box animate__animated animate__fadeInLeft" style="margin:10px; width: 96vw;height: 90vh;" *ngIf='showOff == true'><div class="gradient-border"> 
+    <div class="divide-box animate__animated animate__fadeInLeft" style="margin:10px; width: 96vw;height: 90vh;" *ngIf='showOff == true'><div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}"> 
         <div class="container-absolute"> {{inHuntNumber}} {{currentGame.name}} </div>   
         <div class="container"> 
             <div class="col-3 top-radius">
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-    <div class="divide-box animate__animated animate__fadeInLeft" style="margin:10px; width: 96vw;height: 90vh;" *ngIf='showOff == false'><div class="gradient-border"> 
+    <div class="divide-box animate__animated animate__fadeInLeft" style="margin:10px; width: 96vw;height: 90vh;" *ngIf='showOff == false'><div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}"> 
         <div class="container-absolute"> {{inHuntNumber}} {{currentGame.name}} </div> 
     
         <div class="container"  style="margin-left: 30px;">

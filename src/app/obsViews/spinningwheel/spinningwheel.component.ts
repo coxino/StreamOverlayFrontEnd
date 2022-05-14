@@ -15,21 +15,20 @@ export class SpinningwheelComponent implements OnInit {
   spinDuration=12;
   items=[
     {id:0, text:'5 COX',fillStyle:'#9d9d9d',prize:5},
-    {id:1, text:'10 COX',fillStyle:'#ffffff',prize:20},
-    {id:2, text:'15 COX',fillStyle:'#1eff00',prize:15},
-    {id:3, text:'20 COX',fillStyle:'#0070dd',prize:20},
-    {id:4, text:'30 COX',fillStyle:'#a335ee',prize:30},
-    {id:5, text:'40 COX',fillStyle:'#ff8000',prize:40},
-    {id:6, text:'50 COX',fillStyle:'#e6cc80',prize:50},    
-    {id:7, text:'PaySafe Wheel',fillStyle:'#00ccff',prize:0},
+    {id:1, text:'8 COX',fillStyle:'#f337ff',prize:8},
+    {id:2, text:'10 COX',fillStyle:'#ffffff',prize:10},
+    {id:3, text:'12 COX',fillStyle:'#017fdd',prize:12},
+    {id:4, text:'15 COX',fillStyle:'#1eff00',prize:15},
+    {id:5, text:'20 COX',fillStyle:'#0070dd',prize:20},
+    {id:6, text:'25 COX',fillStyle:'#e6cc80',prize:25},    
+    {id:7, text:'PaySafe Wheel',fillStyle:'gold',prize:0},
     {id:8, text:'5 COX',fillStyle:'#9d9d9d',prize:5},
-    {id:9, text:'10 COX',fillStyle:'#ffffff',prize:20},
-    {id:10, text:'15 COX',fillStyle:'#1eff00',prize:15},
-    {id:11, text:'20 COX',fillStyle:'#0070dd',prize:20},
-    {id:12, text:'30 COX',fillStyle:'#a335ee',prize:30},
-    {id:13, text:'40 COX',fillStyle:'#ff8000',prize:40},
-    {id:14, text:'50 COX',fillStyle:'#e6cc80',prize:50},    
-    {id:15, text:'PaySafe Wheel',fillStyle:'#00ccff',prize:0},
+    {id:9, text:'8 COX',fillStyle:'#f337ff',prize:8},
+    {id:10, text:'10 COX',fillStyle:'#ffffff',prize:10},
+    {id:11, text:'12 COX',fillStyle:'#017fdd',prize:12},
+    {id:12, text:'15 COX',fillStyle:'#1eff00',prize:15},
+    {id:13, text:'20 COX',fillStyle:'#0070dd',prize:20},
+    {id:14, text:'25 COX',fillStyle:'#e6cc80',prize:25}, 
   ];
   constructor(private intervalRequest: IntervalRequestService,private activatedRoute: ActivatedRoute) { 
     this.activatedRoute.queryParams.subscribe(params => {
@@ -60,11 +59,10 @@ export class SpinningwheelComponent implements OnInit {
     this.wheel.spin();  
     
     if(this.items[this.idToLandOn].prize > 0){
-      this.intervalRequest.apiAddPointsAll(this.items[this.idToLandOn].prize,"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6ImNveGlubyAgICAiLCJQYXNzd29yZCI6ImNvc21pbjEyMzQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIiwibmJmIjoxNjQ3NTE5ODM2LCJleHAiOjE2NDgxMjQ2MzYsImlhdCI6MTY0NzUxOTgzNiwiaXNzIjoiaHR0cDovL215c2l0ZS5jb20iLCJhdWQiOiJodHRwOi8vbXlhdWRpZW5jZS5jb20ifQ.OmAgTLLc5nXalfC7A2NkWw5cv8HawW60zhpfXOu7VQE").subscribe((data)=>
+      this.intervalRequest.apiAddPointsAll(this.items[this.idToLandOn].prize,"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6ImNveGlubyAgICAiLCJQYXNzd29yZCI6ImNvc21pbjEyMzQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIiwibmJmIjoxNjQ3NTE5ODM2LCJleHAiOjE2NDgxMjQ2MzYsImlhdCI6MTY0NzUxOTgzNiwiaXNzIjoiaHR0cDovL215c2l0ZS5jb20iLCJhdWQiOiJodHRwOi8vbXlhdWRpZW5jZS5jb20ifQ.OmAgTLLc5nXalfC7A2NkWw5cv8HawW60zhpfXOu7VQE").subscribe(async (data)=>
       {      
-        this.message = data.status;
-        console.log(this.message);
-        
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        this.message = data.status;        
       })
     }
   }

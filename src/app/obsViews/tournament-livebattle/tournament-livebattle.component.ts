@@ -13,7 +13,7 @@ export class TournamentLivebattleComponent implements OnInit {
   fightDetails: any;
   loadingOver = false;
   timer$ = interval(2000);
-  
+  IsAnimatedBorder = false;
   constructor(private intervalRequest: IntervalRequestService) {
     this.timer$.subscribe(()=>{
         this.intervalRequest.apiGetRequest(Settings.BonusBuyTournamentLiveFight).subscribe((data:any) =>{         
@@ -22,6 +22,9 @@ export class TournamentLivebattleComponent implements OnInit {
               this.loadingOver = true;
         });  
       });  
+      this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+        this.IsAnimatedBorder = data.Options.animatedBorder;    
+        });
    }
 
   ngOnInit(): void {

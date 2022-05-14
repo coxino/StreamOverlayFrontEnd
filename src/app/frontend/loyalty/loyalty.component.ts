@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { Settings } from 'src/assets/database/Models/databaseStructure';
-import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
+import { MemberLevels, UserLoyal } from 'src/assets/database/Models/UserLoyal';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 
 @Component({
@@ -19,11 +18,27 @@ export class LoyaltyComponent implements OnInit {
   UserToSearch = "";
   UserLoyals:UserLoyal[] = [];
   ShowIpAdress = false;
+
+  memberLevels:any[] = [];
+  
   constructor(private intervalRequest: IntervalRequestService) {
     this.themeWrapper.style.setProperty('--overflow',     "scroll");
     intervalRequest.apiGetLoyaltyList().subscribe((data:any)=>{       
       this.UserLoyals = data;
     });
+
+    this.memberLevels.push({nume:"Viewer", memberLevel:MemberLevels.Viewer});
+    this.memberLevels.push({nume:"Moderator", memberLevel:MemberLevels.Moderator});
+    this.memberLevels.push({nume:"Coxumator", memberLevel:MemberLevels.Coxumator});
+    this.memberLevels.push({nume:"Ajutor", memberLevel:MemberLevels.Ajutor});
+    this.memberLevels.push({nume:"Gangster", memberLevel:MemberLevels.Gangster});
+    this.memberLevels.push({nume:"Cop", memberLevel:MemberLevels.Cop});
+    this.memberLevels.push({nume:"ElChapo", memberLevel:MemberLevels.ElChapo});
+  }
+
+  setLevel(sanse:any, rank:any)
+  {
+  this.EditUser.memberLevel =  this.memberLevels.filter(x=>x.nume == rank)[0].memberLevel;
   }
 
   addpointsall()
