@@ -16,7 +16,7 @@ export class AnimatedBorderComponent implements OnInit {
       timer.unsubscribe();
     });
    }
-
+   IsAnimatedBorder = false;
   ngOnInit(): void {
   }
 

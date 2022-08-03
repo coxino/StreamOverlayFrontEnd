@@ -1,8 +1,8 @@
  body
  {
    overflow:hidden !important;
-   font-family: 'Rajdhani', sans-serif;
-   font-weight: lighter;
+   font-family: 'HelveticaLocal', 'Arial', sans-serif;
+   font-weight: bold;
    font-size: 88;
  }
 
@@ -15,7 +15,7 @@
 
   .scroll-anim
   {
-    animation: scroll var(--animation-timer) linear 1s infinite;
+    animation: scroll var(--animation-timer) linear 0.1s infinite;
   }
 
   @keyframes scroll {
@@ -24,5 +24,7 @@
 
 .col-txt
 {
+  text-align: center;
   font-size: 22px;
+  overflow: hidden;
 }

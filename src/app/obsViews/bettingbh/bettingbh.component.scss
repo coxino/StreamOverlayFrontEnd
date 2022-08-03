@@ -1,0 +1,141 @@
+.betting-page
+{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    
+    .title
+    {        
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
+    }
+
+
+    .progress{
+        height: 28px;
+        text-align: left;  
+        border-radius: 0;      
+    }
+    
+    .option0{
+        color: red;
+        .progress-bar0
+        {
+            color: white;
+            background-color: red;
+            height: 100%;
+        }
+    }
+
+    .option1{
+        color:turquoise;
+        .progress-bar1
+        {
+            color: white;
+            background-color: turquoise;
+            height: 100%;
+        }
+    }
+
+    .option2{
+        color: yellow;
+        .progress-bar2
+        {
+            color: white;
+            background-color: yellow;
+            height: 100%;
+        }
+    }
+
+    .option3{
+        color: orange;
+        .progress-bar3
+        {
+            color: white;
+            background-color: orange;
+            height: 100%;
+        }
+    }
+
+    .option4{
+        color: magenta;
+        .progress-bar4
+        {
+            color: white;
+            background-color: magenta;
+            height: 100%;
+        }
+    }
+
+    .option5{
+        color: cyan;
+        .progress-bar5
+        {
+            color: white;
+            background-color: cyan;
+            height: 100%;
+        }
+    }
+
+    .option6{
+        color: gold;
+        .progress-bar6
+        {
+            color: white;
+            background-color: gold;
+            height: 100%;
+        }
+    }
+
+    .option7{
+        color: palegreen;
+        .progress-bar7
+        {
+            color: white;
+            background-color: palegreen;
+            height: 100%;
+        }
+    }
+
+    .option8{
+        color: purple;
+        .progress-bar8
+        {
+            color: white;
+            background-color: purple;
+            height: 100%;
+        }
+    }
+
+    
+    .content
+    {
+        
+        .betting-option
+        { 
+            font-family: 'Helvetica', 'Arial', sans-serif !important;
+            .nume
+            {
+                font-size: x-large;
+                overflow: hidden;  
+                max-width: 80%;            
+            }
+            span{
+                font-size: xx-large;
+            }
+            
+            .option
+            { 
+                font-size: x-large;
+                text-transform: lowercase !important;
+                color: chocolate;
+            }
+            
+            .totalvotes
+            {  
+                font-size: xx-large;  
+                font-weight: bold;    
+                text-align: right;
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 
 <div class="animate__animated animate__fadeInRight" *ngIf="loadingOver">
-<div class="gradient-border">   
+<div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}">   
     <div class="bonus-fight">
         <div class="parent-container d-flex">
             <div class="container">

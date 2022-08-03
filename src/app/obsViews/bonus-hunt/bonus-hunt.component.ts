@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { interval } from 'rxjs';
+import { AppComponent } from 'src/app/app.component';
 import { BonusHunt } from 'src/assets/database/Models/BonusHunt';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 import {Settings} from '../../../assets/database/Models/databaseStructure';
@@ -21,6 +22,8 @@ export class BonusHuntComponent implements OnInit {
 	currencyCode = SiteSettings.currency;
 	timer$ = interval(5000);
 	
+	IsAnimatedBorder = false;
+
 	customHeight = "0px";
 	customInt = 100;
 	constructor(private intervalRequest: IntervalRequestService, private activatedRoute: ActivatedRoute) {	
@@ -33,7 +36,11 @@ export class BonusHuntComponent implements OnInit {
 		this.serverRequest();		
 		this.timer$.subscribe(()=>{			
 			this.serverRequest(); 
-		});   
+		});  
+
+		this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+			this.IsAnimatedBorder = data.Options.animatedBorder;    
+		  });
 	}
 	
 	serverRequest(){

@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of ngx-wheel
+ */
+export * from './lib/ngx-wheel.component';
+export * from './lib/ngx-wheel.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25neC13aGVlbC8iLCJzb3VyY2VzIjpbInB1YmxpYy1hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0dBRUc7QUFFSCxjQUFjLDJCQUEyQixDQUFDO0FBQzFDLGNBQWMsd0JBQXdCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIG5neC13aGVlbFxuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vbGliL25neC13aGVlbC5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvbmd4LXdoZWVsLm1vZHVsZSc7XG4iXX0=

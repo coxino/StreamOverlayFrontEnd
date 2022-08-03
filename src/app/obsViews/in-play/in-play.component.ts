@@ -22,7 +22,7 @@ export class InPlayComponent implements OnInit {
   gameHighestX: Round = new Round();
   inHuntNumber:string = "";
   timer$ = interval(3000);
-  
+  IsAnimatedBorder = false;
   serverRequest(){
     this.intervalRequest.apiGetRequest(Settings.LiveGame).subscribe((data:any) =>{  
       this.timer ++;
@@ -58,6 +58,9 @@ export class InPlayComponent implements OnInit {
     this.timer$.subscribe(()=>{			
       this.serverRequest(); 
     }); 
+    this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+			this.IsAnimatedBorder = data.Options.animatedBorder;    
+		  });
   }
   ngOnInit(): void {
     

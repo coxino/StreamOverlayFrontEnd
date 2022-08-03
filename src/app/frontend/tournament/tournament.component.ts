@@ -21,17 +21,16 @@ export class TournamentComponent implements OnInit {
   currentFight:Meci;
   maxBet = 100;
   createnew = true;
+  tournament:TournamentModel = new TournamentModel();
   
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(200),
       distinctUntilChanged(),
       map(term => term.length < 2 ? []
-        : this.games.map(x=>x.Name).filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+        : this.games.map(x=>x.Name).filter(v => v?.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
   
-
-  tournament:TournamentModel;
   constructor(private intervalRequest: IntervalRequestService) {
     this.LoadCurrentTournamentBraket();
     this.LoadCurrentFight();
@@ -67,7 +66,7 @@ export class TournamentComponent implements OnInit {
 
   CreateTournament()
   {
-     this.intervalRequest.apiCreateTournament(this.fights,this.buyValue).subscribe((data)=>{
+     this.intervalRequest.apiCreateTournament(this.fights,this.buyValue,this.tournament).subscribe((data)=>{
         this.LoadCurrentTournamentBraket();        
       this.fights = data.fights;
       this.buyValue = data.buyValue;

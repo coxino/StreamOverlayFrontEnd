@@ -3,7 +3,7 @@
   import { Settings } from 'src/assets/database/Models/databaseStructure';
   import { LocalGame } from 'src/models/local-game';
   import { IntervalRequestService } from 'src/services/interval-request.service';
-
+  
   @Component({
     selector: 'app-tournament-livebattle-next',
     templateUrl: './tournament-livebattle-next.component.html',
@@ -12,10 +12,11 @@
   export class TournamentLivebattleNextComponent implements OnInit {
     bracket: any;
     MeciFinal:any;
+    MeciuriOptimi:any[]=[];
     MeciuriSferturi:any[] = [];
     MeciuriSemiFinale:any[] = [];
     semiFinalists:any[] = [];
-    
+    IsAnimatedBorder = false;
     loadingOver = false;
     
     _isQuarterVisible = false;
@@ -23,6 +24,7 @@
     
     timer$ = interval(3000);
     games:LocalGame[] = [];
+    isOptimi = false;
     
     serverRequest(){
       this.intervalRequest.apiGetRequest(Settings.BonusBuyTournament).subscribe((data:any) =>{ 
@@ -30,8 +32,10 @@
         if(data != null || data != undefined)
         {        
           this.bracket = data;                       
-                    this.MeciuriSferturi = this.bracket.meciuriSferturi;
+          this.MeciuriOptimi = this.bracket.meciuriOptimi;
+          this.MeciuriSferturi = this.bracket.meciuriSferturi;
           this.MeciuriSemiFinale = this.bracket.meciuriSemiFinale;
+          this.isOptimi = data.isOptimi;
           this.isQuarterVisible = data.isQuarter;  
           this.MeciFinal = data.meciFinal;
           this.isSemisVisible = data.isSemis;
@@ -66,12 +70,15 @@
       this.timer$.subscribe(()=>{			
         this.serverRequest(); 
         if(this.loadingOver == false)
-          {
-            this.loadingOver = true;
-          }
-      });   
+        {
+          this.loadingOver = true;
+        }
+      });  
+      this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+        this.IsAnimatedBorder = data.Options.animatedBorder;    
+      }); 
     }
-
+    
     hasPlayedarr:boolean[] = new Array();
     hasPlayed(no:number)
     {
@@ -79,62 +86,72 @@
       this.hasPlayedarr[no] = true;
       return toreturn;
     }
-
+    
     scorTotal()
     {
       var toReturn = 0;
       this.MeciuriSferturi.forEach(element => {      
-            toReturn += element.team1.scor;      
-          toReturn += element.team2.scor;      
+        toReturn += element.team1.scor;      
+        toReturn += element.team2.scor;      
       });
-
+      
       this.MeciuriSemiFinale.forEach(element => {      
-            toReturn += element.team1.scor;      
-          toReturn += element.team2.scor;      
+        toReturn += element.team1.scor;      
+        toReturn += element.team2.scor;      
       });      
-            toReturn += this.MeciFinal.team1.scor;      
-          toReturn += this.MeciFinal.team2.scor;
+      toReturn += this.MeciFinal.team1.scor;      
+      toReturn += this.MeciFinal.team2.scor;
       
       return (toReturn ?? 0).toFixed(2);
     }
-
+    
     scorTotalMeci(name:string)
     {
       var toReturn = 0;
       this.MeciuriSferturi.forEach(element => {
         if(element.team1.nume == name)
         {
-            toReturn += element.team1.scor;
+          toReturn += element.team1.scor;
         }
         if(element.team2.nume == name)
         {
           toReturn += element.team2.scor;
         }
       });
-
+      
       this.MeciuriSemiFinale.forEach(element => {
         if(element.team1.nume == name)
         {
-            toReturn += element.team1.scor;
+          toReturn += element.team1.scor;
         }
         if(element.team2.nume == name)
         {
           toReturn += element.team2.scor;
         }
       });
-
-
+      
+      
       if(this.MeciFinal.team1.nume == name)
-        {
-            toReturn += this.MeciFinal.team1.scor;
-        }
-        if(this.MeciFinal.team2.nume == name)
-        {
-          toReturn += this.MeciFinal.team2.scor;
-        }
+      {
+        toReturn += this.MeciFinal.team1.scor;
+      }
+      if(this.MeciFinal.team2.nume == name)
+      {
+        toReturn += this.MeciFinal.team2.scor;
+      }
       return (toReturn ?? 0).toFixed(2);
     }
 
+    hasImage(name:string)
+    {
+      var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
+      if(toReturn == "")
+      {
+        return true;
+      }
+      return false;
+    }
+    
     getImage(name:string)
     {
       var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
@@ -168,7 +185,7 @@
         }
       }
     }
-
+    
     get isQuarterVisible():boolean{
       return this._isQuarterVisible;
     }
@@ -189,4 +206,5 @@
       }
     }
   }
-
+  
+  

@@ -32,6 +32,11 @@ import { LigainnerComponent } from './ghinionistii/ligainner/ligainner.component
 import { GiveawayComponent } from './frontend/giveaway/giveaway.component';
 import { SpinningwheelComponent } from './obsViews/spinningwheel/spinningwheel.component';
 import { PaysafewheelComponent } from './paysafewheel/paysafewheel.component';
+import { BettingEditComponent } from './frontend/betting-edit/betting-edit.component';
+import { QuizShowComponent } from './obsViews/quiz-show/quiz-show.component';
+import { PacaniadaComponentE } from './frontend/pacaniada/pacaniada.component';
+import { PacaniadaComponent } from './obsViews/pacaniada/pacaniada.component';
+import { ShopEditorComponent } from './shop-editor/shop-editor.component';
 
 const routes: Routes = [  
   { path: '', component: MainpageComponent },
@@ -56,6 +61,13 @@ const routes: Routes = [
   { path: 'ligaspecialelor', component: LigaComponent },
   { path: 'ligaspecialelorobs', component: LigaobsComponent },
   { path: 'ligaspecialelorinner', component: LigainnerComponent },
+  { path: 'quizz', component: QuizShowComponent },
+
+  {path: 'shopedit', component:ShopEditorComponent},
+
+
+  { path: 'paca-edit', component: PacaniadaComponent },
+  { path: 'paca', component: PacaniadaComponentE },
 
   //BackGrounds
   { path: 'backgrounds/basic', component: BasicBackgroundComponent },
@@ -73,7 +85,8 @@ const routes: Routes = [
   { path: 'customTheme', component: CustomThemeEditorComponent },
   { path: 'bonusHuntEdit', component: BonushuntEditorComponent },
   { path: 'tournamentEdit', component: TournamentComponent },
-  { path: 'givewayTimer', component: GiveawayComponent }
+  { path: 'givewayTimer', component: GiveawayComponent },
+  { path: 'bettingedit', component: BettingEditComponent },
 ];
 
 @NgModule({

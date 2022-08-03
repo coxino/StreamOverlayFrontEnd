@@ -17,8 +17,11 @@ export class HotwordsComponent implements OnInit {
 		this.timer$.subscribe(()=>{			
 			this.serverRequest(); 
 		});   
+		this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+			this.IsAnimatedBorder = data.Options.animatedBorder;    
+		  });
 	}
-	
+	IsAnimatedBorder = false;
 	ngOnInit(): void {
 	}
 	serverRequest(){

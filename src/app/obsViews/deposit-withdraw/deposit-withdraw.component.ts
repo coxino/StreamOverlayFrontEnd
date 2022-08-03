@@ -19,11 +19,14 @@ export class DepositWithdrawComponent implements OnInit {
       this.serverRequest(); 
     });
   }
-  
+  IsAnimatedBorder = false;
   serverRequest(){
     this.intervalRequest.apiGetRequest(Settings.tranzactii).subscribe((data:any) =>{	
       this.tranzactii = data;							
     });
+    this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
+			this.IsAnimatedBorder = data.Options.animatedBorder;    
+		  });
   }
   
   ngOnInit(): void {

@@ -7,4 +7,15 @@ export class UserLoyal{
     public ipadress ="";
     public creationTime = "";
     public superbetName = "";
+    public memberLevel:MemberLevels = MemberLevels.Viewer;
 }  
+
+export enum MemberLevels{
+        Viewer,
+        Moderator,
+        Coxumator,
+        Ajutor,
+        Gangster,
+        Cop,
+        ElChapo,
+}
