@@ -21,7 +21,7 @@
     } 
     
     @font-face {        
-        font-weight: Regular;
+        font-weight:bold;
         font-family: "HelveticaLocal";
         src: local("HelveticaLocal"), url(assets/helvetica_condensed.ttf) format("truetype");
     } 
@@ -31,7 +31,7 @@
         background-color: rgba(0, 0, 0, 0); 
         margin: 0px auto; 
         overflow:var(--overflow);        
-        font-weight: Regular;
+        font-weight: bold;
         font-family: 'HelveticaLocal', 'Arial', sans-serif;
     }
     
@@ -78,7 +78,7 @@
     .bonus-hunt{ 
         width: 100%;   
         text-transform: uppercase;
-        font-weight: lighter;
+        font-weight: bold;
         border-radius: 25px;
         color: var(--textColor);
         padding: 20px;  
@@ -190,7 +190,7 @@
             text-align: center !important;
             width: 100% !important;
             background-color: rgba(255, 180, 180, 0.041);
-            font-weight: lighter;            
+            font-weight: bold;            
             white-space:pre-wrap !important;          
         }
         
@@ -198,7 +198,7 @@
             text-align: center !important;
             width: 100% !important;
             background-color: rgba(255, 180, 180, 0.041);
-            font-weight: lighter;
+            font-weight: bold;
             font-size: large;
             white-space:pre-wrap !important;   
         }
@@ -217,7 +217,7 @@
             margin-left: 20px;   
             text-align: center;
             font-size: large;           
-            font-weight: lighter;
+            font-weight: bold;
             text-shadow: #b6b9b2;   
         }
         
@@ -271,7 +271,7 @@
         .game-name
         {
             background-color: #b6b9b2;
-            font-size:medium;
+            font-size:22px;
             font-weight: bold;
             overflow: hidden; 
             text-overflow:ellipsis;
@@ -343,7 +343,7 @@
                 { 
                     border-bottom: 2px solid var(--bordersColor);
                     text-align:center;
-                    font-weight: lighter;                    
+                    font-weight: bold;                    
                 }               
             }
             .container
@@ -356,7 +356,7 @@
                 {        
                     border-bottom: 2px solid var(--bordersColor);
                     text-align:center;
-                    font-weight: lighter;
+                    font-weight: bold;
                 }
             }
             .title
@@ -425,7 +425,7 @@
             background-size: 300% 300%;
             background-position: 0 50%;
             border-radius: calc(2 * var(--border-width));
-            animation: moveGradient 4s alternate infinite;
+            animation: moveGradient 114s alternate infinite;
         }
     }
     

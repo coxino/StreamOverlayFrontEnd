@@ -16,34 +16,31 @@ export class PaysafewheelComponent implements OnInit {
   spinNo = 0;
   items=[    
     {id:0, text:'50 LEI Shining Crown',fillStyle:'#bc6c25',prize:"50 LEI Shining Crown"},
-    {id:1, text:'50 PSF',fillStyle:'#ffff3f',prize:50},    
-    {id:2, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
-    {id:3, text:'50 PSF',fillStyle:'#ffff3f',prize:50},    
-    {id:4, text:'25 PSF',fillStyle:'#fefae0',prize:25},
-    {id:5, text:'50 LEI Shining Crown',fillStyle:'#bc6c25',prize:"50 LEI Shining Crown"},    
-    {id:6, text:'25 PSF',fillStyle:'#fefae0',prize:25},
-    {id:7, text:'100 PSF',fillStyle:'#a335ee',prize:100},
-    {id:8, text:'25 PSF',fillStyle:'#fefae0',prize:25},      
-    {id:9, text:'50 PSF',fillStyle:'#ffff3f',prize:50},     
-    {id:10, text:'Loc In Finala Cupei',fillStyle:'#2b9348',prize:"Loc In Finala Cupei"}, 
-    {id:11, text:'25 PSF',fillStyle:'#fefae0',prize:25},      
+    {id:1, text:'25 PSF',fillStyle:'#fefae0',prize:25},    
+    {id:2, text:'50 PSF',fillStyle:'#ffff3f',prize:50}, 
+    {id:3, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
+    {id:4, text:'100 PSF',fillStyle:"purple",prize:100},  
+    {id:5, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
+    {id:6, text:'50 LEI Shining Crown',fillStyle:'#bc6c25',prize:"50 LEI Shining Crown"}, 
+    {id:7, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
+    {id:8, text:'1 000 COX',fillStyle:'green',prize:"1 000 COX"}, 
+    {id:9, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
+    {id:10, text:'50 PSF',fillStyle:'#ffff3f',prize:50}, 
+    {id:11, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
+    {id:12, text:'50 LEI Shining Crown',fillStyle:'#bc6c25',prize:"50 LEI Shining Crown"}, 
+    {id:13, text:'25 PSF',fillStyle:'#fefae0',prize:25}, 
+    {id:14, text:'1 000 COX',fillStyle:'green',prize:"1 000 COX"}, 
+    {id:15, text:'25 PSF',fillStyle:'#fefae0',prize:25},
+    {id:16, text:'50 PSF',fillStyle:'#ffff3f',prize:50}, 
+    {id:17, text:'25 PSF',fillStyle:'#fefae0',prize:25},
   ];
   
   items2=[
     {id:0, text:'Multiplicator x2',fillStyle:'#007fff',prize:2},     
     {id:1,text:'Colect',fillStyle:'Green',prize:1}, 
     {id:2,text:'Pierzi',fillStyle:'red',prize:0},
-    {id:3,text:'Colect',fillStyle:'Green',prize:1},
   ];
-  
-  items3=[
-    {id:0, text:'Colect',fillStyle:'Green',prize:1},     
-    {id:1,text:'Colect',fillStyle:'Green',prize:1}, 
-    {id:2,text:'Pierzi',fillStyle:'red',prize:0},
-    {id:3,text:'Colect',fillStyle:'Green',prize:1},
-    {id:4,text:'Colect',fillStyle:'Green',prize:1},
-    {id:5,text:'Pierzi',fillStyle:'red',prize:0},
-  ];
+
   constructor(private activatedRoute: ActivatedRoute) { 
     this.activatedRoute.queryParams.subscribe(params => {
       this.password = params['pass'];     
@@ -99,33 +96,20 @@ export class PaysafewheelComponent implements OnInit {
         if(this.castig > 0)
         {
           this.wheel.items = this.items2;
-        }
-        else
-        {
-          this.castig =  this.items[this.idToLandOn].text;          
-          this.wheel.items = this.items3;
-        }
-        await new Promise(resolve => setTimeout(resolve, 1200));      
-        this.wheel.reset(); 
-        await new Promise(resolve => setTimeout(resolve, 1100));
-        await this.spin2();        
-        this.spinNo++; 
-        return;
+          await new Promise(resolve => setTimeout(resolve, 1200));      
+          this.wheel.reset(); 
+          await new Promise(resolve => setTimeout(resolve, 1100));
+          await this.spin2();        
+          this.spinNo++; 
+          return;
+        }        
       }
       
       if(this.spinNo > 0){
         var prize = this.wheel.items[this.idToLandOn].prize;  
         if(prize == 1)
         {  
-          if(this.castig != 25)
-          {
-            this.castig = "Fecilitari! Ai castigat " + this.castig;     
-          }
-          else
-          {
-            this.castig = "RISCA";
-          }
-          return;
+          this.castig = "Fecilitari! Ai castigat PSF" + this.castig;   
         }
         if(prize == 0)
         {

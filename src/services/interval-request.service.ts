@@ -8,12 +8,23 @@ import { LigaUser } from 'src/assets/database/Models/LigaUser';
 import { Meci } from 'src/assets/database/Models/Meci';
 import { TournamentModel } from 'src/assets/database/Models/Tournament';
 import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
+import { ClasamentPacaniada } from 'src/assets/database/Models/UserPacaniada';
 import { BettingModel } from 'src/models/betting-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  saveShopItems(shopItems: string) {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.SaveShop,shopItems,{headers});
+  }
+  SaveClasament(clasamentPacaniada:ClasamentPacaniada) {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.Pacaniada,clasamentPacaniada,{headers});
+  }
   updateBetting(beturi:BettingModel) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
@@ -181,6 +192,11 @@ export class IntervalRequestService {
       }
     }
     return this.httpClient.get(Settings.ApiServer + url,{headers : {'username':username}});
+  }
+
+  apiGetShopRequest()
+  {
+    return this.httpClient.get(Settings.ApiServer + Settings.ShopItems);
   }
   
   apiSetCustomTheme(url:string,_customTheme:string)

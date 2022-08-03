@@ -1,5 +1,6 @@
 export class Settings{
         
+        
         public static readonly ApiServer = "https://coxino.go.ro:5000/api/";
         // public static readonly ApiServer = "http://streamag.westeurope.cloudapp.azure.com:5000/api/";
         public static readonly LoginUrl = "user/login";
@@ -16,7 +17,8 @@ export class Settings{
         public static readonly LiveBetting:string = "betting";
         public static readonly CreateBettingFromTournament:string = "betting/createFromTournament";
         public static readonly HotWords:string = "hotwords";
-        public  static ResetHotWords: string =  "hotwords/reset";
+        public static readonly ResetHotWords: string =  "hotwords/reset";
+        public static readonly Pacaniada: string =  "pacaniada";
         
         
         
@@ -40,7 +42,7 @@ export class Settings{
         
         //LocalDB
         static AllGames: string = "assets/database/AllGames.json";
-         
+        
         //BETTING
         public static readonly CreateBetFromTournament = "betting/createFromTournament";
         public static readonly CreateBetFromBonushunt = "betting/createFromBonushunt";
@@ -51,9 +53,12 @@ export class Settings{
         //Loyality
         public static readonly LoyalityGetRanks:string = "loyality/ranking";
         public static readonly LoyalityGetTikets:string = "loyality/tikets";
-
+        
         public static readonly StocItem0="shop/stoc";
         public static readonly LigaSpecialelor: string = "ligaspecialelor/clasament";
         public static readonly GiveAways: string = "giveaway";
         public static readonly GiveAwaysSetWinner: string = "giveaway/setWinner";
+        public static readonly SaveShop: string = "shop/saveshop"
+        
+        public static readonly ShopItems: string = "shop?username=coxino&viewerId=";
 }

@@ -1,4 +1,5 @@
 export class TeamStats{
+    numeJucator:string = "";
     nume:string = "";
     buyCost:number = 0;
     scor:number = 0;

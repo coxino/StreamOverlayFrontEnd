@@ -17,18 +17,9 @@ export class SpinningwheelComponent implements OnInit {
     {id:0, text:'5 COX',fillStyle:'#9d9d9d',prize:5},
     {id:1, text:'8 COX',fillStyle:'#f337ff',prize:8},
     {id:2, text:'10 COX',fillStyle:'#ffffff',prize:10},
-    {id:3, text:'12 COX',fillStyle:'#017fdd',prize:12},
-    {id:4, text:'15 COX',fillStyle:'#1eff00',prize:15},
-    {id:5, text:'20 COX',fillStyle:'#0070dd',prize:20},
-    {id:6, text:'25 COX',fillStyle:'#e6cc80',prize:25},    
-    {id:7, text:'PaySafe Wheel',fillStyle:'gold',prize:0},
-    {id:8, text:'5 COX',fillStyle:'#9d9d9d',prize:5},
-    {id:9, text:'8 COX',fillStyle:'#f337ff',prize:8},
-    {id:10, text:'10 COX',fillStyle:'#ffffff',prize:10},
-    {id:11, text:'12 COX',fillStyle:'#017fdd',prize:12},
-    {id:12, text:'15 COX',fillStyle:'#1eff00',prize:15},
-    {id:13, text:'20 COX',fillStyle:'#0070dd',prize:20},
-    {id:14, text:'25 COX',fillStyle:'#e6cc80',prize:25}, 
+    {id:3, text:'15 COX',fillStyle:'#1eff00',prize:15},
+    {id:4, text:'20 COX',fillStyle:'#0070dd',prize:20},
+    {id:5, text:'25 COX',fillStyle:'#e6cc80',prize:25},    
   ];
   constructor(private intervalRequest: IntervalRequestService,private activatedRoute: ActivatedRoute) { 
     this.activatedRoute.queryParams.subscribe(params => {

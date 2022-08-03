@@ -1,0 +1,59 @@
+<div class="container">
+
+<div class="row" *ngFor="let item of ShopItems;let i = index" [attr.data-index]="i">
+    {{i + 1}}.
+    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+        <div class="label">  Item ID
+            <input (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.itemID" id="typeahead-basic"/>                
+        </div>        
+    </div>
+    <div  style="border-style: solid; border-width: 1px;" class="col-3">
+        <div class="label"> Name
+            <input (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.nume" id="typeahead-basic"/>                
+        </div>    
+        <div  class="label"> Descriere
+            <textarea  (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.descriere" id="typeahead-basic"></textarea>                
+        </div>      
+    </div>
+    <div  style="border-style: solid; border-width: 1px;" class="col-2">
+        <div class="label"> Imagine
+            <input (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.imagine" id="typeahead-basic"/>                
+        </div>        
+    </div>
+    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+        <div class="label"> MembersOnly
+            <input (change)="SaveShop()" type="checkbox" class="form-control" [(ngModel)]="item.onlyMembers" id="typeahead-basic"/>                
+        </div>    
+        <div class="label"> RequireAditional
+            <input (change)="SaveShop()" type="checkbox" class="form-control" [(ngModel)]="item.requireAditional" id="typeahead-basic"/>                
+        </div>  
+        <div class="label"> IsVisible
+            <input (change)="SaveShop()" type="checkbox" class="form-control" [(ngModel)]="item.isVisible" id="typeahead-basic"/>                
+        </div>   
+    </div>
+    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+        <div class="label"> Pret
+            <input (change)="SaveShop()" type="number" class="form-control" [(ngModel)]="item.pret" id="typeahead-basic"/>                
+        </div>
+        <div class="label"> Stoc
+            <input (change)="SaveShop()" type="number" class="form-control" [(ngModel)]="item.stoc" id="typeahead-basic"/>                
+        </div> 
+        <div class="label"> Cooldown(minutes)
+            <input (change)="SaveShop()" type="number" class="form-control" [(ngModel)]="item.cooldown" id="typeahead-basic"/>                
+        </div>           
+    </div>   
+    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+        <div class="label"> Delete
+            <input type="button" (click)="DeleteShop(item.itemID)" class="form-control" value="DELETE" id="typeahead-basic"/>                
+        </div>        
+    </div>
+</div>
+</div>
+<!-- descriere: "Contine unul din urmatoarele 50COX, 100COX, 250COX, 1000COX, 50RON SHINIG CROWN. POTI DESCHIDE 1 PE ZI - VALABIL PENTRU ABONATII NOI SAU ATUNCI CAND FACEM 100 LIKES"
+imagine: "/assets/img/cadou.gif"
+itemID: "gift100"
+nume: "CADOU 100 LIKES"
+onlyMembers: false
+pret: 0
+requireAditional: false
+stoc: 996 -->

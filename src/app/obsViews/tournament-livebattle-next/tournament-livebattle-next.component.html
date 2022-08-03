@@ -7,7 +7,8 @@
                                 <div class="col-5">
                                     <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
                                         <div class="row"> 
-                                            <div class="game-name">{{Meci.team1.nume}}</div>
+                                            <div class="game-name">{{Meci.team1.numeJucator}}</div>
+                                            <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
                                             <div class="col-12">
                                                 <div class="image-box-fill">
                                                     <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">
@@ -23,7 +24,8 @@
                                 <div class="col-5">
                                     <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
                                         <div class="row"> 
-                                            <div class="game-name">{{Meci.team2.nume}}</div> 
+                                            <div class="game-name">{{Meci.team2.numeJucator}}</div> 
+                                            <!-- <div class="game-name">{{Meci.team2.nume}}</div>  -->
                                             <div class="col-12">
                                                 <div class="image-box-fill" >
                                                      <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
@@ -44,7 +46,8 @@
                                 <div class="col-5">
                                     <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
                                         <div class="row"> 
-                                            <div class="game-name">{{Meci.team1.nume}}</div>
+                                            <div class="game-name">{{Meci.team1.numeJucator}}</div>
+                                            <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
                                             <div class="col-12">
                                                 <div class="image-box-fill">
                                                     <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">                                                    
@@ -60,7 +63,8 @@
                                 <div class="col-5">
                                    <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
                                         <div class="row"> 
-                                            <div class="game-name">{{Meci.team2.nume}}</div>
+                                            <div class="game-name">{{Meci.team2.numeJucator}}</div>
+                                            <!-- <div class="game-name">{{Meci.team2.nume}}</div> -->
                                             <div class="col-12">
                                                 <div class="image-box-fill" >
                                                      <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
@@ -80,7 +84,8 @@
                                 <div class="col-5">
                                     <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
                                         <div class="row"> 
-                                            <div class="game-name">{{Meci.team1.nume}}</div>
+                                            <div class="game-name">{{Meci.team1.numeJucator}}</div>
+                                            <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
                                             <div class="col-12">
                                                 <div class="image-box-fill">
                                                     <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">                                                    
@@ -96,7 +101,8 @@
                                 <div class="col-5">
                                    <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
                                         <div class="row"> 
-                                            <div class="game-name">{{Meci.team2.nume}}</div>
+                                            <div class="game-name">{{Meci.team2.numeJucator}}</div>
+                                            <!-- <div class="game-name">{{Meci.team2.nume}}</div> -->
                                             <div class="col-12">
                                                 <div class="image-box-fill" >
                                                      <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
@@ -115,7 +121,8 @@
                             <div class="col-5">
                                 <div class="isOptimi" [ngClass]="{'loser': MeciFinal.team2.hasWon, 'winner': MeciFinal.team1.hasWon}">                                
                                     <div class="row"> 
-                                        <div class="game-name">{{MeciFinal.team1.nume}}</div>
+                                        <div class="game-name">{{MeciFinal.team1.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{MeciFinal.team1.nume}}</div> -->
                                         <div class="col-12">
                                             <div class="image-box-fill">
                                                 <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}">                                                    
@@ -131,7 +138,8 @@
                             <div class="col-5">
                                <div class="isOptimi" [ngClass]="{'loser': MeciFinal.team1.hasWon, 'winner': MeciFinal.team2.hasWon}">                                
                                     <div class="row"> 
-                                        <div class="game-name">{{MeciFinal.team2.nume}}</div>
+                                        <div class="game-name">{{MeciFinal.team2.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{MeciFinal.team2.nume}}</div> -->
                                         <div class="col-12">
                                             <div class="image-box-fill" >
                                                  <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}">
@@ -150,11 +158,13 @@
                                 <div class="row">
                                     <div class="col" *ngIf="MeciFinal.team1.hasWon">    
                                         <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}"> 
+                                        <div class="col-12 div-header">Winner Score : {{MeciFinal.team1.numeJucator}}</div>                       
                                         <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team1.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
                                         <div class="col-12 div-header">Tournament Score : {{scorTotal()}}  / {{MeciFinal.team2.payout.length * 2 * 7}}</div>                       
                                         </div>
                                     <div class="col" *ngIf="MeciFinal.team2.hasWon">       
                                         <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team1.nume}}"> 
+                                        <div class="col-12 div-header">Winner Score : {{MeciFinal.team2.numeJucator}}</div> 
                                         <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team2.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
                                         <div class="col-12 div-header">Tournament Score : {{scorTotal()}}  / {{MeciFinal.team2.payout.length * 2 * 7}}</div>                       
                                        </div>

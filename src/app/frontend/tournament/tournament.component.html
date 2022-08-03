@@ -37,15 +37,24 @@
 <div class="container-fluid" style="margin-top: 0px;" *ngIf=(!createnew)>   
     <div *ngIf="tournament.isOptimi === false" >
     <div  *ngFor="let bonus of tournament.meciuriSferturi;let i = index" [attr.data-index]="i"><h1>Fight #{{i+1}}</h1>
-        <div class="row" >       
-            <div class="col-2">
-                <div class="label"> Team 1
-                    <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team1.nume"/>
+        <div class="row" >  
+            <div class="col-1">
+                <br>
+                Nume Abonat : 
+                <br>
+                <br>
+                Nume JOC :
+            </div>     
+            <div class="col-3">
+                <div class="label"> Team 1 <br>
+                      <input class="input-group-text" id="typeahead-basic" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team1.numeJucator"/>
+                     <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team1.nume"/>
                 </div>
             </div> 
             <h1>vs</h1>
-            <div class="col-2">
-                <div class="label"> Team 2
+            <div class="col-3">
+                <div class="label"> Team 2 <br>
+                    <input class="input-group-text" id="typeahead-basic" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team2.numeJucator"/>
                     <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team2.nume"/>
                 </div>       
             </div>         
@@ -55,15 +64,24 @@
 
     <div *ngIf="tournament.isOptimi === true" >
     <div   *ngFor="let bonus of tournament.meciuriOptimi;let i = index" [attr.data-index]="i"><h1>Fight #{{i+1}}</h1>
-        <div class="row" >       
-            <div class="col-2">
-                <div class="label"> Team 1
-                    <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team1.nume"/>
+        <div class="row" >   
+            <div class="col-1">
+                <br>
+                Nume Abonat : 
+                <br>
+                <br>
+                Nume JOC :
+            </div>     
+            <div class="col-4">
+                <div class="label"> Team 1 <br>
+                   <input class="input-group-text" id="typeahead-basic" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team1.numeJucator"/>
+                   <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team1.nume"/>
                 </div>
             </div> 
             <h1>vs</h1>
-            <div class="col-2">
-                <div class="label"> Team 2
+            <div class="col-3">
+                <div class="label"> Team 2 <br>
+                    <input class="input-group-text" id="typeahead-basic" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team2.numeJucator"/>
                     <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search" (keydown.enter)="saveTournament()" type="text" class="form-control"required [(ngModel)]="bonus.team2.nume"/>
                 </div>       
             </div>         

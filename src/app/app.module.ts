@@ -53,6 +53,11 @@ import { SpinningwheelComponent } from './obsViews/spinningwheel/spinningwheel.c
 import { NgxWheelModule } from 'ngx-wheel';
 import { PaysafewheelComponent } from './paysafewheel/paysafewheel.component';
 import { BettingEditComponent } from './frontend/betting-edit/betting-edit.component';
+import { QuizShowComponent } from './obsViews/quiz-show/quiz-show.component';
+import { PacaniadaComponent } from './obsViews/pacaniada/pacaniada.component';
+import { PacaniadaComponentE } from './frontend/pacaniada/pacaniada.component';
+import { ShopEditorComponent } from './shop-editor/shop-editor.component';
+
 
 @NgModule({
   declarations: [
@@ -96,7 +101,11 @@ import { BettingEditComponent } from './frontend/betting-edit/betting-edit.compo
     GiveawayComponent,
     SpinningwheelComponent,
     PaysafewheelComponent,
-    BettingEditComponent
+    BettingEditComponent,
+    QuizShowComponent,
+    PacaniadaComponent,
+    PacaniadaComponentE,
+    ShopEditorComponent
     ],
   imports: [
     BrowserModule,
