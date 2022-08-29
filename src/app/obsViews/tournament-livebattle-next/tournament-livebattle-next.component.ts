@@ -147,9 +147,9 @@
       var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
       if(toReturn == "")
       {
-        return true;
+        return false;
       }
-      return false;
+      return true;
     }
     
     getImage(name:string)

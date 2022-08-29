@@ -105,7 +105,7 @@ import { ShopEditorComponent } from './shop-editor/shop-editor.component';
     QuizShowComponent,
     PacaniadaComponent,
     PacaniadaComponentE,
-    ShopEditorComponent
+    ShopEditorComponent,
     ],
   imports: [
     BrowserModule,
