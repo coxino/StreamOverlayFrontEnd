@@ -14,7 +14,7 @@ export class BettingbhComponent implements OnInit {
   totalFise = 0;
   timer = "";
   seconds:number = 1200;
-  beturi: BettingModel;
+  beturi: BettingModel = new BettingModel();
   timer$ = interval(2000);
   timer2$ = interval(1000);
   loadingOver = false;
@@ -30,16 +30,16 @@ export class BettingbhComponent implements OnInit {
 
       if(this.beturi.options.length > 0){
         this.beturi.options.forEach(bet => { 
-          if(bet.nume != data[xcnt].nume)
+          if(bet.nume != data.options[xcnt].nume)
           {
             this.beturi.options =  [];
             return;
           }
-          bet.isVisible = data[xcnt].isVisible;
-          bet.optiune = data[xcnt].optiune;
-          bet.progress = data[xcnt].progress;
-          bet.totalPariat = data[xcnt].totalPariat;
-          bet.voturi = data[xcnt].voturi;
+          bet.isVisible = data.options[xcnt].isVisible;
+          bet.optiune = data.options[xcnt].optiune;
+          bet.progress = data.options[xcnt].progress;
+          bet.totalPariat = data.options[xcnt].totalPariat;
+          bet.voturi = data.options[xcnt].voturi;
           xcnt++;    
           if(bet.isVisible == false && bet.didRefreshed == false){
             var newInterval = interval(1000).subscribe(obs=>{

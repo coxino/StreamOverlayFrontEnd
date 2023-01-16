@@ -60,11 +60,7 @@ export class BettingComponent implements OnInit {
         });
       }
       this.totalVoturi = this.beturi.options.map(x=>x.voturi).reduce((x,y)=> x+y);
-      this.totalFise = this.beturi.options.map(x=>x.totalPariat).reduce((x,y)=> x+y);
-      if(this.loadingOver == false)
-      {
-        this.loadingOver = true;
-      } 
+      this.totalFise = this.beturi.options.map(x=>x.totalPariat).reduce((x,y)=> x+y);       
     });
   }
   constructor(private intervalRequest: IntervalRequestService) { 
@@ -72,14 +68,28 @@ export class BettingComponent implements OnInit {
     this.timer$.subscribe(()=>{			
       this.serverRequest();       
     }); 
-    this.timer2$.subscribe(()=>{
+    var obs = this.timer2$.subscribe(()=>{
       this.seconds --;
+
+      if(this.seconds >= 0){
       var minutes = Math.floor(this.seconds / 60);
       var secs = this.seconds - (minutes * 60);
-      this.timer = minutes + ":" + secs.toString();
+      this.timer = minutes.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+      }) + ":" + secs.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+      });
+      }
+      else{
+        obs.unsubscribe();
+        this.timer = "INCHIS";
+      }
     });
     this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
-      this.IsAnimatedBorder = data.Options.animatedBorder;    
+      this.IsAnimatedBorder = data.Options.animatedBorder;        
+        this.loadingOver = true;        
     });
   }
   

@@ -2,10 +2,10 @@
 $color-bg: #ffffff00;
 $color-particle: #fff;
 $spacing: 2560px;
-$time-1: 60s;
-$time-2: 120s;
-$time-3: 180s;
-$time-4: 200s;
+$time-1: 120s;
+$time-2: 180s;
+$time-3: 220s;
+$time-4: 250s;
 
 /* mixins */
 @function particles($max) {

@@ -8,9 +8,25 @@
             <div class="label"> BackGroundColor
                 <input ejs-colorpicker type="color" (select)="select($event,'backgroundColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.backgroundColor" name="colorpicker"/>
             </div>
+            <h3>TEXT EDIT</h3>
             <div class="label"> TextColor
                 <input ejs-colorpicker type="color" (select)="select($event,'textColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.textColor" name="colorpicker" />
             </div>
+            <div class="label"> Text Size {{Theme.Options.textSize}}
+                <input type="range" min="0" max="100"  class="form-control" required  [(ngModel)]="Theme.Options.textSize"  />
+            </div>
+            <div class="label"> Text Size {{Theme.Options.textWeight}}
+                <input type="range" min="0" max="1000"  step="100" class="form-control" required  [(ngModel)]="Theme.Options.textWeight"  />
+            </div>
+           
+            <div class="label"> Text Outline Size {{Theme.Options.textOutlineSize}}
+                <input type="range" min="0" max="20" step="0.02"  class="form-control" required  [(ngModel)]="Theme.Options.textOutlineSize"  />
+            </div>
+            <div class="label"> Text Outline Color
+                <input ejs-colorpicker type="color" (select)="select($event,'textOutlineColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.textOutlineColor" name="colorpicker" />
+            </div>
+
+            <h3>Borders and Icons</h3>
             <div class="label"> Inside Borders Color
                 <input ejs-colorpicker type="color" (select)="select($event,'bordersColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.bordersColor" name="colorpicker" />
             </div>
@@ -23,6 +39,8 @@
             <div class="label"> Icons Fore Color
                 <input ejs-colorpicker type="color" (select)="select($event,'iconsForeColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.iconsForeColor" name="colorpicker" />
             </div>
+
+
             
             <h3>Outer Border</h3>
             <!-- <div class="label"> Gradient? color[] else is transparent etc

@@ -1,55 +1,52 @@
 <div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}">
    
     <div class="container-flex" style="width: 98%; height: 98%;">
-        <div style="height: 150px; margin: auto; text-align: center;">
-          <h1>{{currentUser.name}} {{olTimerS}} </h1>
-          <h2></h2> 
-          <h3>Start-Current</h3>
-          <h3>{{currentUser.start}}-{{currentUser.end}} = {{currentUser.start - currentUser.end}} </h3>
+        
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="center">{{currentUser.name}} {{olTimerS}} </h1>
+                </div>                
             </div>
+            <div class="row">
+                <div class="col center">
+                   Start
+                </div>
+                <!-- <div class="col-4">Curent/Final</div>
+                <div class="col-4">Scor</div> -->
+            </div> 
+            <div class="row">
+                <div class="col center">
+                    <h3>{{currentUser.start}}</h3>
+                </div>
+                <!-- <div class="col">
+                    {{currentUser.end}}
+                </div>
+                <div class="col">
+                    {{currentUser.start - currentUser.end}} 
+                </div> -->
+            </div>   
+            <h1>Clasament</h1> 
         <div class="row">
-            <div class="col-5">
+            <div class="col-8">
                 <div class="label">
-                    <h2> Nume                             </h2>
+                    <h2> ##.Nume                             </h2>
                 </div>
             </div>
-            <div class="col-2">
-                <div class="label">
-                    <h2>  Start     </h2>  
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="label">
-                    <h2>  End         </h2>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="label"> 
-                    <h2>   Scor </h2>
-                    
-                </div>
+            <div class="col">
+                    <h3 class="center">   Scor </h3>
             </div> 
         </div>
         
         <div class="row" *ngFor="let user of pacaniada.users.slice(0,9);let i = index" [attr.data-index]="i">
-            <div class="col-5">
+            <div class="col-8">
                 <div class="label">
                     <h2> {{i + 1}}.{{user.name}}  </h2>                            
                 </div>
             </div>
-            <div class="col-2">
-                <div class="label">
-                    <h2>  {{user.start}}            </h2>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="label">
-                    <h2>   {{user.end}}     </h2>       
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="label"> 
-                    <h2> {{user.end - user.start}} </h2>
+            <div class="col">
+                <div class="label center"> 
+                    <h2 *ngIf="user.end == 0">IN JOC</h2>
+                    <h2 *ngIf="user.end != 0"> {{user.end - user.start}} </h2>
                 </div>
             </div> 
         </div>

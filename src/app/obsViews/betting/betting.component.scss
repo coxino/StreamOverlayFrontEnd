@@ -1,12 +1,10 @@
 .betting-page
-{
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    
+{    
     .title
     {        
         text-align: center;
-        font-size: xx-large;
-        font-weight: bold;
+        font-size:xx-large;
+        font-stretch: expanded;
     }
 
 
@@ -111,30 +109,17 @@
     {
         
         .betting-option
-        { 
-            font-family: 'Helvetica', 'Arial', sans-serif !important;
-            .nume
-            {
-                font-size: x-large;
-                overflow: hidden;  
-                max-width: 80%;            
-            }
-            span{
-                font-size: xx-large;
-            }
-            
+        {        
+            overflow: hidden !important;  
+
             .option
-            { 
-                font-size: x-large;
-                text-transform: lowercase !important;
+            {            
                 color: chocolate;
             }
             
             .totalvotes
-            {  
-                font-size: xx-large;  
-                font-weight: bold;    
-                text-align: right;
+            {            
+                text-align: left;
             }
         }
     }

@@ -1,0 +1,23 @@
+<div class="white center" style="width: 99vw"> 
+<div class="row" class="animate__animated animate__fadeInRight" *ngIf="!player.hide">
+    <div class="col"  [ngClass]="{'animate__animated animate__fadeOutLeft' : !player.isCurrent}">
+        {{player.playerName}}  
+        <br> 
+        <img class="img200" [src]="player.game.image" alt="{{player.game.name}}">
+        <br> 
+        {{player.game.name}}
+    </div>
+    <hr>
+    <div class="center trans50">
+        {{player.game.provider}}
+    </div>
+    <div class="row">
+        <div class="col">
+            {{player.game.Potential}}
+        </div>
+        <div class="col">
+            {{player.game.Volatility}}
+        </div>
+    </div>
+</div>
+</div>

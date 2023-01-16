@@ -6,7 +6,6 @@ body
 
 .scroll{
     font-family: 'LemonMilkMedium', sans-serif;
-  font-weight: bold;
    left: 0px;
    color: white;
    position: absolute;
@@ -21,9 +20,4 @@ body
 
  @keyframes scroll {
    100% { top:-100%; }
-}
-
-.col-txt
-{
- font-size: 22px;
 }

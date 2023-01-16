@@ -28,8 +28,10 @@ export class AppComponent implements OnInit{
       
       //const username = params['username'];
       this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
-        this.Theme = data;       
+        this.Theme = data;   
+        //if(this.disableNav == false){    
         this.SetTheme();
+       //}
       });
     });	
     this.isLogedIn = this.cookieService.get('token') != null;
@@ -57,8 +59,21 @@ export class AppComponent implements OnInit{
     };  
     this.router.navigateByUrl('#');
   }
+
+  getRandomInt(min:number, max:number) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
   
   SetTheme() {
+    this.themeWrapper.style.setProperty('--textOutlineSize',     this.Theme.Options.textOutlineSize + "px");
+    this.themeWrapper.style.setProperty('--textSize',     this.Theme.Options.textSize + "px");
+    this.themeWrapper.style.setProperty('--textWeight',     this.Theme.Options.textWeight);
+   
+    this.themeWrapper.style.setProperty('--textOutlineColor',     this.Theme.Colors.textOutlineColor);
+    this.themeWrapper.style.setProperty('--backgroundColor',     this.Theme.Colors.backgroundColor);
+    this.themeWrapper.style.setProperty('--textColor',     this.Theme.Colors.textColor);
+     
+    this.themeWrapper.style.setProperty('--animationThrow', (-1 * this.getRandomInt(9100,9240)) + "px");
     this.themeWrapper.style.setProperty('--backgroundColor',     this.Theme.Colors.backgroundColor);
     this.themeWrapper.style.setProperty('--textColor',     this.Theme.Colors.textColor);
     this.themeWrapper.style.setProperty('--bordersColor',     this.Theme.Colors.bordersColor);

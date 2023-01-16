@@ -15,7 +15,7 @@ export class PacaniadaComponent implements OnInit {
 	
 	olTimerS="";
 	pacaniada:ClasamentPacaniada;
-
+	
 	currentUser:UserPacaniada;
 	timer$ = interval(2000);
 	timer2$ = interval(1000);
@@ -43,18 +43,17 @@ export class PacaniadaComponent implements OnInit {
 			{
 				this.resetTimer();
 			}
-
 			this.pacaniada = data;
-			this.currentUser = this.pacaniada.users.filter(x=>x.end == 0)[0] ?? new UserPacaniada();
-
-			this.pacaniada.users.sort((a,b) =>{
-				if((a.start - a.end) > (b.start-b.end))
-				return 1;
-				if( (b.start-b.end) > (a.start - a.end))
-				return -1;
-
-				return 0;
-			});
+				this.currentUser = this.pacaniada.users.filter(x=>x.end == 0)[0] ?? new UserPacaniada();
+				
+				this.pacaniada.users.sort((a,b) =>{
+					if((a.start - a.end) > (b.start-b.end))
+					return 1;
+					if( (b.start-b.end) > (a.start - a.end))
+					return -1;
+					
+					return 0;
+				});
 		});
 	}
 	

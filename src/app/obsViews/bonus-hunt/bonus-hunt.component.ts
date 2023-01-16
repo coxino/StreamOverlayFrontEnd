@@ -21,6 +21,7 @@ export class BonusHuntComponent implements OnInit {
 	bestScore:number = 0;
 	currencyCode = SiteSettings.currency;
 	timer$ = interval(5000);
+	loadingOver = false;
 	
 	IsAnimatedBorder = false;
 
@@ -45,16 +46,17 @@ export class BonusHuntComponent implements OnInit {
 	
 	serverRequest(){
 		this.intervalRequest.apiGetRequest(Settings.LiveBonusHunt).subscribe((data:any) =>{	
-			this.bonusHunt = data;							
+			this.bonusHunt = data;										
 			this.bonusHunt.bonuses.forEach((element) => { 
 				if(element.multiplier > this.bestScore) 
 				{
 					this.bestScore = element.multiplier;
 				}   
 			});	
-			this.customInt = 50 + 21 * this.bonusHunt.bonuses.length;
-			this.customHeight = this.customInt + "px";
-		})
+			this.customInt = 50 + 41 * this.bonusHunt.bonuses.length;
+			this.customHeight = this.customInt + "px";	
+			this.loadingOver = true;		
+		});
 	}
 	
 	ngOnInit(): void {

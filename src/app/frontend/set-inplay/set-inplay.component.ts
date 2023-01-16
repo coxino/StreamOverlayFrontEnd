@@ -36,7 +36,7 @@ export class SetInplayComponent implements OnInit {
   }
 
   Save(){
-    this.intervalRequest.apiSetInPlayGame(this.LiveGame).subscribe(data=>{},()=>{},()=>{
+    this.intervalRequest.apiSetInPlayGame(this.LiveGame, this.LiveGameBet).subscribe(data=>{},()=>{},()=>{
       location.reload();
     });
   }

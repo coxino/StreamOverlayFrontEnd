@@ -37,6 +37,14 @@ import { QuizShowComponent } from './obsViews/quiz-show/quiz-show.component';
 import { PacaniadaComponentE } from './frontend/pacaniada/pacaniada.component';
 import { PacaniadaComponent } from './obsViews/pacaniada/pacaniada.component';
 import { ShopEditorComponent } from './shop-editor/shop-editor.component';
+import { RoataAniversaraComponent } from './roata-aniversara/roata-aniversara.component';
+import { InscrisiLaGiveawayComponent } from './inscrisi-la-giveaway/inscrisi-la-giveaway.component';
+import { VoteNeedGreedComponent } from './vote-need-greed/vote-need-greed.component';
+import { SpinGreedComponent } from './spin-greed/spin-greed.component';
+import { BattleRoyaleComponent } from './battle-royale/battle-royale.component';
+import { BattleRoyaleEditComponent } from './frontent/battle-royale-edit/battle-royale-edit.component';
+import { BattleRoyaleClasamentComponent } from './obsViews/battle-royale-clasament/battle-royale-clasament.component';
+import { VarianteComponent } from './obsViews/variante/variante.component';
 
 const routes: Routes = [  
   { path: '', component: MainpageComponent },
@@ -66,8 +74,8 @@ const routes: Routes = [
   {path: 'shopedit', component:ShopEditorComponent},
 
 
-  { path: 'paca-edit', component: PacaniadaComponent },
-  { path: 'paca', component: PacaniadaComponentE },
+  { path: 'paca', component: PacaniadaComponent },
+  { path: 'paca-edit', component: PacaniadaComponentE },
 
   //BackGrounds
   { path: 'backgrounds/basic', component: BasicBackgroundComponent },
@@ -77,6 +85,7 @@ const routes: Routes = [
   //testing
   { path: 'test', component: TestbetsComponent },
   { path: 'wheel', component: SpinningwheelComponent },
+  { path: 'lmawheel', component: RoataAniversaraComponent },
   { path: 'psfwheel', component: PaysafewheelComponent },
 
   //version log
@@ -87,6 +96,20 @@ const routes: Routes = [
   { path: 'tournamentEdit', component: TournamentComponent },
   { path: 'givewayTimer', component: GiveawayComponent },
   { path: 'bettingedit', component: BettingEditComponent },
+
+
+  { path: 'aniversare', component: InscrisiLaGiveawayComponent },
+  { path: 'needgreed', component: VoteNeedGreedComponent },
+  { path: 'greed', component: SpinGreedComponent },
+
+
+  { path: 'variant', component: VarianteComponent },
+
+
+  { path: 'br', component: BattleRoyaleComponent },
+  { path: 'bredit', component: BattleRoyaleEditComponent },
+  { path: 'brclasament', component: BattleRoyaleClasamentComponent },
+
 ];
 
 @NgModule({

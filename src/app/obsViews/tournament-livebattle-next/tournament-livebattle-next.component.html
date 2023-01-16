@@ -1,133 +1,62 @@
     <div class="animate__animated animate__fadeIn" *ngIf="loadingOver">       
         <div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}">  
             <div class="tournament" *ngIf="isServerOn">
-                    <div class="parent-container" *ngIf="isOptimi">
-                        <div class="" *ngFor="let Meci of MeciuriOptimi;let i = index" [attr.data-index]="i">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
-                                        <div class="row"> 
-                                            <div class="game-name">{{Meci.team1.numeJucator}}</div>
-                                            <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
-                                            <div class="col-12">
-                                                <div class="image-box-fill">
-                                                    <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">
-                                                </div>
-                                            </div>  
-                                            <div class="game-name">Score : {{Meci.team1.scor}}</div>
-                                        </div>     
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <span><h2 style="font-family: 'TournamentVersus';margin-top: 25px; font-size: 30px;">VS</h2></span>  
-                                </div>
-                                <div class="col-5">
-                                    <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
-                                        <div class="row"> 
-                                            <div class="game-name">{{Meci.team2.numeJucator}}</div> 
-                                            <!-- <div class="game-name">{{Meci.team2.nume}}</div>  -->
-                                            <div class="col-12">
-                                                <div class="image-box-fill" >
-                                                     <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
-                                                </div>
-                                            </div>  
-                                            <div class="game-name">Score : {{Meci.team2.scor}}</div>
-                                        </div>     
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>   
-                    
-                    
-                    <div class="parent-container" *ngIf="isQuarter && !isOptimi" [ngClass]="{'animate__animated animate__fadeOutUp': !isQuarterVisible}">
-                        <div class="" *ngFor="let Meci of MeciuriSferturi;let i = index" [attr.data-index]="i">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
-                                        <div class="row"> 
-                                            <div class="game-name">{{Meci.team1.numeJucator}}</div>
-                                            <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
-                                            <div class="col-12">
-                                                <div class="image-box-fill">
-                                                    <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">                                                    
-                                                </div>
-                                                <div class="game-name">Score : {{Meci.team1.scor}}</div>
-                                            </div>          
-                                        </div>     
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <span><h2 style="font-family: 'TournamentVersus';font-size: 40px;">VS</h2></span>  
-                                </div>
-                                <div class="col-5">
-                                   <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
-                                        <div class="row"> 
-                                            <div class="game-name">{{Meci.team2.numeJucator}}</div>
-                                            <!-- <div class="game-name">{{Meci.team2.nume}}</div> -->
-                                            <div class="col-12">
-                                                <div class="image-box-fill" >
-                                                     <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
-                                                  </div>  
-                                                  <div class="game-name">Score : {{Meci.team2.scor}}</div>                                                
-                                            </div>   
-                                        </div>     
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>   
-                    
-                    <div class="parent-container" *ngIf="!isQuarter && !isOptimi"[ngClass]="{'animate__animated animate__fadeInUp': true}">
-                        <div class="" *ngFor="let Meci of MeciuriSemiFinale;let i = index" [attr.data-index]="i">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
-                                        <div class="row"> 
-                                            <div class="game-name">{{Meci.team1.numeJucator}}</div>
-                                            <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
-                                            <div class="col-12">
-                                                <div class="image-box-fill">
-                                                    <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}">                                                    
-                                                </div>
-                                                <div class="game-name">Score : {{Meci.team1.scor}}</div>
-                                            </div>          
-                                        </div>     
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <span><h2 style="font-family: 'TournamentVersus';font-size: 40px;">VS</h2></span>  
-                                </div>
-                                <div class="col-5">
-                                   <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
-                                        <div class="row"> 
-                                            <div class="game-name">{{Meci.team2.numeJucator}}</div>
-                                            <!-- <div class="game-name">{{Meci.team2.nume}}</div> -->
-                                            <div class="col-12">
-                                                <div class="image-box-fill" >
-                                                     <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}">
-                                                  </div>  
-                                                  <div class="game-name">Score : {{Meci.team2.scor}}</div>                                                
-                                            </div>   
-                                        </div>     
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>         
-                    
-                    <div class="parent-container" *ngIf="!isQuarter && !isOptimi" [ngClass]="{'animate__animated animate__fadeInUp': true}">
+                <div class="parent-container" *ngIf="isOptimi">
+                    <div class="" *ngFor="let Meci of MeciuriOptimi;let i = index" [attr.data-index]="i">
                         <div class="row">
                             <div class="col-5">
-                                <div class="isOptimi" [ngClass]="{'loser': MeciFinal.team2.hasWon, 'winner': MeciFinal.team1.hasWon}">                                
+                                <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
                                     <div class="row"> 
-                                        <div class="game-name">{{MeciFinal.team1.numeJucator}}</div>
-                                        <!-- <div class="game-name">{{MeciFinal.team1.nume}}</div> -->
+                                        <div class="game-name">{{Meci.team1.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
                                         <div class="col-12">
                                             <div class="image-box-fill">
-                                                <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}">                                                    
+                                                <img [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="hasImage(Meci.team1.nume)">
+                                                <div *ngIf="hasImage(Meci.team1.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team1.nume}}</div>
                                             </div>
-                                            <div class="game-name">Score : {{MeciFinal.team1.scor}}</div>
+                                        </div>  
+                                        <div class="game-name">Score : {{Meci.team1.scor}}</div>
+                                    </div>     
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <span><h2 style="font-family: 'TournamentVersus';margin-top: 25px; font-size: 30px;">VS</h2></span>  
+                            </div>
+                            <div class="col-5">
+                                <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
+                                    <div class="row"> 
+                                        <div class="game-name">{{Meci.team2.numeJucator}}</div> 
+                                        <!-- <div class="game-name">{{Meci.team2.nume}}</div>  -->
+                                        <div class="col-12">
+                                            <div class="image-box-fill" >
+                                                <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="hasImage(Meci.team2.nume)">
+                                                <div *ngIf="hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
+                                            </div>
+                                        </div>  
+                                        <div class="game-name">Score : {{Meci.team2.scor}}</div>
+                                    </div>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>   
+                
+                
+                <div class="parent-container" *ngIf="isQuarter && !isOptimi" [ngClass]="{'animate__animated animate__fadeOutUp': !isQuarterVisible}">
+                    <div class="" *ngFor="let Meci of MeciuriSferturi;let i = index" [attr.data-index]="i">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
+                                    <div class="row"> 
+                                        <div class="game-name">{{Meci.team1.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
+                                        <div class="col-12">
+                                            <div class="image-box-fill">
+                                                <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="hasImage(Meci.team1.nume)">
+                                                <div *ngIf="hasImage(Meci.team1.nume) == false" 
+                                                style="text-size-adjust: auto; height: 100vh;   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team1.nume}}</div>                                                    
+                                            </div>
+                                            <div class="game-name">Score : {{Meci.team1.scor}}</div>
                                         </div>          
                                     </div>     
                                 </div>
@@ -136,42 +65,124 @@
                                 <span><h2 style="font-family: 'TournamentVersus';font-size: 40px;">VS</h2></span>  
                             </div>
                             <div class="col-5">
-                               <div class="isOptimi" [ngClass]="{'loser': MeciFinal.team1.hasWon, 'winner': MeciFinal.team2.hasWon}">                                
+                                <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
                                     <div class="row"> 
-                                        <div class="game-name">{{MeciFinal.team2.numeJucator}}</div>
-                                        <!-- <div class="game-name">{{MeciFinal.team2.nume}}</div> -->
+                                        <div class="game-name">{{Meci.team2.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{Meci.team2.nume}}</div> -->
                                         <div class="col-12">
                                             <div class="image-box-fill" >
-                                                 <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}">
-                                              </div>  
-                                              <div class="game-name">Score : {{MeciFinal.team2.scor}}</div>                                                
+                                                <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="hasImage(Meci.team2.nume)">
+                                                <div *ngIf="hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
+                                            </div>  
+                                            <div class="game-name">Score : {{Meci.team2.scor}}</div>                                                
                                         </div>   
                                     </div>     
                                 </div>
                             </div>
                         </div>
-                    </div>  
-                    <div class="parent-container" *ngIf="!isQuarter && !isOptimi" [ngClass]="{'animate__animated animate__fadeInUp': true}">
-                        <div class="bracket d-flex">   
-                            <span style="margin: 30px;"><img style="width: 40px;" src="assets/img/crown.png"><h2 style="font-family: 'TournamentVersus';font-size: 48px;margin-top: -20px;">winner</h2></span>   
-                            <div class="bracket-box  winner-single" style="height: 205px !important; width: 80% !important;">                    
-                                <div class="row">
-                                    <div class="col" *ngIf="MeciFinal.team1.hasWon">    
-                                        <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}"> 
-                                        <div class="col-12 div-header">Winner Score : {{MeciFinal.team1.numeJucator}}</div>                       
-                                        <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team1.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
-                                        <div class="col-12 div-header">Tournament Score : {{scorTotal()}}  / {{MeciFinal.team2.payout.length * 2 * 7}}</div>                       
+                    </div>    
+                </div>   
+                
+                <div class="parent-container" *ngIf="!isQuarter && !isOptimi"[ngClass]="{'animate__animated animate__fadeInUp': true}">
+                    <div class="" *ngFor="let Meci of MeciuriSemiFinale;let i = index" [attr.data-index]="i">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="isOptimi" [ngClass]="{'loser': Meci.team2.hasWon, 'winner': Meci.team1.hasWon}">                                
+                                    <div class="row"> 
+                                        <div class="game-name">{{Meci.team1.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{Meci.team1.nume}}</div> -->
+                                        <div class="col-12">
+                                            <div class="image-box-fill">
+                                                <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="hasImage(Meci.team1.nume)">
+                                                <div *ngIf="hasImage(Meci.team1.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team1.nume}}</div>                                                  
+                                            </div>
+                                            <div class="game-name">Score : {{Meci.team1.scor}}</div>
+                                        </div>          
+                                    </div>     
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <span><h2 style="font-family: 'TournamentVersus';font-size: 40px;">VS</h2></span>  
+                            </div>
+                            <div class="col-5">
+                                <div class="isOptimi" [ngClass]="{'loser': Meci.team1.hasWon, 'winner': Meci.team2.hasWon}">                                
+                                    <div class="row"> 
+                                        <div class="game-name">{{Meci.team2.numeJucator}}</div>
+                                        <!-- <div class="game-name">{{Meci.team2.nume}}</div> -->
+                                        <div class="col-12">
+                                            <div class="image-box-fill" >
+                                                <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="hasImage(Meci.team2.nume)">
+                                                <div *ngIf="hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
+                                            </div>  
+                                            <div class="game-name">Score : {{Meci.team2.scor}}</div>                                                
+                                        </div>   
+                                    </div>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>         
+                
+                <div class="parent-container" *ngIf="!isQuarter && !isOptimi" [ngClass]="{'animate__animated animate__fadeInUp': true}">
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="isOptimi" [ngClass]="{'loser': MeciFinal.team2.hasWon, 'winner': MeciFinal.team1.hasWon}">                                
+                                <div class="row"> 
+                                    <div class="game-name">{{MeciFinal.team1.numeJucator}}</div>
+                                    <!-- <div class="game-name">{{MeciFinal.team1.nume}}</div> -->
+                                    <div class="col-12">
+                                        <div class="image-box-fill">
+                                            <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}" *ngIf="hasImage(MeciFinal.team1.nume)">
+                                            <div *ngIf="hasImage(MeciFinal.team1.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team1.nume}}</div>                                                    
                                         </div>
-                                    <div class="col" *ngIf="MeciFinal.team2.hasWon">       
-                                        <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team1.nume}}"> 
-                                        <div class="col-12 div-header">Winner Score : {{MeciFinal.team2.numeJucator}}</div> 
-                                        <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team2.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
-                                        <div class="col-12 div-header">Tournament Score : {{scorTotal()}}  / {{MeciFinal.team2.payout.length * 2 * 7}}</div>                       
-                                       </div>
-                                </div>                    
-                            </div>      
-                        </div>    
-                    </div> 
-                </div>        
-            </div>
+                                        <div class="game-name">Score : {{MeciFinal.team1.scor}}</div>
+                                    </div>          
+                                </div>     
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <span><h2 style="font-family: 'TournamentVersus';font-size: 40px;">VS</h2></span>  
+                        </div>
+                        <div class="col-5">
+                            <div class="isOptimi" [ngClass]="{'loser': MeciFinal.team1.hasWon, 'winner': MeciFinal.team2.hasWon}">                                
+                                <div class="row"> 
+                                    <div class="game-name">{{MeciFinal.team2.numeJucator}}</div>
+                                    <!-- <div class="game-name">{{MeciFinal.team2.nume}}</div> -->
+                                    <div class="col-12">
+                                        <div class="image-box-fill" >
+                                            <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}"  *ngIf="hasImage(MeciFinal.team2.nume)">
+                                            <div *ngIf="hasImage(MeciFinal.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;     background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team2.nume}}</div> 
+                                        </div>  
+                                        <div class="game-name">Score : {{MeciFinal.team2.scor}}</div>                                                
+                                    </div>   
+                                </div>     
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="parent-container" *ngIf="!isQuarter && !isOptimi" [ngClass]="{'animate__animated animate__fadeInUp': true}">
+                    <div class="bracket d-flex">   
+                        <span style="margin: 30px;"><img style="width: 40px;" src="assets/img/crown.png"><h2 style="font-family: 'TournamentVersus';font-size: 48px;margin-top: -20px;">winner</h2></span>   
+                        <div class="bracket-box  winner-single" style="height: 205px !important; width: 80% !important;">                    
+                            <div class="row">
+                                <div class="col" *ngIf="MeciFinal.team1.hasWon">    
+                                    <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}"  *ngIf="hasImage(MeciFinal.team1.nume)">
+                                    <div *ngIf="hasImage(MeciFinal.team1.nume) == false" style="text-size-adjust: auto; height: 14vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team1.nume}}</div> 
+                                    <div class="col-12 div-header">Nume Castigator : {{MeciFinal.team1.numeJucator}}</div>                       
+                                    <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team1.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
+                                    <div class="col-12 div-header">Tournament Score : {{scorTotal()}}</div>                       
+                                </div>
+                                <div class="col" *ngIf="MeciFinal.team2.hasWon">       
+                                    <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}"  *ngIf="hasImage(MeciFinal.team2.nume)">
+                                    <div *ngIf="hasImage(MeciFinal.team2.nume) == false" style="text-size-adjust: auto; height: 14vh;  background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team2.nume}}</div> 
+                                    <div class="col-12 div-header">Nume Castigator : {{MeciFinal.team2.numeJucator}}</div> 
+                                    <div class="col-12 div-header">Winner Score : {{scorTotalMeci(MeciFinal.team2.nume)}} / {{MeciFinal.team2.payout.length * 3}}</div>                       
+                                    <div class="col-12 div-header">ScorulJocului : {{scorTotal()}}</div>                       
+                                </div>
+                            </div>                    
+                        </div>      
+                    </div>    
+                </div> 
+            </div>        
         </div>
+    </div>

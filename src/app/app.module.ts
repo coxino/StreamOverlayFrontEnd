@@ -57,6 +57,14 @@ import { QuizShowComponent } from './obsViews/quiz-show/quiz-show.component';
 import { PacaniadaComponent } from './obsViews/pacaniada/pacaniada.component';
 import { PacaniadaComponentE } from './frontend/pacaniada/pacaniada.component';
 import { ShopEditorComponent } from './shop-editor/shop-editor.component';
+import { RoataAniversaraComponent } from './roata-aniversara/roata-aniversara.component';
+import { InscrisiLaGiveawayComponent } from './inscrisi-la-giveaway/inscrisi-la-giveaway.component';
+import { VoteNeedGreedComponent } from './vote-need-greed/vote-need-greed.component';
+import { SpinGreedComponent } from './spin-greed/spin-greed.component';
+import { BattleRoyaleComponent } from './battle-royale/battle-royale.component';
+import { BattleRoyaleEditComponent } from './frontent/battle-royale-edit/battle-royale-edit.component';
+import { BattleRoyaleClasamentComponent } from './obsViews/battle-royale-clasament/battle-royale-clasament.component';
+import { VarianteComponent } from './obsViews/variante/variante.component';
 
 
 @NgModule({
@@ -105,7 +113,15 @@ import { ShopEditorComponent } from './shop-editor/shop-editor.component';
     QuizShowComponent,
     PacaniadaComponent,
     PacaniadaComponentE,
-    ShopEditorComponent
+    ShopEditorComponent,
+    RoataAniversaraComponent,
+    InscrisiLaGiveawayComponent,
+    VoteNeedGreedComponent,
+    SpinGreedComponent,
+    BattleRoyaleComponent,
+    BattleRoyaleEditComponent,
+    BattleRoyaleClasamentComponent,
+    VarianteComponent,
     ],
   imports: [
     BrowserModule,

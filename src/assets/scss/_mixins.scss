@@ -1,0 +1,11 @@
+@mixin text-shadow {
+    text-shadow: calc($text-outline-size * -1) calc($text-outline-size * -1) 0 $text-outline-color,
+                $text-outline-size calc($text-outline-size * -1) 0 $text-outline-color,
+                calc($text-outline-size * -1) $text-outline-size 0 $text-outline-color,
+                $text-outline-size $text-outline-size 0 $text-outline-color;
+  }
+  
+  @mixin font-condensed {
+    font-stretch: condensed;
+  }
+  

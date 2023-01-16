@@ -14,4 +14,5 @@ export class BettingOptionModel
     public totalPariat:number = 0;
     public isVisible:boolean = false;
     public didRefreshed = false;
+    public key = "";
 }

@@ -1,0 +1,11 @@
+<div #wheel class="wheel">
+    <li class="inline_item" *ngFor="let a of genItems; let index = index">
+        <div class="item">
+            <img [src]="a.image">    
+            <h1>{{a.text}}</h1>
+        </div>
+    </li>
+</div>
+
+<img class="arrow" src="https://www.freeiconspng.com/uploads/arrow-down-icon-png-3.png">
+<img class="bottom" src="https://www.freeiconspng.com/uploads/arrow-down-icon-png-3.png">

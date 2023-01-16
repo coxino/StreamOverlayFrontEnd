@@ -59,6 +59,8 @@ export class CustomThemeEditorComponent implements OnInit {
     doChange()
     {
       console.log("Changing");
+      
+      this.themeWrapper.style.setProperty('--textOutlineColor',     this.Theme.Colors.textOutlineColor);
       this.themeWrapper.style.setProperty('--backgroundColor',     this.Theme.Colors.backgroundColor);
       this.themeWrapper.style.setProperty('--textColor',     this.Theme.Colors.textColor);
       this.themeWrapper.style.setProperty('--bordersColor',     this.Theme.Colors.bordersColor);
@@ -77,6 +79,12 @@ export class CustomThemeEditorComponent implements OnInit {
       this.themeWrapper.style.setProperty('--color5',     this.Theme.Options.animatedBorderColors.color5);
       this.themeWrapper.style.setProperty('--color6',     this.Theme.Options.animatedBorderColors.color6);
       this.themeWrapper.style.setProperty('--color7',     this.Theme.Options.animatedBorderColors.color7);
+
+
+      this.themeWrapper.style.setProperty('--textOutlineSize',     this.Theme.Options.textOutlineSize + "px");
+      this.themeWrapper.style.setProperty('--textSize',     this.Theme.Options.textSize + "px");
+      this.themeWrapper.style.setProperty('--textWeight',     this.Theme.Options.textWeight);
+      
       
     }
     
