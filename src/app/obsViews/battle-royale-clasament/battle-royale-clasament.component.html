@@ -1,0 +1,22 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Numele Jocului</th>
+            <th scope="col">Jucator</th>
+            <th scope="col">Bet</th>
+            <th scope="col">Payout</th>
+            <th scope="col">X</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let game of playAble; let i = index">        
+            <td>{{i+1}}</td>            
+            <td>{{ game.game.name }}</td>        
+            <td>{{ game.playerName }}</td>            
+            <td>{{ game.bet }}</td>            
+            <td>{{ game.payOut }}</td>            
+            <td>{{ game.payOut / game.bet }}</td>           
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+<div class="animate__animated animate__fadeInDown" [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}" *ngIf="loadingOver">
+    <div class="row">
+        <div class="container">
+            <div class="barcontainer">
+                <div class="bar" [style.height.%]="variantA">
+                </div>
+            </div>
+            <div class="barcontainer">
+                <div class="bar" [style.height.%]="variantB">
+                </div>
+            </div>
+            <div class="barcontainer">
+                <div class="bar" [style.height.%]="variantC">
+                </div>
+            </div>
+            <div class="barcontainer">
+                <div class="bar" [style.height.%]="variantD">            
+                </div>          
+            </div>
+        </div>
+    </div>
+    <BR>
+    <div class="row vars">
+        <div class="var"><h1>A</h1></div>
+        <div class="var"><h1>B</h1></div>
+        <div class="var"><h1>C</h1></div>
+        <div class="var"><h1>D</h1></div>
+    </div>
+</div>

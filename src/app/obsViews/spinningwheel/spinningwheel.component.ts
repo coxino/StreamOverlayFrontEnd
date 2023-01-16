@@ -14,12 +14,12 @@ export class SpinningwheelComponent implements OnInit {
   idToLandOn = 0;
   spinDuration=12;
   items=[
-    {id:0, text:'5 COX',fillStyle:'#9d9d9d',prize:5},
-    {id:1, text:'8 COX',fillStyle:'#f337ff',prize:8},
-    {id:2, text:'10 COX',fillStyle:'#ffffff',prize:10},
-    {id:3, text:'15 COX',fillStyle:'#1eff00',prize:15},
-    {id:4, text:'20 COX',fillStyle:'#0070dd',prize:20},
-    {id:5, text:'25 COX',fillStyle:'#e6cc80',prize:25},    
+    {id:0, text:'5 Monede',fillStyle:'#9d9d9d',prize:5},
+    {id:1, text:'8 Monede',fillStyle:'#f337ff',prize:8},
+    {id:2, text:'10 Monede',fillStyle:'#ffffff',prize:10},
+    {id:3, text:'15 Monede',fillStyle:'#1eff00',prize:15},
+    {id:4, text:'20 Monede',fillStyle:'#0070dd',prize:20},
+    {id:5, text:'25 Monede',fillStyle:'#e6cc80',prize:25},    
   ];
   constructor(private intervalRequest: IntervalRequestService,private activatedRoute: ActivatedRoute) { 
     this.activatedRoute.queryParams.subscribe(params => {

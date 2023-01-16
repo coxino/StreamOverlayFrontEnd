@@ -1,0 +1,21 @@
+<div  style="width:800px;margin: auto;">
+
+<div class="roata" style="color: white; background-color: transparent;">
+    <ngx-wheel
+      #wheel
+      [width]=800
+      [height]=800
+      [disableSpinOnClick]='true'
+      [items]='items'
+      [innerRadius]='50'
+      [spinAmount]='6'
+      pointerStrokeColor='white'
+      pointerFillColor='black'
+      [idToLandOn]='idToLandOn'
+      (onSpinStart)='before()'
+      (onSpinComplete)='after()'>
+    </ngx-wheel>
+    </div>
+    
+    <div class="container-flex"><h2 style="text-align: center;">{{message}}</h2></div>
+</div>

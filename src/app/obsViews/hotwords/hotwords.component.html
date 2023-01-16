@@ -1,14 +1,12 @@
-<div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}">
-    <div class="betting-page">
-        <div class="title">
-            <h3>HOT WORDS</h3>
-        </div>
+<div class="animate__animated animate__bounceIn" [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}" *ngIf="loadingOver">
+        <div class="text-center">
+            HOT WORDS
+       
         <!-- Break and foreach var betting option-->
-        <div class="content" *ngFor="let option of hotWords.slice(0,5); index as i;">
-            <div class="betting-option">
-                <div class="nume">{{i+1}}. {{option.word}} - {{option.degree}}°C
-    </div>
-    </div>
-    </div>
+        <div class="no-wrap center" *ngFor="let option of hotWords.slice(0,5); index as i;">           
+           <img *ngIf="option.degree > 35" style="width: 30px;" src="https://i.pinimg.com/originals/d5/d2/4e/d5d24e4eda5ef019ec5274c8a4603dcc.gif">  {{i+1}}. {{option.word}} - <span [ngClass]="{'blue': option.degree > 10 && option.degree <= 20, 'yellow': option.degree >= 21 && option.degree <= 30, 'orange': option.degree >= 31 && option.degree <= 45, 'red': option.degree >= 46}">
+                {{option.degree}}°C 
+             </span>
+        </div>
     </div>
 </div>

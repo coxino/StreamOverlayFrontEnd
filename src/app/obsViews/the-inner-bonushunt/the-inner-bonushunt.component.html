@@ -1,24 +1,24 @@
 <div class="bonus-hunt bonus-hunt-grid" >  
   <div class="scroll" style="text-align:center" [ngClass]="{'scroll-anim' : isScrolling}">
     <div class="container-flex">
-      <div class="row" [ngClass]="{'high-light' : item.isCurrent === true}"  style="height: 21px !important;" *ngFor="let item of bonusList.slice(sliceFrom,sliceFrom+sliceCount);index as i;">      
+      <div class="row" [ngClass]="{'high-light' : item.isCurrent === true}"  style="height: 41px !important;" *ngFor="let item of bonusList.slice(sliceFrom,sliceFrom+sliceCount);index as i;">      
        
-        <div class="col-6 col-txt" style="text-align: left;"> <i *ngIf="item.isCurrent === true" class="fa fa-play" aria-hidden="true"></i>  <span *ngIf="item.isCurrent === false">{{i+1}}.</span> {{item.gameName}}</div> 
+        <div class="col-7 col-txt" style="text-align: left;"> <i *ngIf="item.isCurrent === true" class="fa fa-play" aria-hidden="true"></i>  <span *ngIf="item.isCurrent === false">{{i+1}}.</span>{{item.gameName}}</div> 
         <div class="col-2 col-txt">{{item.betSize | currency:' ':'symbol':'.0'}}</div>  
-        <div class="col-2 col-txt">{{item.payed | currency:' ':'symbol':'.0'}}</div>  
-        <div class="col-2 col-txt">{{item.multiplier | currency:' ':'symbol':'.0-0'}}</div> 
+        <div class="col-3 col-txt">{{item.payed | currency:' ':'symbol':'.0'}}</div>  
+        <!-- <div class="col-2 col-txt">{{item.multiplier | currency:' ':'symbol':'.0-0'}}</div>  -->
         
       </div>
       <div class="row" *ngIf="isScrolling" style="height:50px !important">
       </div>      
     </div>
     <div class="container-flex" *ngIf="isScrolling">
-      <div class="row" [ngClass]="{'high-light' : item.isCurrent === true}" style="height: 21px !important;" *ngFor="let item of bonusList.slice(0,12);index as i;"> 
+      <div class="row" [ngClass]="{'high-light' : item.isCurrent === true}" style="height: 41px !important;" *ngFor="let item of bonusList.slice(0,12);index as i;"> 
         
-        <div class="col-6 col-txt" style="text-align: left;"> <i *ngIf="item.isCurrent === true" class="fa fa-play" aria-hidden="true"></i><span *ngIf="item.isCurrent === false">{{i+1}}.</span> {{item.gameName}}</div>   
+        <div class="col-7 col-txt" style="text-align: left;"> <i *ngIf="item.isCurrent === true" class="fa fa-play" aria-hidden="true"></i><span *ngIf="item.isCurrent === false">{{i+1}}.</span>{{item.gameName}}</div>   
         <div class="col-2 col-txt">{{item.betSize | currency:' ':'symbol':'.0'}}</div>  
-        <div class="col-2 col-txt">{{item.payed | currency:'  ':'symbol':'.0'}}</div>  
-        <div class="col-2 col-txt">{{item.multiplier | currency:'  ':'symbol':'.0-0'}}</div>    
+        <div class="col-3 col-txt">{{item.payed | currency:'  ':'symbol':'.0'}}</div>  
+        <!-- <div class="col-2 col-txt">{{item.multiplier | currency:'  ':'symbol':'.0-0'}}</div>     -->
         
       </div>   
     </div>      

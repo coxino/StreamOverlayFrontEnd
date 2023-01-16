@@ -3,6 +3,11 @@
     * in bonus hunts and tournaments this is automaticaly updated *
     <div class="row">
         <div class="col-2">
+            <div class="label"> Player Name
+                <input id="typeahead-basic" class="input-group-text" type="text" class="form-control"required [(ngModel)]="LiveGame.playerName"/>
+            </div>
+        </div>
+        <div class="col-2">
             <div class="label"> Game Name
                 <input id="typeahead-basic" (keydown.enter)="Save()" class="input-group-text" type="text" class="form-control"required [(ngModel)]="LiveGame.game.name" [ngbTypeahead]="search"/>
             </div>

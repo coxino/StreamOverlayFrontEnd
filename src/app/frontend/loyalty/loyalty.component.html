@@ -55,6 +55,11 @@
             </div>
         </div>
         <div class="col-2">
+            <div class="label"> Is Active
+                <input type="checkbox" class="form-control" [(ngModel)]="EditUser.isActive" readonly/>                
+            </div>
+        </div>
+        <div class="col-2">
             <div class="label"> Member Level
                 <select type="text" (change)="setLevel($event, rank.value)" #rank class="form-control">  
                     <option [selected]="rank.memberLevel == EditUser.memberLevel" *ngFor="let rank of memberLevels" >{{rank.nume}}</option> 
@@ -73,7 +78,7 @@
         </div>
         <div class="col-2">
             <div class="label"> Puncte
-                <input type="number" class="form-control" [(ngModel)]="EditUser.inventory" (keydown.enter)="saveEdited()"/>                
+                <input type="number" class="form-control" [(ngModel)]="EditUser.userCox" (keydown.enter)="saveEdited()"/>                
             </div>
         </div>
         <div class="col-2">
@@ -106,7 +111,7 @@
         </div>
         <div class="col-2" *ngIf="ShowIpAdress == false">
             <div class="label"> Puncte
-                <input type="number"  class="form-control" [(ngModel)]="user.inventory" readonly/>                
+                <input type="number"  class="form-control" [(ngModel)]="user.userCox" readonly/>                
             </div>
         </div>
         <div class="col-2" *ngIf="ShowIpAdress">
@@ -117,7 +122,7 @@
         <div class="col-2" *ngIf="ShowIpAdress">
             <div class="label">Superbet
                 <div class="form-control">
-                    <input type="text"  class="form-control" value="user.superbetName" readonly/>                
+                    <input type="text"  class="form-control" [(ngModel)]="user.superbetName" readonly/>                
                 </div>
             </div>
         </div>

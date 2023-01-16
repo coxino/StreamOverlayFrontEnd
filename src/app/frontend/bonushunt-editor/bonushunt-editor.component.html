@@ -70,26 +70,26 @@
         </div>
     </div>
 </div>
-<div class="container" style="margin-top: 10px;">
+<div class="" style="margin-top: 10px;">
     <h4>Bonuses</h4>
     <div class="row" *ngFor="let bonus of bonusHunt.bonuses;let i = index" [attr.data-index]="i">
-        <div class="col-2">
-            <div class="label"> {{i + 1}}. Name
+        <div class="col">
+            <div class="label"> {{i + 1}}.Name
                 <input (keydown.enter)="SaveBonusHunt()" type="text" class="form-control" [(ngModel)]="bonus.gameName" id="typeahead-basic" [ngbTypeahead]="search"/>                
             </div>
         </div>
-        <div class="col-2">
+        <div class="col">
             <div class="label">  Bet
                 <input class="input-group-text"  (keydown.enter)="SaveBonusHunt()" type="number" class="form-control"required [(ngModel)]="bonus.betSize"/>
             </div>
         </div>
-        <div class="col-2">
+        <div class="col">
             <div class="label">  Payed
                 <input class="input-group-text"  (keydown.enter)="SaveBonusHunt()" type="number" (input)="payChanged(bonus)" class="form-control" cha required [(ngModel)]="bonus.payed"/>
             </div>
         </div>
-        <div class="col-2">
-            <div class="label">  Multiplier
+        <div class="col">
+            <div class="label">  Multi
                 <input class="input-group-text" readonly type="number" class="form-control" required  [(ngModel)]="bonus.multiplier"/>
             </div>
         </div>      

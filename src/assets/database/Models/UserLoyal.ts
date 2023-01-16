@@ -2,11 +2,12 @@
 export class UserLoyal{
     public id ="";
     public name = "";
-    public inventory =0;
+    public userCox =0;
     public email ="";
     public ipadress ="";
     public creationTime = "";
     public superbetName = "";
+    public isActive = false;
     public memberLevel:MemberLevels = MemberLevels.Viewer;
 }  
 

@@ -61,4 +61,9 @@ export class Settings{
         public static readonly SaveShop: string = "shop/saveshop"
         
         public static readonly ShopItems: string = "shop?username=coxino&viewerId=";
+
+
+        //public static readonly GetGiveawayCount: string = "hotwords/lmausers";
+        public static readonly GetBalantaFinalaCount: string = "hotwords/bfusers";
+        public static readonly Qualifier: string = "Bonushunt/qualifiers";
 }

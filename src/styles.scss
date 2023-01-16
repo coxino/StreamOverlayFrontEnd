@@ -1,15 +1,14 @@
     /* You can add global styles to this file, and also import other style files */
     @import "../node_modules/bootstrap/scss/bootstrap.scss";
-    @import url("https://fonts.googleapis.com/css?family=Lato:300");
     @import "/src/assets/scss/colors.scss";   
     @import "../node_modules/@syncfusion/ej2-base/styles/material.css";
     @import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
     @import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
     @import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
     @import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
-    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,400;1,800;1,900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
     
+    @import url('https://fonts.googleapis.com/css2?family=Antonio:wght@300&display=swap');
+
     @font-face {
         font-family: "TournamentVersus";
         src: local("TournamentVersus"), url(assets/fonts/Youmurdererbb-pwoK.otf) format("truetype");
@@ -21,18 +20,59 @@
     } 
     
     @font-face {        
-        font-weight:bold;
         font-family: "HelveticaLocal";
         src: local("HelveticaLocal"), url(assets/helvetica_condensed.ttf) format("truetype");
     } 
+
+    *{
+        font-family: 'Antonio', sans-serif;
+        text-shadow: calc(var(--textOutlineSize) * -1) calc(var(--textOutlineSize) * -1) 0 var(--textOutlineColor), 
+        var(--textOutlineSize) calc(var(--textOutlineSize) * -1) 0 var(--textOutlineColor), calc(var(--textOutlineSize) * -1) var(--textOutlineSize) 0 var(--textOutlineColor), 
+        var(--textOutlineSize) var(--textOutlineSize) 0 var(--textOutlineColor);
+              
+        font-weight:var(--textWeight);
+        font-stretch:condensed;
+        font-kerning: normal;
+        font-size: var(--textSize);
+    }
     
     body 
     {         
         background-color: rgba(0, 0, 0, 0); 
         margin: 0px auto; 
-        overflow:var(--overflow);        
-        font-weight: bold;
-        font-family: 'HelveticaLocal', 'Arial', sans-serif;
+        overflow:var(--overflow);   
+        text-transform: uppercase;  
+    }
+
+    .white
+    {
+        color: white;
+        hr {
+            position: relative;
+            top: 20px;
+            border: none;
+            height: 6px;
+            width: 80%;
+            background: rgba(0, 0, 0, 0.452);
+            margin-bottom: 50px;
+        }
+    }
+
+    .red{
+        color: red;
+    }
+
+    .yellow{
+        color: yellow;
+    }
+
+    .orange{
+        color: orangered;
+    }
+
+    .blue
+    {
+        color: turquoise;
     }
     
     .header-box
@@ -46,12 +86,27 @@
             height: 36px;
         }; 
     }
+
+    .trans50
+    {
+        opacity: 50%;
+    }
+
+    .img200
+    {
+        border-radius: 20px;
+        width: 90%;
+    }
+
+    .center
+    {
+        text-align: center;
+    }
     
     .no-wrap
     {
         overflow: hidden;
         white-space:nowrap;
-        text-align: center;
     } 
     
     .infinite_anim{
@@ -77,8 +132,6 @@
     
     .bonus-hunt{ 
         width: 100%;   
-        text-transform: uppercase;
-        font-weight: bold;
         border-radius: 25px;
         color: var(--textColor);
         padding: 20px;  
@@ -100,22 +153,24 @@
             margin-left: 0px;
             width: 100%;
             height: 95px !important;            
-            .col-3
-            {
-                font-weight: 10;             
-                background-color: var(--iconsBackColor);;
+            .col-x
+            {           
+                width: 23%;
+                background-color: var(--iconsBackColor);
+                margin-left: 1%;
+                margin-right: 1%;
             }              
             .top-radius
             {
-                border-right: 4px solid var(--backgroundColor);
-                border-left: 4px solid var(--backgroundColor);
+                border-right: 4px solid transparent;//var(--backgroundColor);
+                border-left: 4px solid transparent;//var(--backgroundColor);
                 border-top-left-radius: var(--borderRadiusInner);
                 border-top-right-radius: var(--borderRadiusInner);
             }
             .bottom-radius
             {
-                border-right: 4px solid var(--backgroundColor);
-                border-left: 4px solid var(--backgroundColor);
+                border-right: 4px solid transparent;// var(--backgroundColor);
+                border-left: 4px solid transparent;//var(--backgroundColor);
                 border-bottom-left-radius: var(--borderRadiusInner);
                 border-bottom-right-radius: var(--borderRadiusInner);
             }                
@@ -177,7 +232,7 @@
         }
         
         .col-bg{
-            color: var(--backgroundColor);
+            color: black;
             background-color: var(--textColor);
             margin-bottom: 5px !important;        
         }
@@ -189,8 +244,7 @@
         .highligh-dark{
             text-align: center !important;
             width: 100% !important;
-            background-color: rgba(255, 180, 180, 0.041);
-            font-weight: bold;            
+            background-color: rgba(255, 180, 180, 0.041);        
             white-space:pre-wrap !important;          
         }
         
@@ -198,7 +252,6 @@
             text-align: center !important;
             width: 100% !important;
             background-color: rgba(255, 180, 180, 0.041);
-            font-weight: bold;
             font-size: large;
             white-space:pre-wrap !important;   
         }
@@ -216,8 +269,7 @@
             margin-right: 20px;        
             margin-left: 20px;   
             text-align: center;
-            font-size: large;           
-            font-weight: bold;
+            font-size: large; 
             text-shadow: #b6b9b2;   
         }
         
@@ -272,7 +324,6 @@
         {
             background-color: #b6b9b2;
             font-size:22px;
-            font-weight: bold;
             overflow: hidden; 
             text-overflow:ellipsis;
             white-space: nowrap;
@@ -342,8 +393,7 @@
                 .game 
                 { 
                     border-bottom: 2px solid var(--bordersColor);
-                    text-align:center;
-                    font-weight: bold;                    
+                    text-align:center;               
                 }               
             }
             .container
@@ -356,7 +406,6 @@
                 {        
                     border-bottom: 2px solid var(--bordersColor);
                     text-align:center;
-                    font-weight: bold;
                 }
             }
             .title
@@ -376,10 +425,8 @@
         color: var(--textColor);
         top: 3px;
         left: 20px;
-        font-size: 28px;
         position: absolute;
         z-index: 100;
-        max-height: 50px;
     }
     
     .normal-border
@@ -400,7 +447,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-transform:capitalize;
         color: var(--textColor);
         background: var(--backgroundColor);
         border-radius: var(--border-width);  
@@ -446,7 +492,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-transform:capitalize;
         width: 96%;
         height: 96%;
     }
@@ -491,7 +536,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-transform:capitalize;
         color: white;
         background:transparent;
         border-radius: var(--border-width);  

@@ -15,6 +15,12 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  GetAllGames() {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    var coxiUrl = "https://coxino.go.ro:5000/api/getAllGames";
+    return this.httpClient.get(coxiUrl,{headers:headers});    
+  }
   saveShopItems(shopItems: string) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
@@ -117,14 +123,25 @@ export class IntervalRequestService {
     return this.httpClient.post<any>(Settings.ApiServer + Settings.RegisterUser,body,{headers});
   }
   apiReSetHotWords() {
-    var _token = this.cookieService.get("token") ?? "";
-    var headers = {token:_token};
+    var username = "";
+    this.activatedRoute.queryParams.subscribe(params => {
+      username = params['username'];
+    });
+    var headers = {token:username};
     return this.httpClient.post<any>(Settings.ApiServer + Settings.ResetHotWords,null,{headers});
   }
-  apiSetInPlayGame(LiveGame: any) {
+  apiSetInPlayGame(LiveGame: any, _betSize:any) {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {
+      token:_token,
+      betSize:_betSize
+    };
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveGame,LiveGame,{headers});
+  }
+  apiCalificaJocul(LiveGame: any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveGame,LiveGame,{headers});
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveGame + "/calificaJoc",LiveGame,{headers});
   }
   
   apiSetInPlayGameByName(_gameName: string) {

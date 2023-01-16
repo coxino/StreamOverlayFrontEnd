@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-2" style="margin-left: 0;"> {{percent | currency:' ':'symbol':'2.1-1'}}%</div>
+    <div class="col-8">
+        <div style="margin-top: 5px;margin-left: 10px ;height: 40px; width: 100%;" class="progress option8">    
+            <div class="progress-bar8" role="progressbar" [ngStyle]="{'width': percent + '%'}" [attr.aria-valuenow]="percent" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    <div class="col-2" style="margin-left: -20px;">{{ng | currency:' ':'symbol':'2.1-1'}}%</div>
+</div>
+
