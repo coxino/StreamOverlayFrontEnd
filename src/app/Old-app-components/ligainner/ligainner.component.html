@@ -1,0 +1,19 @@
+
+<div class="scroll scroll-anim" style="text-align:center">
+    <div class="container">
+        <div class="row" style="height: 28px !important; text-align: left;" *ngFor="let user of bonusHunt;let i = index" [attr.data-index]="i">
+            <div class="col-1 col-txt" style="text-align: center;"> {{ i+1 }} </div> 
+            <div class="col-4 col-txt" style="text-align: left; overflow: hidden !important;text-overflow: ellipsis;">{{user.nume}}</div> 
+            <div class="col-3 col-txt" style="text-align: left; overflow: hidden !important;text-overflow: ellipsis;">{{getmaxmulti(user) | currency : 'X ' : 'symbol' : '1.0-2' }}</div>            
+        </div>
+        <div class="row" style="height:50px !important">
+        </div>      
+    </div>
+    <div class="container">
+        <div class="row" style="height: 28px !important; text-align: left;" *ngFor="let user of bonusHunt.slice(0,12);let i = index" [attr.data-index]="i">
+            <div class="col-1 col-txt" style="text-align: center;"> {{ i+1 }} </div> 
+            <div class="col-4 col-txt" style="text-align: left; overflow: hidden !important;text-overflow: ellipsis;">{{user.nume}}</div> 
+            <div class="col-3 col-txt" style="text-align: left; overflow: hidden !important; text-overflow: ellipsis;">{{getmaxmulti(user) | currency : 'X ' : 'symbol' : '1.0-2' }}</div>           
+        </div>   
+    </div>         
+</div>

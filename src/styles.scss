@@ -26,22 +26,21 @@
 
     *{
         font-family: 'Antonio', sans-serif;
-        text-shadow: calc(var(--textOutlineSize) * -1) calc(var(--textOutlineSize) * -1) 0 var(--textOutlineColor), 
-        var(--textOutlineSize) calc(var(--textOutlineSize) * -1) 0 var(--textOutlineColor), calc(var(--textOutlineSize) * -1) var(--textOutlineSize) 0 var(--textOutlineColor), 
-        var(--textOutlineSize) var(--textOutlineSize) 0 var(--textOutlineColor);
+        // text-shadow: calc(var(--textOutlineSize) * -1) calc(var(--textOutlineSize) * -1) 0 var(--textOutlineColor), 
+        // var(--textOutlineSize) calc(var(--textOutlineSize) * -1) 0 var(--textOutlineColor), calc(var(--textOutlineSize) * -1) var(--textOutlineSize) 0 var(--textOutlineColor), 
+        // var(--textOutlineSize) var(--textOutlineSize) 0 var(--textOutlineColor);
               
-        font-weight:var(--textWeight);
-        font-stretch:condensed;
-        font-kerning: normal;
-        font-size: var(--textSize);
+        // font-weight:var(--textWeight);
+        // font-stretch:condensed;
+        // font-kerning: normal;
+        // font-size: var(--textSize);
     }
     
     body 
     {         
         background-color: rgba(0, 0, 0, 0); 
         margin: 0px auto; 
-        overflow:var(--overflow);   
-        text-transform: uppercase;  
+        overflow:var(--overflow);         
     }
 
     .white

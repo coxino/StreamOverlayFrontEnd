@@ -1,0 +1,23 @@
+body
+{
+  overflow:hidden !important;  
+  font-size: 88;
+}
+
+.scroll{
+    font-family: 'LemonMilkMedium', sans-serif;
+   left: 0px;
+   color: white;
+   position: absolute;
+   width: 92%;      
+   top:0;        
+ }
+
+ .scroll-anim
+ {
+   animation: scroll 38s linear 1s infinite;
+ }
+
+ @keyframes scroll {
+   100% { top:-100%; }
+}

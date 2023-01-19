@@ -1,11 +1,11 @@
 export class Settings{
-        
-        
+
         public static readonly ApiServer = "https://coxino.go.ro:5000/api/";
-        // public static readonly ApiServer = "http://streamag.westeurope.cloudapp.azure.com:5000/api/";
+        public static readonly ApiServerLocal = "http://localhost:5000/api/";
+
+        //user-path
         public static readonly LoginUrl = "user/login";
         public static readonly RegisterUser = "user/register";
-        // public static readonly ApiServer = "";
         
         public static readonly tranzactii:string = "tranzactii";
         public static readonly BonusBuyTournament:string = "tournament";
@@ -36,9 +36,6 @@ export class Settings{
         
         //Theme Files
         public static readonly CustomTheme:string = "customTheme";
-        
-        //SUPERBET BALANCE
-        public static readonly SuperbetBalanceLink:string = "https://legacy-web.betting.superbet.ro:8443/user/getPlayerBalance?IncludeBonusProductType=true&IncludeExternalBalances=true&IncludeBonusType=true&clientSourceType=Desktop_new";
         
         //LocalDB
         static AllGames: string = "assets/database/AllGames.json";

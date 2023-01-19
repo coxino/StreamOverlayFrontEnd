@@ -10,11 +10,29 @@ import { TournamentModel } from 'src/assets/database/Models/Tournament';
 import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
 import { ClasamentPacaniada } from 'src/assets/database/Models/UserPacaniada';
 import { BettingModel } from 'src/models/betting-model';
+import { isDevMode } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  ServerPath = "";
+
+  constructor(private httpClient: HttpClient,private cookieService: CookieService,private activatedRoute: ActivatedRoute) {
+    // if(isDevMode()){
+    //   this.ServerPath = Settings.ApiServerLocal;
+    // }
+    // else
+    // {
+    //   this.ServerPath = Settings.ApiServer;
+    // }
+
+    //TODO: USE PROD DATABASE IN BACKEND
+    //FOR NOW USE PROD API
+    this.ServerPath = Settings.ApiServer;
+    console.log("Running on API : " + this.ServerPath);
+  }
+
   GetAllGames() {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
@@ -24,28 +42,28 @@ export class IntervalRequestService {
   saveShopItems(shopItems: string) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.SaveShop,shopItems,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.SaveShop,shopItems,{headers});
   }
   SaveClasament(clasamentPacaniada:ClasamentPacaniada) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.Pacaniada,clasamentPacaniada,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.Pacaniada,clasamentPacaniada,{headers});
   }
   updateBetting(beturi:BettingModel) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.UpdateBetting,beturi,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.UpdateBetting,beturi,{headers});
   }
   setGiveawayWinner() {
-    return this.httpClient.get(Settings.ApiServer + Settings.GiveAwaysSetWinner);
+    return this.httpClient.get(this.ServerPath + Settings.GiveAwaysSetWinner);
   }
   apiGetgiveaways() {
-    return this.httpClient.get(Settings.ApiServer + Settings.GiveAways);
+    return this.httpClient.get(this.ServerPath + Settings.GiveAways);
   }
   apiGetLoyaltyList() {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.get(Settings.ApiServer + Settings.LoyalityGetRanks,{headers : headers});
+    return this.httpClient.get(this.ServerPath + Settings.LoyalityGetRanks,{headers : headers});
   }
   
   apiAddPointsAll(ammountToAdd: number,tokenW="") {
@@ -53,74 +71,74 @@ export class IntervalRequestService {
     {
       var _token = this.cookieService.get("token") ?? "";
       var headers = {token:_token};
-      return this.httpClient.post<any>(Settings.ApiServer + "loyalty/addpointsall",ammountToAdd,{headers});
+      return this.httpClient.post<any>(this.ServerPath + "loyalty/addpointsall",ammountToAdd,{headers});
     }
     else
     {
       var _token = tokenW;
       var headers = {token:_token};
-      return this.httpClient.post<any>(Settings.ApiServer + "loyalty/addpointsall",ammountToAdd,{headers});
+      return this.httpClient.post<any>(this.ServerPath + "loyalty/addpointsall",ammountToAdd,{headers});
     }
   }
   
   apiLigaSterge(user: LigaUser) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + "ligaspecialelor/sterge",user,{headers});
+    return this.httpClient.post<any>(this.ServerPath + "ligaspecialelor/sterge",user,{headers});
   }
   
   apiSaveloyalty(EditUser: UserLoyal) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + "loyalty/updateuser",EditUser,{headers});
+    return this.httpClient.post<any>(this.ServerPath + "loyalty/updateuser",EditUser,{headers});
   }
   
   apiAddLigaUser(user:any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + "ligaspecialelor/updateuser",user,{headers});
+    return this.httpClient.post<any>(this.ServerPath + "ligaspecialelor/updateuser",user,{headers});
   }
   
   apiUpdateTESTOption()
   {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + "betting/updateTESTOption",null,{headers});
+    return this.httpClient.post<any>(this.ServerPath + "betting/updateTESTOption",null,{headers});
   }
   
   apiSetWinners(option: string) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token,bettingOption:option};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.SetWinner,null,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.SetWinner,null,{headers});
   }
   
   apiBetAsUser(bet:string,option:string,userName:string)
   {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token,bettingOption:option,user:userName,amount:bet};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.BetAsUser,null,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.BetAsUser,null,{headers});
   }
   
   apiStartBettingFromBonusHunt(maxBet: number) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.CreateBetFromBonushunt,maxBet,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.CreateBetFromBonushunt,maxBet,{headers});
   }
   apiStartBettingFromTournament(maxBet: any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.CreateBetFromTournament,maxBet,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.CreateBetFromTournament,maxBet,{headers});
   }
   apiAddToBonusHunt(LiveGame: any, bet:string) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token,betSize:bet};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.AddSingleGameToBH,LiveGame,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.AddSingleGameToBH,LiveGame,{headers});
   }
   apiRegisterUser(username: string, password: string, email: string) 
   {    
     var headers = {username:username,password:password,email:email};
     var body = {'':''};  
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.RegisterUser,body,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.RegisterUser,body,{headers});
   }
   apiReSetHotWords() {
     var username = "";
@@ -128,7 +146,7 @@ export class IntervalRequestService {
       username = params['username'];
     });
     var headers = {token:username};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.ResetHotWords,null,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.ResetHotWords,null,{headers});
   }
   apiSetInPlayGame(LiveGame: any, _betSize:any) {
     var _token = this.cookieService.get("token") ?? "";
@@ -136,24 +154,24 @@ export class IntervalRequestService {
       token:_token,
       betSize:_betSize
     };
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveGame,LiveGame,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.LiveGame,LiveGame,{headers});
   }
   apiCalificaJocul(LiveGame: any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveGame + "/calificaJoc",LiveGame,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.LiveGame + "/calificaJoc",LiveGame,{headers});
   }
   
   apiSetInPlayGameByName(_gameName: string) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token,gameName:_gameName};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveGame,null,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.LiveGame,null,{headers});
   }
   
   apiSetTranzactii(_tranzactii: any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.tranzactii,_tranzactii,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.tranzactii,_tranzactii,{headers});
   }
   
   readLocaFile(){
@@ -163,7 +181,7 @@ export class IntervalRequestService {
   apiUpdateTournament(tournament:TournamentModel){
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.BonusBuyTournamentUpdate,tournament,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.BonusBuyTournamentUpdate,tournament,{headers});
     
   }
   apiCreateTournament(fights: number,buyValue:number,TournamentModel:TournamentModel) {
@@ -172,29 +190,27 @@ export class IntervalRequestService {
     
     var body ={fights:fights,buyValue:buyValue,TournamentModel:TournamentModel};
     
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.BonusBuyTournamentCreate,body,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.BonusBuyTournamentCreate,body,{headers});
     
   }
   apiCloseCurrentFight() {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};  
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.BonusBuyTournamentLiveFightClose,"",{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.BonusBuyTournamentLiveFightClose,"",{headers});
     
   }
   apiSaveCurrentFight(currentFight: Meci) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.BonusBuyTournamentLiveFightUpdate,currentFight,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.BonusBuyTournamentLiveFightUpdate,currentFight,{headers});
     
   }
   
   apiDeleteBonus(bonus: string) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token,bonus:bonus};  
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveBonusDelete,null,{headers});
-  } 
-  
-  constructor(private httpClient: HttpClient,private cookieService: CookieService,private activatedRoute: ActivatedRoute) {}
+    return this.httpClient.post<any>(this.ServerPath + Settings.LiveBonusDelete,null,{headers});
+  }   
   
   apiGetRequest(url:string,username:string = "")
   {
@@ -208,12 +224,12 @@ export class IntervalRequestService {
         });
       }
     }
-    return this.httpClient.get(Settings.ApiServer + url,{headers : {'username':username}});
+    return this.httpClient.get(this.ServerPath + url,{headers : {'username':username}});
   }
 
   apiGetShopRequest()
   {
-    return this.httpClient.get(Settings.ApiServer + Settings.ShopItems);
+    return this.httpClient.get(this.ServerPath + Settings.ShopItems);
   }
   
   apiSetCustomTheme(url:string,_customTheme:string)
@@ -221,19 +237,19 @@ export class IntervalRequestService {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token,customTheme:_customTheme};
     var body = {'':''};  
-    return this.httpClient.post<any>(Settings.ApiServer + url,body,{headers});
+    return this.httpClient.post<any>(this.ServerPath + url,body,{headers});
   }
   
   apiLoginUser(username:string,password:string)
   {    
     var headers = {username:username,password:password};
     var body = {'':''};  
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LoginUrl,body,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.LoginUrl,body,{headers});
   }
   
   apiUpdateBonusHunt(bonusHunt: BonusHunt) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};  
-    return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveBonusHuntUpdate,bonusHunt,{headers});
+    return this.httpClient.post<any>(this.ServerPath + Settings.LiveBonusHuntUpdate,bonusHunt,{headers});
   }
 }

@@ -1,0 +1,13 @@
+.settings-box{    
+    background-color: rgb(102, 51, 153);
+    border: 2px solid purple;
+    border-radius: 8px;  
+    .title{
+        text-align: center;
+    }
+    .items{  
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}
