@@ -1,3 +1,3 @@
 export class SiteSettings{
-    public static readonly currency:string = "Lei ";
+    public static readonly currency:string = "ron";
 }

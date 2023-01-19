@@ -17,8 +17,6 @@ export class AppComponent implements OnInit{
   Theme: CustomTheme;
   isLogedIn = false;
   disableNav = true;
-
-  
   
   constructor(private intervalRequest: IntervalRequestService,private router: Router,private cookieService: CookieService,private activatedRoute: ActivatedRoute) {   
     this.activatedRoute.queryParams.subscribe(params => {

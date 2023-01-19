@@ -10,15 +10,15 @@
             Voteaza balanta finala !final [suma]
           </span>
         </div> 
-        <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/controller.png);"> </div>              
+        <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/controller.png);"></div>           
         <div class="games-no">
           <h4 style="text-align: center !important;" > {{Opened}}/{{bonusHunt.bonuses.length}}</h4>
-          <h6 style="text-align: center !important;"  *ngIf="Hunting"> Hunting </h6>
-          <h6 style="text-align: center !important;"  *ngIf="!Hunting"> Opening </h6>
+          <h5 style="text-align: center !important;"  *ngIf="Hunting"> Hunting</h5>
+          <h5 style="text-align: center !important;"  *ngIf="!Hunting"> Opening</h5>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
+      <div class="old-stats-bar">
+        <div class="grid grid-col-4">
           <div class="col-x top-radius">
             <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/play-button.png);"> </div>
           </div>
@@ -32,7 +32,7 @@
             <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/refund.png);"> </div>
           </div>
         </div>
-        <div class="row">
+        <div class="grid grid-col-4">
           <div class="col-x bottom-radius">
             <h3 class="bh-value">{{bonusHunt.huntValue | currency:currencyCode:' ':'.0'}}   </h3>   
           </div>
@@ -47,21 +47,26 @@
           </div>
         </div>
       </div>     
-      <div class="bonus-header-new repead-fr">
+      <div class="bonus-header-new repeat-fr">
         <div class="bonus-header-new">
           <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/crown.png);"> </div>        
-          <h6> {{BestPayGame}}  </h6>   
-          {{BestPayValue | currency:'':currencyCode:'.0'}}       
+          <div class="new-stats"> {{BestPayGame.gameName ?? "WAITING"}} </div>   
+          <div class="new-stats">{{BestPayValue | currency:'':currencyCode:'.0'}} ({{BestPayGame.betSize}}X{{BestPayGame.multiplier ?? 0}})</div>         
         </div>
-        <div class="bonus-header-new">
+        <div class="bonus-header-new" *ngIf="LiveAverageMultiToBreakEven >= '0'">
           <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/multi.png);"> </div>        
-          <h6> Live BE X  </h6>
-          {{LiveAverageMultiToBreakEven | currency:'':'x':'.0'}}          
+          <div class="new-stats" > live break even x </div>
+          <div class="new-stats" >  {{LiveAverageMultiToBreakEven | currency:'':'x':'.0'}}  </div>       
+        </div>
+        <div class="bonus-header-new" *ngIf="LiveAverageMultiToBreakEven < '0'">
+          <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/multi.png);"> </div>        
+          <div class="new-stats"> profit {{currencyCode}} </div>
+          <div class="new-stats" >   {{(bonusHunt.bonuses | sum:'payed') - bonusHunt.huntValue}}  </div>       
         </div>
         <div class="bonus-header-new">
           <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/shit.png);"> </div>        
-          <h6> {{ShitPayGame}}  </h6>
-          {{ShitPay | currency:'':'x':'.0'}}
+          <div class="new-stats"> {{ShitPayGame}} </div>
+          <div class="new-stats"> {{ShitPay | currency:'':'x':'.0'}}</div>
         </div>
       </div>
       <div class="container-flex">
@@ -71,12 +76,12 @@
           <div class="col-2 col-hd">Pay</div>         
         </div>      
       </div>        
-        <div  class="container fullwidth" style="overflow: hidden !important;"> 
-          <div id="outerdiv">
-            <iframe id="inneriframe" [ngStyle]="{'height': customHeight}" [src]="href | safe">   
-            </iframe>    
-          </div>
-        </div>         
-    </div>         
-  </div>  
-</div>
+      <div  class="container fullwidth" style="overflow: hidden !important;"> 
+        <div id="outerdiv">
+          <iframe id="inneriframe" [ngStyle]="{'height': customHeight}" [src]="href | safe">   
+          </iframe>    
+        </div>
+      </div>         
+    </div> 
+  </div> 
+</div> 

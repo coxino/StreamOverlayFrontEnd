@@ -1,5 +1,40 @@
+
+
+.bonus-fight
+{
+    display: grid;
+    grid-template-rows: 2;
+}
+
+.entry
+{
+    display: grid;
+    grid-template-rows: 2;
+    border: 1px solid black;
+    align-items: center;
+    text-align: center;
+}
+
 .game
 {
-    font-size: 30px;
-    line-height: 31px;
+    overflow: hidden;
+    overflow-wrap: none;
+    word-wrap: unset;
+    display: grid;
+    grid-template-columns: 60px 240px 60px repeat(var(--repeatAmount),120px);
+}
+
+.game-name
+{
+    font-size: 18px;
+}
+
+.scor-title{
+    align-self: center;
+}
+
+.round-image
+{
+    border-radius: 50%;
+    width: 40px;
 }

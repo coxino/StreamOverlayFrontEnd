@@ -34,7 +34,7 @@ export class BonusHuntComponent implements OnInit {
 	AverageMultiToBreakEven: string;
 	AverageMulti: string;
 	AverageWin: string;
-	BestPayGame: string;
+	BestPayGame: any;
 	ShitPay: string;
 	Opened: number;
 	ShitPayGame: string;
@@ -79,8 +79,6 @@ export class BonusHuntComponent implements OnInit {
 		this.AverageBet = (this.bonusHunt?.bonuses?.filter(x=>x.betSize>0).map(x=>x.betSize).reduce((a,b)=>a+b) /this.bonusHunt?.bonuses?.length).toFixed(2);
 		this.LiveAverageBet = (this.bonusHunt?.bonuses?.filter(x=>x.payed == 0)?.map(x=>x.betSize).reduce((a,b)=>a+b) / this.bonusHunt?.bonuses?.filter(x=>x.payed == 0).length);
 		this.TotalLoss = ((this.bonusHunt?.huntValue - this.bonusHunt?.bonuses?.reduce((acc, x) => acc + x.payed, 0)) ?? 0).toLocaleString();
-		this.BestPayValue = (this.bonusHunt?.bonuses?.reduce((acc, x) => Math.max(acc, x.payed), 0) ?? 0).toFixed(0);
-		this.BestPayGame = this.bonusHunt?.bonuses?.find(x=>x.payed == Number(this.BestPayValue))?.gameName ?? "WAITING";
 		this.Hunting = this.bonusHunt?.isHunting ?? false;
 		this.AverageMultiToBreakEven = (this.bonusHunt?.huntValue / (Number(this.AverageBet) * this.bonusHunt?.bonuses.length)).toFixed(2);
 		this.LiveAverageMultiToBreakEven = ((this.bonusHunt?.huntValue - this.bonusHunt?.bonuses.reduce((a,b)=>a+b.payed,0)) / (this.LiveAverageBet * this.bonusHunt?.bonuses.filter(x=>x.payed == 0).length)).toFixed(2);
@@ -91,6 +89,10 @@ export class BonusHuntComponent implements OnInit {
 		//shtpay
 		this.ShitPay = this.bonusHunt?.bonuses?.filter(x=>x.payed > 1).map(x=>(x.payed / x.betSize)).reduce((a,b)=> Math.min(a,b)).toFixed(2);
 		this.ShitPayGame = this.bonusHunt?.bonuses?.find(x=>x.payed / x.betSize == Number(this.ShitPay))?.gameName ?? "WAITING";
+		
+		//bestpay
+		this.BestPayValue = (this.bonusHunt?.bonuses?.reduce((acc, x) => Math.max(acc, x.payed), 0) ?? 0).toFixed(0);
+		this.BestPayGame = this.bonusHunt?.bonuses?.find(x=>x.payed == Number(this.BestPayValue)) ?? "WAITING";
 		
 	}
 	

@@ -65,6 +65,7 @@ import { BattleRoyaleComponent } from './battle-royale/battle-royale.component';
 import { BattleRoyaleEditComponent } from './frontent/battle-royale-edit/battle-royale-edit.component';
 import { BattleRoyaleClasamentComponent } from './obsViews/battle-royale-clasament/battle-royale-clasament.component';
 import { VarianteComponent } from './obsViews/variante/variante.component';
+import { LangingPageComponent } from './langing-page/langing-page.component';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { VarianteComponent } from './obsViews/variante/variante.component';
     BattleRoyaleEditComponent,
     BattleRoyaleClasamentComponent,
     VarianteComponent,
+    LangingPageComponent,
     ],
   imports: [
     BrowserModule,
