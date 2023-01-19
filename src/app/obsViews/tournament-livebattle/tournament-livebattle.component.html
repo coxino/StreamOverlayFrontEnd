@@ -5,33 +5,39 @@
         <div class="game">
             <div class="entry">
                 <div class="poza">
-                    <img class="round-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy88gJz2OlC8W-tDgzjwtoAlerx068pm68kFAWWBGVJ4nD1LBawijfnpqX9SrisLu-bbw&usqp=CAU">
+                    <img class="round-image" [src]="getImage(fightDetails.team1.nume)">
                 </div>
             </div>
             <div class="entry">               
-              <div class="jucator">{{fightDetails.team1.numeJucator}}</div>  
+              <div class="jucator" *ngIf="fightDetails.team1.numeJucator">{{fightDetails.team1.numeJucator}}</div>  
               <div class="game-name">{{fightDetails.team1.nume}}</div>
             </div>
             <div class="entry">
+                <div class="scor-title">{{fightDetails.team2.buyCost | currency:'':currencyCode:'.0'}}</div>
+            </div>           
+            <div *ngFor="let payd of fightDetails.team1.payout;index as i" [attr.data-index]="i" class="entry">{{payd.payout | currency:'':currencyCode:'.0'}}</div>
+            <div class="entry">
                 <div class="scor-title">{{fightDetails.team2.scor}}</div>
             </div>
-            <div *ngFor="let payd of fightDetails.team1.payout;index as i" [attr.data-index]="i" class="entry">{{payd.payout | currency:'':currencyCode:'.0'}}</div>
         </div>  
         <!-- JOC 2-->  
         <div class="game">
             <div class="entry">
                 <div class="poza">
-                    <img class="round-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy88gJz2OlC8W-tDgzjwtoAlerx068pm68kFAWWBGVJ4nD1LBawijfnpqX9SrisLu-bbw&usqp=CAU">
+                    <img class="round-image" [src]="getImage(fightDetails.team2.nume)">
                 </div>
             </div>
             <div class="entry">
-              <div class="jucator">{{fightDetails.team2.numeJucator}}</div>  
+              <div class="jucator" *ngIf="fightDetails.team2.numeJucator">{{fightDetails.team2.numeJucator}}</div>  
               <div class="game-name">{{fightDetails.team2.nume}}</div>  
             </div>
             <div class="entry">
-                <div class="scor-title">{{fightDetails.team2.scor}}</div>
+                <div class="scor-title">{{fightDetails.team2.buyCost | currency:'':currencyCode:'.0'}}</div>
             </div>
             <div *ngFor="let payd of fightDetails.team2.payout;index as i" [attr.data-index]="i" class="entry">{{payd.payout | currency:'':currencyCode:'.0'}}</div>
+            <div class="entry">
+                <div class="scor-title">{{fightDetails.team2.scor}}</div>
+            </div>
         </div>
     </div>
 </div>

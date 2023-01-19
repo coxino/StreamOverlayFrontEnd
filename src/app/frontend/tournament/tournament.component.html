@@ -104,9 +104,9 @@
 </div>
 
 <div class="container-fluid" style="margin-top:0px;" *ngIf=(createnew)>     
-    <span><h4>Current fight</h4> *to update live enter value and press Enter(in the box u need to update)*</span>     
+    <span><h4>Current fight</h4> *KEY ENTER*</span>     
     <div class="row">       
-        <div class="col-2">
+        <div class="col-4">
             <div class="label"> Team 1
                 <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search"  (keydown.enter)="saveCurrentFight()" type="text" class="form-control"required [(ngModel)]="currentFight.team1.nume"/>
             </div>
@@ -119,8 +119,8 @@
                 </div>           
             </div>
         </div> 
-        <h1>VS</h1>
-        <div class="col-2">
+        <h1 style="align-self: center;" >VS</h1>
+        <div class="col-4">
             <div class="label">Team 2
                 <input class="input-group-text" id="typeahead-basic" [ngbTypeahead]="search"  (keydown.enter)="saveCurrentFight()" type="text" class="form-control"required [(ngModel)]="currentFight.team2.nume"/>
             </div>
@@ -134,17 +134,12 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="label">Live View Current Fight
-                <app-tournament-livebattle></app-tournament-livebattle>
-            </div>
-        </div>  
-        <div class="col-2">
-            <div class="label">Finish *use only when battle finished*
+            <div class="label">NEXT?
                 <button class="btn btn-primary"  (click)="CloseFight()" required>Next Fight</button>
             </div>
         </div>        
-    </div>      
-</div>
-<div class="label">Live View Full Bracket Fight
-    <app-tournament-livebattle-next></app-tournament-livebattle-next>
+    </div>   
+    <div class="label">Live View Current Fight
+        <app-tournament-livebattle></app-tournament-livebattle>
+    </div>   
 </div>

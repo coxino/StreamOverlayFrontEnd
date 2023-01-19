@@ -22,7 +22,7 @@
     _isQuarterVisible = false;
     _isSemisVisible = false;
     
-    timer$ = interval(3000);
+    timer$ = interval(1200);
     games:LocalGame[] = [];
     isOptimi = false;
     
@@ -66,13 +66,13 @@
       this.intervalRequest.readLocaFile().subscribe((data:any)=>{
         this.games = data;
       });
-      this.serverRequest();		
+      this.serverRequest();	      
       this.timer$.subscribe(()=>{			
         this.serverRequest(); 
         if(this.loadingOver == false)
         {
           this.loadingOver = true;
-        }
+        }	
       });  
       this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
         this.IsAnimatedBorder = data.Options.animatedBorder;    

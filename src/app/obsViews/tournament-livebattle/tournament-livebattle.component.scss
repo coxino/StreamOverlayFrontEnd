@@ -21,12 +21,15 @@
     overflow-wrap: none;
     word-wrap: unset;
     display: grid;
-    grid-template-columns: 60px 240px 60px repeat(var(--repeatAmount),120px);
+    grid-template-columns: 60px 240px 60px repeat(var(--repeatAmount),120px) 60px;
 }
 
 .game-name
 {
     font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .scor-title{
@@ -35,6 +38,12 @@
 
 .round-image
 {
-    border-radius: 50%;
-    width: 40px;
+    padding: 2px;
+    border-radius: 4%;
+    width: 100%;
+}
+
+.jucator
+{
+    font-size: 14px;
 }

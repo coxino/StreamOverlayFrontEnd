@@ -6,7 +6,6 @@ export class TeamStats{
     hasWon = false;
     prevX = 0;
     isCurrent = false;
-
     payout:PayoutTemplate[] = [];
 }
 
