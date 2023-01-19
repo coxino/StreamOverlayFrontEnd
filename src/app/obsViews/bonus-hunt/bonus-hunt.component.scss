@@ -1,18 +1,37 @@
-#inneriframe
+body
 {
+    overflow: hidden;
+}
+
+.width-500
+{
+    width: 495px;
+    height: 580px;
+}
+
+.full-frame
+{
+    margin-top: 10px;
+}
+
+#inneriframe
+{ 
+    overflow: hidden !important;
     position:absolute;
     top:0px;
-    width: 100%;  
+    width: 100%; 
+    
 }
 
 iframe
-{
+{ 
+    overflow: hidden !important;
     border: hidden;
 }
 
 #outerdiv
 {    
-    margin-left: -16px;
+    margin-left: -33px;
     height: 258px;
     width: 116%;
     overflow:hidden;
@@ -31,4 +50,36 @@ iframe
 {
     text-align: center;
     font-size: 20px;
+}
+
+//new-css
+
+.bonus-header-new
+{    
+    font-size: 12px;
+    display: grid; 
+}
+
+.grid-col-top
+{
+    text-align:left;
+    grid-template-columns: 1fr 12fr 1fr 1fr;
+}
+
+.toppay
+{
+    
+    grid-template-columns: repeat(1fr);    
+}
+
+.repead-fr
+{   
+    text-align: center;
+    align-items: center;
+    grid-template-columns: repeat(3,1fr);   
+}
+
+.fullwidth
+{
+    width: 100% !important;
 }

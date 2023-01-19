@@ -1,26 +1,23 @@
- body
- {
-   overflow:hidden !important;
- }
+.scroll{
+  margin: 0px;
+  left: 0px;
+  position: absolute;     
+  top:0;     
+  color: var(--textColor);   
+}
 
- .scroll{
-    left: 0px;
-    position: absolute;
-    width: 92%;      
-    top:0;        
-  }
+.scroll-anim
+{
+  animation: scroll var(--animation-timer) linear 0.1s infinite;
+}
 
-  .scroll-anim
-  {
-    animation: scroll var(--animation-timer) linear 0.1s infinite;
-  }
-
-  @keyframes scroll {
-    100% { top:-100%; }
+@keyframes scroll {
+  100% { top:-100%; }
 }
 
 .col-txt
 {
+  font-size: var(--textSize) !important;
   text-align: center;
   overflow: hidden;
 }
@@ -30,4 +27,19 @@
   overflow: hidden;
   white-space:nowrap;
   text-align: center;
+}
+
+.no-gap
+{
+  height: 50px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.container-full
+{
+  margin: 0px !important;
+  width: 520px;
+  padding-left: 18px;
+  padding-right: 20px;
 }

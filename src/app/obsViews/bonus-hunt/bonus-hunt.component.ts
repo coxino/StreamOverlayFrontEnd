@@ -27,6 +27,19 @@ export class BonusHuntComponent implements OnInit {
 
 	customHeight = "0px";
 	customInt = 100;
+	AverageBet: string;
+	TotalLoss: string;
+	BestPayValue: string;
+	Hunting: boolean;
+	AverageMultiToBreakEven: string;
+	AverageMulti: string;
+	AverageWin: string;
+	BestPayGame: string;
+	ShitPay: string;
+	Opened: number;
+	ShitPayGame: string;
+	LiveAverageBet: number;
+	LiveAverageMultiToBreakEven: string;
 	constructor(private intervalRequest: IntervalRequestService, private activatedRoute: ActivatedRoute) {	
 		var _userName = "";
 		this.activatedRoute.queryParams.subscribe(params => {
@@ -53,10 +66,32 @@ export class BonusHuntComponent implements OnInit {
 					this.bestScore = element.multiplier;
 				}   
 			});	
-			this.customInt = 50 + 41 * this.bonusHunt.bonuses.length;
+			this.customInt = 68 + 41 * this.bonusHunt.bonuses.length;
 			this.customHeight = this.customInt + "px";	
-			this.loadingOver = true;		
+			this.loadingOver = true;	
+			this.calculateAVG();	
 		});
+	}
+
+	calculateAVG()
+	{
+		this.Opened = this.bonusHunt?.bonuses?.filter(x=>x.payed > 0).length;
+		this.AverageBet = (this.bonusHunt?.bonuses?.filter(x=>x.betSize>0).map(x=>x.betSize).reduce((a,b)=>a+b) /this.bonusHunt?.bonuses?.length).toFixed(2);
+		this.LiveAverageBet = (this.bonusHunt?.bonuses?.filter(x=>x.payed == 0)?.map(x=>x.betSize).reduce((a,b)=>a+b) / this.bonusHunt?.bonuses?.filter(x=>x.payed == 0).length);
+		this.TotalLoss = ((this.bonusHunt?.huntValue - this.bonusHunt?.bonuses?.reduce((acc, x) => acc + x.payed, 0)) ?? 0).toLocaleString();
+		this.BestPayValue = (this.bonusHunt?.bonuses?.reduce((acc, x) => Math.max(acc, x.payed), 0) ?? 0).toFixed(0);
+		this.BestPayGame = this.bonusHunt?.bonuses?.find(x=>x.payed == Number(this.BestPayValue))?.gameName ?? "WAITING";
+		this.Hunting = this.bonusHunt?.isHunting ?? false;
+		this.AverageMultiToBreakEven = (this.bonusHunt?.huntValue / (Number(this.AverageBet) * this.bonusHunt?.bonuses.length)).toFixed(2);
+		this.LiveAverageMultiToBreakEven = ((this.bonusHunt?.huntValue - this.bonusHunt?.bonuses.reduce((a,b)=>a+b.payed,0)) / (this.LiveAverageBet * this.bonusHunt?.bonuses.filter(x=>x.payed == 0).length)).toFixed(2);
+		this.AverageMulti = (this.bonusHunt?.bonuses?.filter(x => x.payed > 0)?.map(x => x.multiplier).reduce((acc, x) => acc + x, 0) / this.bonusHunt?.bonuses?.filter(x => x.payed > 0)?.length ?? 0).toFixed(2) ?? "0";
+		this.AverageWin = (this.bonusHunt?.bonuses?.filter(x => x.payed > 0)?.map(x => x.payed).reduce((acc, x) => acc + x, 0) / this.bonusHunt?.bonuses?.filter(x => x.payed > 0)?.length ?? 0).toFixed(2);
+
+
+		//shtpay
+		this.ShitPay = this.bonusHunt?.bonuses?.filter(x=>x.payed > 1).map(x=>(x.payed / x.betSize)).reduce((a,b)=> Math.min(a,b)).toFixed(2);
+		this.ShitPayGame = this.bonusHunt?.bonuses?.find(x=>x.payed / x.betSize == Number(this.ShitPay))?.gameName ?? "WAITING";
+		
 	}
 	
 	ngOnInit(): void {
