@@ -14,6 +14,10 @@ $color6:#33223a;
     height: 3rem;    
 }
 
+li {
+    list-style-type: none;
+
+}
 
 
 .streamer-login
@@ -158,4 +162,9 @@ h5{
     }  
     background-color: $color3;
     clip-path: polygon(0 18px, 0 96%, 100% 100%, 100% 0);
+}
+
+.tool-tip
+{
+    color: white;
 }
