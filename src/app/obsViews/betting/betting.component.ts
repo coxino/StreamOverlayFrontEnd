@@ -65,6 +65,15 @@ export class BettingComponent extends ThemedComponent implements OnInit {
             this.beturi.options =  [];
             return;
           }
+
+          if(bet.isVisible == false && data.options[xcnt].isVisible == true)
+          {
+            var newInterval = interval(1000).subscribe(obs=>{
+              bet.didRefreshed = false;
+              newInterval.unsubscribe();
+            });
+          }
+
           bet.isVisible = data.options[xcnt].isVisible;
           bet.optiune = data.options[xcnt].optiune;
           bet.progress = data.options[xcnt].progress;
@@ -76,7 +85,7 @@ export class BettingComponent extends ThemedComponent implements OnInit {
               bet.didRefreshed = true;
               newInterval.unsubscribe();
             });
-          }        
+          }       
         });
       }
       else
@@ -84,10 +93,10 @@ export class BettingComponent extends ThemedComponent implements OnInit {
         this.beturi = data;
         this.beturi.options.forEach(bet => { 
           if(bet.isVisible == false && bet.didRefreshed == false){
-            var newInterval = interval(1000).subscribe(obs=>{
+            //var newInterval = interval(1000).subscribe(obs=>{
               bet.didRefreshed = true;
-              newInterval.unsubscribe();
-            });
+            //  newInterval.unsubscribe();
+           // });
           }
         });
       }

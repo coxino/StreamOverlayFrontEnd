@@ -9,8 +9,10 @@ import { CookieService } from 'ngx-cookie';
 export class ConfigureObsComponent implements OnInit {
   website = window.location.origin;
   username:string;
+  public themeWrapper:any = document.querySelector('html');
   constructor(private cookieService: CookieService) {
     this.username = this.cookieService?.get("username")?.replace(/\s/g, "") ?? "coxino2"; 
+    this.themeWrapper.style.setProperty('--fit-content' ,'100%'); 
    }
    
    ngOnInit(): void {

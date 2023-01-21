@@ -49,7 +49,7 @@
     <div class="row" *ngFor="let bonus of bonusHunt.bonuses;let i = index" [attr.data-index]="i">
         <div class="col">
             <div class="label"> {{i + 1}}.Name
-                <input (keydown.enter)="SaveBonusHunt()" type="text" class="form-control" [(ngModel)]="bonus.gameName" id="typeahead-basic" [ngbTypeahead]="search"/>                
+                <input (keydown.enter)="SaveBonusHunt()" type="text" class="form-control" [(ngModel)]="bonus.gameName" id="typeahead-basic" [ngbTypeahead]="gameHolder.search"/>                
             </div>
         </div>
         <div class="col">

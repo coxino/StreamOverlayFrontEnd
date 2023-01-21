@@ -13,11 +13,11 @@
               <div class="game-name">{{fightDetails.team1.nume}}</div>
             </div>
             <div class="entry">
-                <div class="scor-title">{{fightDetails.team2.buyCost | currency:'':currencyCode:'.0'}}</div>
+                <div class="scor-title">{{fightDetails.team1.buyCost | currency:'':currencyCode:'.0'}}</div>
             </div>           
             <div *ngFor="let payd of fightDetails.team1.payout;index as i" [attr.data-index]="i" class="entry">{{payd.payout | currency:'':currencyCode:'.0'}}</div>
             <div class="entry">
-                <div class="scor-title">{{fightDetails.team2.scor}}</div>
+                <div class="scor-title">{{fightDetails.team1.scor}}</div>
             </div>
         </div>  
         <!-- JOC 2-->  
@@ -41,32 +41,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- <div class="parent-container d-flex">
-    <div class="container">
-        <div class="game title">{{fightDetails.team1.nume}}</div>                    
-        <div class="game">{{fightDetails.team1.buyCost | currency:' ':'symbol':'.0'}}</div>  
-        <div *ngFor="let payd of fightDetails.team1.payout">                    
-            <div class="game">{{payd.payout | currency:'  ':'symbol':'.0'}}</div>    
-        </div>                
-        <div class="game">{{fightDetails.team1.scor}}</div>                     
-    </div>  
-    <div class="middle">
-        <div class="game title"><img src="../../assets/img/icon-sword.png"></div>                    
-        <div class="game">BUY</div>  
-        <div *ngFor="let payd of fightDetails.team2.payout;index as i" [attr.data-index]="i">                    
-            <div class="game">{{i+1}}</div>    
-        </div>                
-        <div class="game">SCORE</div> 
-    </div>            
-    <div class="container">
-        <div class="game title">{{fightDetails.team2.nume}}</div>                    
-        <div class="game">{{fightDetails.team2.buyCost | currency:' ':'symbol':'.0'}}</div>  
-        <div *ngFor="let payd of fightDetails.team2.payout">                    
-            <div class="game">{{payd.payout | currency:'  ':'symbol':'.0'}}</div>    
-        </div>                
-        <div class="game">{{fightDetails.team2.scor}}</div> 
-    </div>           
-</div> -->

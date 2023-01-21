@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { EditorBase } from 'src/Factory/EditorBase';
 import { ThemedComponent } from 'src/Factory/ThemedComponent';
@@ -14,15 +15,15 @@ export class TranzactiiComponent extends EditorBase implements OnInit {
   Tranzactii:any;
   LiveGame: any;
   search: any;
-  constructor(private intervalRequest: IntervalRequestService,private gameHolderService:GameHolderService) { 
-    super(gameHolderService);
+  constructor(intervalRequest: IntervalRequestService,gameHolderService:GameHolderService,toastr: ToastrService) { 
+    super(gameHolderService,intervalRequest,toastr);
     intervalRequest.apiGetRequest(Settings.tranzactii).subscribe((data:any) =>{	          
       this.Tranzactii = data;
     });
     this.intervalRequest.apiGetRequest(Settings.LiveGame).subscribe((data:any) =>{	
       this.LiveGame = data;           
     });    
-    this.search = this.gameHolderService.search;
+    this.search = gameHolderService.search;
   }
   
   UpdateTranzactii()

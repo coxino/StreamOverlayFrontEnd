@@ -1,17 +1,29 @@
-<div class="container">
-    <h4>Titlu</h4>
-    <div class="label"> {{beturi.voteTitle}}
-        <input (keydown.enter)="SaveBetting()" type="text" class="form-control" [(ngModel)]="beturi.voteTitle" id="typeahead-basic"/>                
-    </div>
-    <h4>Bonuses</h4>
-    <div class="row" *ngFor="let bet of beturi.options;let i = index" [attr.data-index]="i">
-        <div class="col-2">
-            <div class="label"> {{i + 1}}. Name
-                <input (keydown.enter)="SaveBetting()" type="text" class="form-control" [(ngModel)]="bet.nume" id="typeahead-basic"/>                
+<div class="container-grid">
+    <div class="grid1">
+        <div class="row">
+            <div class="col"> Title
+                <input (keydown.enter)="SaveBetting()" type="text" class="form-control" [(ngModel)]="beturi.voteTitle" id="typeahead-basic"/>                
             </div>
-        </div>        
-        <div class="label" >Delete<br>  
-            <button class="btn btn-primary"  (click)="delete(i)"> <i class="fa fa-minus" aria-hidden="true"></i> </button>
-        </div>  
+        </div>
+        <div class="row" *ngFor="let bet of beturi.options;let i = index" [attr.data-index]="i">
+            <div class="col-8">
+                <div class="label"> {{i + 1}}. Name
+                    <input (keydown.enter)="SaveBetting()" type="text" class="form-control" [(ngModel)]="bet.nume" id="typeahead-basic"/>                
+                </div>
+            </div> 
+            <div class="col">
+                <div class="label" >Visibility<br>
+                    <div class="toggle-switch" [class.toggle-on]="bet.isVisible" [class.toggle-off]="!bet.isVisible" (click)="toogle(i)">
+                        <div class="toggle-wrap">
+                            <div class="toggle-bg-on"></div>
+                        </div>
+                        <div class="toggle-handler"></div>
+                    </div>
+                </div>  
+            </div>   
+        </div>
+    </div>
+    <div class="grid2">           
+            <app-betting></app-betting>
     </div>
 </div>

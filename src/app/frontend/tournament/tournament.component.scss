@@ -1,22 +1,7 @@
-body
-{
-    height: 200vh !important;
-    overflow: scroll !important;
-    overflow-y:visible !important;
-    
-}
-
 .fixed
 {
-    color: white;
-    //position: fixed;   
-    background-color: rgb(115, 197, 197); 
+    color: white;   
+    background-color: rgb(8, 75, 75); 
     padding: 20px;
-    z-index:600;
+    border-radius: 1rem;
 }
-
-.container-fluid
-{
-    margin-bottom: 100px;
-}
-

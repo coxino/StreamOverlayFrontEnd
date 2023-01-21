@@ -3,11 +3,10 @@ import { Bonus, BonusHunt } from 'src/assets/database/Models/BonusHunt';
 import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 
-import {Observable, OperatorFunction} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import { LocalGame } from 'src/models/local-game';
 
 import { ToastrService } from 'ngx-toastr';
+import { EditorBase } from 'src/Factory/EditorBase';
+import { GameHolderService } from 'src/services/game-holder.service';
 
 @Component({
   selector: 'app-bonushunt-editor',
@@ -15,27 +14,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./bonushunt-editor.component.scss']
 })
 
-export class BonushuntEditorComponent implements OnInit {  
+export class BonushuntEditorComponent extends EditorBase implements OnInit {  
   public model: any;
-  games:LocalGame[] = [];
   maxBet = 100;
   
   toogleScroll()
   {
-    this.bonusHunt.isScrolling = ! this.bonusHunt.isScrolling;
+    this.bonusHunt.isScrolling = !this.bonusHunt.isScrolling;
     this.SaveBonusHunt();
   }
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
-  text$.pipe(
-    debounceTime(200),
-    distinctUntilChanged(),
-    map(term => term.length < 2 ? [] : this.games.map(x=>x.Name).filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-    )
+
     bonusHunt:BonusHunt = new BonusHunt();
-    constructor(private intervalRequest: IntervalRequestService,private toastr: ToastrService) { 
-      this.intervalRequest.readLocaFile().subscribe((data:any)=>{
-        this.games = data;
-      });
+    constructor(intervalRequest: IntervalRequestService,toastr: ToastrService,gameHolder:GameHolderService) { 
+      super(gameHolder, intervalRequest,toastr);     
       
       this.intervalRequest.apiGetRequest(Settings.LiveBonusHunt).subscribe((data:any) =>{	
         this.bonusHunt = data;
@@ -43,9 +34,7 @@ export class BonushuntEditorComponent implements OnInit {
     }
     
     
-    private themeWrapper:any = document.querySelector('html');
     ngOnInit(): void {
-      this.themeWrapper.style.setProperty('--overflow',     "visible");
     }
     
     toogleIsHunting()

@@ -9,7 +9,7 @@ $color6:#33223a;
 {
     padding: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5,1fr);
     gap: 1rem;
 }
 
@@ -29,6 +29,15 @@ $color6:#33223a;
         color: black;
         display: grid;
         grid-template-columns: auto 0.1fr;
+    }    
+}
+
+.tool-icon
+{
+    color: gray;
+    :hover
+    {
+        cursor:pointer;
     }
 }
 
@@ -66,4 +75,14 @@ $color6:#33223a;
 .span-col3
 {
     grid-column: span 3;
+}
+
+.span-row4
+{
+    grid-row: span 4;
+}
+
+.span-col4
+{
+    grid-column: span 4;
 }

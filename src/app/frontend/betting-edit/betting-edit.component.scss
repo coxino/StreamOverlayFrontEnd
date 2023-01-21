@@ -1,0 +1,11 @@
+.container-grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.grid2
+{
+    max-width: 350px;
+}

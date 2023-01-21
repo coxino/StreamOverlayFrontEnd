@@ -54,7 +54,7 @@ export class CustomThemeEditorComponent implements OnInit {
       },()=>{
         
       })
-      
+      this.themeWrapper.style.setProperty('--fit-content' ,'100%'); 
     }
     doChange()
     {
