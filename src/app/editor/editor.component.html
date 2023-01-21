@@ -1,30 +1,32 @@
 <app-navigation-bar></app-navigation-bar>
 <div class="page">
-<div class="page-container">
-    <div class="editor-navbar">
-        <button [routerLink]="['/editor/bonushunt']" class="btn btn-ligth">Bonus Hunt</button>
-        <button [routerLink]="['/editor/tournament']" class="btn btn-ligth">Tournament</button>
-        <button [routerLink]="['/editor/bettingedit']" class="btn btn-ligth">Betting Editor</button>
-        <button [routerLink]="['/editor/config']" class="btn btn-ligth">OBS Configuration</button>    
-        <button [routerLink]="['/editor/theme']" class="btn btn-ligth">Theme Editor</button>
+    <div class="page-container">
+        <div class="editor-navbar">
+            <button [routerLink]="['/editor/bonushunt']" class="btn btn-ligth"><i class="fa fa-list" aria-hidden="true">Bonus Hunt</i></button>
+            <button [routerLink]="['/editor/tournament']" class="btn btn-ligth"><i class="fa fa-code" aria-hidden="true">Tournament</i></button>
+            <button [routerLink]="['/editor/bettingedit']" class="btn btn-ligth"><i class="fa fa-align-left" aria-hidden="true">Betting Editor</i></button>
+            <button [routerLink]="['/editor/config']" class="btn btn-ligth"><i class="fa fa-window-restore" aria-hidden="true">OBS Configuration</i></button>    
+            <button [routerLink]="['/editor/theme']" class="btn btn-ligth"><i class="fa fa-pencil-square-o" aria-hidden="true">Theme Editor</i></button>
+        </div>
+        <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
-</div>
 </div>
 <div class="footer bg-dark">
     <div class="container" style="color: white;">       
-            <br>
-            <div class="g-ytsubscribe" data-channelid="UCVys2Q0f659A5EutSddgcDA" style="height: 60px;" data-layout="full" data-theme="dark" data-count="default"></div>
-            <br>
-            v 00 - LTS 1.0 - Comes In March
-            <br>
-            <span>Want a licence? Join Discord 
-                <a href="">
-                    <img src="">
+        <br>
+        <div class="g-ytsubscribe" data-channelid="UCVys2Q0f659A5EutSddgcDA" style="height: 60px;" data-layout="full" data-theme="dark" data-count="default"></div>
+        <br>
+        v 00 - LTS 1.0 - Comes In March
+        <br>
+        <span>Want a licence? Join Discord 
+            <span> 
+                <a href="https://discord.gg/UvtsVmevEg">
+                    <img style="height: 63px;" src="assets/img/discord_1.png">
                 </a>
-            </span> 
-            <br>
-            Some content of this website may be used without any permisions, if you have any copyright issues please adress to coxinotv@gmail.com
-            <br>
+            </span>            
+        </span> 
+        <br>
+        Some content of this website may be used without any permisions, if you have any copyright issues please adress to coxinotv@gmail.com
+        <br>
     </div>
 </div>

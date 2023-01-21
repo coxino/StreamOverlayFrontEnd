@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CookieService } from 'ngx-cookie';
-import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { SiteSettings } from 'src/assets/SiteSettings';
-import { IntervalRequestService } from 'src/services/interval-request.service';
 
 @Component({
   selector: 'app-langing-page',
@@ -11,7 +7,7 @@ import { IntervalRequestService } from 'src/services/interval-request.service';
   styleUrls: ['./langing-page.component.scss']
 })
 export class LangingPageComponent implements OnInit {
-  
+  version = SiteSettings.Version;
   title = SiteSettings.SiteName;
   
   constructor(){}
