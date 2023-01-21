@@ -1,7 +1,6 @@
     <div class="animate__animated animate__fadeIn" *ngIf="loadingOver">       
         <div [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}">  
-            <div class="tournament" *ngIf="isServerOn">
-                
+            <div class="tournament">
                 <!--OPTIMI-->
                 <div class="parent-container" *ngIf="isOptimi">
                     <div class="fight-box-container" *ngFor="let Meci of MeciuriOptimi;let i = index" [attr.data-index]="i">
@@ -9,8 +8,8 @@
                             <div class="game-box">          
                                 <div class="user-name">{{Meci.team1.numeJucator}}</div>                      
                                 <div class="image-box-fill">
-                                    <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="hasImage(Meci.team1.nume)">
-                                    <div *ngIf="hasImage(Meci.team1.nume) == false" 
+                                    <img  [src]="gameHolder.getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="gameHolder.hasImage(Meci.team1.nume)">
+                                    <div *ngIf="gameHolder.hasImage(Meci.team1.nume) == false" 
                                     style="text-size-adjust: auto; height: 100vh;   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team1.nume}}</div>                                                    
                                 </div>
                                 <div class="scor">Score : {{Meci.team1.scor}}</div> 
@@ -21,8 +20,8 @@
                             <div class="game-box">        
                                 <div class="user-name">{{Meci.team2.numeJucator}}</div>                        
                                 <div class="image-box-fill" >
-                                    <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="hasImage(Meci.team2.nume)">
-                                    <div *ngIf="hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
+                                    <img  [src]="gameHolder.getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="gameHolder.hasImage(Meci.team2.nume)">
+                                    <div *ngIf="gameHolder.hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
                                 </div>  
                                 <div class="scor">Score : {{Meci.team2.scor}}</div>                                              
                             </div>     
@@ -36,8 +35,8 @@
                             <div class="game-box">          
                                 <div class="user-name">{{Meci.team1.numeJucator}}</div>                      
                                 <div class="image-box-fill">
-                                    <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="hasImage(Meci.team1.nume)">
-                                    <div *ngIf="hasImage(Meci.team1.nume) == false" 
+                                    <img  [src]="gameHolder.getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="gameHolder.hasImage(Meci.team1.nume)">
+                                    <div *ngIf="gameHolder.hasImage(Meci.team1.nume) == false" 
                                     style="text-size-adjust: auto; height: 100vh;   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team1.nume}}</div>                                                    
                                 </div>
                                 <div class="scor">Score : {{Meci.team1.scor}}</div> 
@@ -48,8 +47,8 @@
                             <div class="game-box">        
                                 <div class="user-name">{{Meci.team2.numeJucator}}</div>                        
                                 <div class="image-box-fill" >
-                                    <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="hasImage(Meci.team2.nume)">
-                                    <div *ngIf="hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
+                                    <img  [src]="gameHolder.getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="gameHolder.hasImage(Meci.team2.nume)">
+                                    <div *ngIf="gameHolder.hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
                                 </div>  
                                 <div class="scor">Score : {{Meci.team2.scor}}</div>                                              
                             </div>     
@@ -64,8 +63,8 @@
                             <div class="game-box">          
                                 <div class="user-name">{{Meci.team1.numeJucator}}</div>                      
                                 <div class="image-box-fill">
-                                    <img  [src]="getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="hasImage(Meci.team1.nume)">
-                                    <div *ngIf="hasImage(Meci.team1.nume) == false" 
+                                    <img  [src]="gameHolder.getImage(Meci.team1.nume)" alt="{{Meci.team1.nume}}" *ngIf="gameHolder.hasImage(Meci.team1.nume)">
+                                    <div *ngIf="gameHolder.hasImage(Meci.team1.nume) == false" 
                                     style="text-size-adjust: auto; height: 100vh;   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team1.nume}}</div>                                                    
                                 </div>
                                 <div class="scor">Score : {{Meci.team1.scor}}</div> 
@@ -76,8 +75,8 @@
                             <div class="game-box">        
                                 <div class="user-name">{{Meci.team2.numeJucator}}</div>                        
                                 <div class="image-box-fill" >
-                                    <img  [src]="getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="hasImage(Meci.team2.nume)">
-                                    <div *ngIf="hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
+                                    <img  [src]="gameHolder.getImage(Meci.team2.nume)" alt="{{Meci.team2.nume}}" *ngIf="gameHolder.hasImage(Meci.team2.nume)">
+                                    <div *ngIf="gameHolder.hasImage(Meci.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{Meci.team2.nume}}</div>
                                 </div>  
                                 <div class="scor">Score : {{Meci.team2.scor}}</div>                                              
                             </div>     
@@ -92,8 +91,8 @@
                             <div class="game-box">          
                                 <div class="user-name">{{MeciFinal.team1.numeJucator}}</div>                      
                                 <div class="image-box-fill">
-                                    <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}" *ngIf="hasImage(MeciFinal.team1.nume)">
-                                    <div *ngIf="hasImage(MeciFinal.team1.nume) == false" 
+                                    <img  [src]="gameHolder.getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}" *ngIf="gameHolder.hasImage(MeciFinal.team1.nume)">
+                                    <div *ngIf="gameHolder.hasImage(MeciFinal.team1.nume) == false" 
                                     style="text-size-adjust: auto; height: 100vh;   background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team1.nume}}</div>                                                    
                                 </div>
                                 <div class="scor">Score : {{MeciFinal.team1.scor}}</div> 
@@ -104,8 +103,8 @@
                             <div class="game-box">        
                                 <div class="user-name">{{MeciFinal.team2.numeJucator}}</div>                        
                                 <div class="image-box-fill" >
-                                    <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}" *ngIf="hasImage(MeciFinal.team2.nume)">
-                                    <div *ngIf="hasImage(MeciFinal.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team2.nume}}</div>
+                                    <img  [src]="gameHolder.getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}" *ngIf="gameHolder.hasImage(MeciFinal.team2.nume)">
+                                    <div *ngIf="gameHolder.hasImage(MeciFinal.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team2.nume}}</div>
                                 </div>  
                                 <div class="scor">Score : {{MeciFinal.team2.scor}}</div>                                              
                             </div>     
@@ -120,16 +119,16 @@
                             <div class="game-box" *ngIf="MeciFinal.team1.hasWon">   
                                 <div class="user-name">{{MeciFinal.team1.numeJucator}}</div>                        
                                 <div class="image-box-fill" >
-                                    <img  [src]="getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}" *ngIf="hasImage(MeciFinal.team1.nume)">
-                                    <div *ngIf="hasImage(MeciFinal.team1.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team1.nume}}</div>
+                                    <img  [src]="gameHolder.getImage(MeciFinal.team1.nume)" alt="{{MeciFinal.team1.nume}}" *ngIf="gameHolder.hasImage(MeciFinal.team1.nume)">
+                                    <div *ngIf="gameHolder.hasImage(MeciFinal.team1.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team1.nume}}</div>
                                 </div>  
                                 <div class="scor">Score : {{MeciFinal.team1.scor}}</div> 
                             </div>
                             <div class="game-box" *ngIf="MeciFinal.team2.hasWon">  
                                 <div class="user-name">{{MeciFinal.team2.numeJucator}}</div>                        
                                 <div class="image-box-fill" >
-                                    <img  [src]="getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}" *ngIf="hasImage(MeciFinal.team2.nume)">
-                                    <div *ngIf="hasImage(MeciFinal.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team2.nume}}</div>
+                                    <img  [src]="gameHolder.getImage(MeciFinal.team2.nume)" alt="{{MeciFinal.team2.nume}}" *ngIf="gameHolder.hasImage(MeciFinal.team2.nume)">
+                                    <div *ngIf="gameHolder.hasImage(MeciFinal.team2.nume) == false" style="text-size-adjust: auto; height: 100vh;    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)); font-size: 5.5vw;">{{MeciFinal.team2.nume}}</div>
                                 </div>  
                                 <div class="scor">Score : {{MeciFinal.team2.scor}}</div> 
                             </div>

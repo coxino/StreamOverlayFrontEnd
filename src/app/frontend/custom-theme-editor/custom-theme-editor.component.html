@@ -1,94 +1,68 @@
-<div class="container">
-    <div class="row">        
-        <div class="col-sm">            
+  
+  <div class="custom-theme-container">
+    <div class="col-one">
+        <div class="label"> BackGroundColor
+            <input ejs-colorpicker type="color" (select)="select($event,'backgroundColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.backgroundColor" name="colorpicker"/>
+        </div>
+        <h3>Text Edit</h3>
+        <div class="label"> TextColor
+            <input ejs-colorpicker type="color" (select)="select($event,'textColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.textColor" name="colorpicker" />
+        </div>
+        <div class="label"> Text Size {{Theme.Options.textSize}}
+            <input type="range" min="0" max="100"  class="form-control" required  [(ngModel)]="Theme.Options.textSize"  />
+        </div>
+        <div class="label"> Text Size {{Theme.Options.textWeight}}
+            <input type="range" min="0" max="1000"  step="100" class="form-control" required  [(ngModel)]="Theme.Options.textWeight"  />
+        </div>
+        <h3>Borders and Icons</h3>
+        <div class="label"> Inside Borders Color
+            <input ejs-colorpicker type="color" (select)="select($event,'bordersColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.bordersColor" name="colorpicker" />
+        </div>
+        <div class="label"> Braket Back Color
+            <input ejs-colorpicker type="color" (select)="select($event,'bracketBackColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.bracketBackColor" name="colorpicker" />
+        </div>
+        <div class="label"> Icons Back Color
+            <input ejs-colorpicker type="color" (select)="select($event,'iconsBackColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.iconsBackColor" name="colorpicker" />
+        </div>
+        <div class="label"> Icons Fore Color
+            <input ejs-colorpicker type="color" (select)="select($event,'iconsForeColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.iconsForeColor" name="colorpicker" />
+        </div>
+        <h3>Outer Border</h3>
+        <div class="label"> Border Size : {{Theme.Options.borderSize}}
+            <input type="range" min="0" max="40" class="form-control"  required  [(ngModel)]="Theme.Options.borderSize" />
+        </div>
+        <div class="label"> Border Radius : {{Theme.Options.borderRadius}} <!-- todo add ngchanged --> 
+            <input type="range" min="0" max="40"  class="form-control" required  [(ngModel)]="Theme.Options.borderRadius"  />
+        </div> 
+        
+        <div class="row">
+            <div class="col">Animated Border</div>
+            <div class="col"><input type="checkbox" class="form-control"  [(ngModel)]="Theme.Options.animatedBorder" val/></div>
+        </div>
+        
+        
+        
+        <div class="label" *ngIf="!Theme.Options.animatedBorder"> BorderColor
+            <input ejs-colorpicker type="color" class="form-control" id="colorpicker" required [(value)]="Theme.Options.borderMainBorderColor" name="colorpicker"/>
+        </div>
+        <div class="label" *ngIf="Theme.Options.animatedBorder"> Border Color
             <hr>
-            <div class="label"> BackGroundColor
-                <input ejs-colorpicker type="color" (select)="select($event,'backgroundColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.backgroundColor" name="colorpicker"/>
-            </div>
-            <h3>TEXT EDIT</h3>
-            <div class="label"> TextColor
-                <input ejs-colorpicker type="color" (select)="select($event,'textColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.textColor" name="colorpicker" />
-            </div>
-            <div class="label"> Text Size {{Theme.Options.textSize}}
-                <input type="range" min="0" max="100"  class="form-control" required  [(ngModel)]="Theme.Options.textSize"  />
-            </div>
-            <div class="label"> Text Size {{Theme.Options.textWeight}}
-                <input type="range" min="0" max="1000"  step="100" class="form-control" required  [(ngModel)]="Theme.Options.textWeight"  />
-            </div>
-           
-            <!-- <div class="label"> Text Outline Size {{Theme.Options.textOutlineSize}}
-                <input type="range" min="0" max="20" step="0.02"  class="form-control" required  [(ngModel)]="Theme.Options.textOutlineSize"  />
-            </div>
-            <div class="label"> Text Outline Color
-                <input ejs-colorpicker type="color" (select)="select($event,'textOutlineColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.textOutlineColor" name="colorpicker" />
-            </div> -->
-
-            <h3>Borders and Icons</h3>
-            <div class="label"> Inside Borders Color
-                <input ejs-colorpicker type="color" (select)="select($event,'bordersColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.bordersColor" name="colorpicker" />
-            </div>
-            <div class="label"> Braket Back Color
-                <input ejs-colorpicker type="color" (select)="select($event,'bracketBackColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.bracketBackColor" name="colorpicker" />
-            </div>
-            <div class="label"> Icons Back Color
-                <input ejs-colorpicker type="color" (select)="select($event,'iconsBackColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.iconsBackColor" name="colorpicker" />
-            </div>
-            <div class="label"> Icons Fore Color
-                <input ejs-colorpicker type="color" (select)="select($event,'iconsForeColor')" class="form-control" id="colorpicker" required [(value)]="Theme.Colors.iconsForeColor" name="colorpicker" />
-            </div>
-
-
-            
-            <h3>Outer Border</h3>
-            <!-- <div class="label"> Gradient? color[] else is transparent etc
-                <input ejs-colorpicker type="color" (select)="select($event,'')" class="form-control" required (value)="Theme.Colors.backgroundColor" />
-            </div> -->
-            <div class="label"> Border Size : {{Theme.Options.borderSize}}
-                <input type="range" min="0" max="40" class="form-control"  required  [(ngModel)]="Theme.Options.borderSize" />
-            </div>
-            <div class="label"> Border Radius : {{Theme.Options.borderRadius}} <!-- todo add ngchanged --> 
-                <input type="range" min="0" max="40"  class="form-control" required  [(ngModel)]="Theme.Options.borderRadius"  />
-            </div> <h3>
-            <div class="label" style="height: 50px;background-color: aqua;">
-                Use Animated Border  <input type="checkbox" style="position: absolute; margin-top: -34px; height: 50px;background-color: aqua;" class="form-control"  [(ngModel)]="Theme.Options.animatedBorder"/>
-            </div></h3> 
-            
-            <div class="label" *ngIf="!Theme.Options.animatedBorder"> BorderColor
-                <input ejs-colorpicker type="color" class="form-control" id="colorpicker" required [(value)]="Theme.Options.borderMainBorderColor" name="colorpicker"/>
-            </div>
-            <div class="label" *ngIf="Theme.Options.animatedBorder"> Border Color
-                <hr>
-                <input ejs-colorpicker type="color" (select)="select($event,'color1')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color1" name="colorpicker"/>
-                <input ejs-colorpicker type="color" (select)="select($event,'color2')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color2" name="colorpicker"/>
-                <input ejs-colorpicker type="color" (select)="select($event,'color3')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color3" name="colorpicker"/>
-                <input ejs-colorpicker type="color" (select)="select($event,'color4')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color4" name="colorpicker"/>
-                <input ejs-colorpicker type="color" (select)="select($event,'color5')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color5" name="colorpicker"/>
-                <input ejs-colorpicker type="color" (select)="select($event,'color6')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color6" name="colorpicker"/>
-                <input ejs-colorpicker type="color" (select)="select($event,'color7')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color7" name="colorpicker"/>
-                <hr>
-            </div>
-            <input type="button" (click)="doChange()" value="Check" />
-            <input type="button" (click)="saveTheme()" value="Save" />
-        </div>  
-        <div class="col-sm" style="max-width: 500px !important;">  
-            <br>
-            <app-bonus-hunt></app-bonus-hunt>  
-            <br>
-            <app-tournament-livebattle></app-tournament-livebattle>
-        </div>      
+            <input ejs-colorpicker type="color" (select)="select($event,'color1')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color1" name="colorpicker"/>
+            <input ejs-colorpicker type="color" (select)="select($event,'color2')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color2" name="colorpicker"/>
+            <input ejs-colorpicker type="color" (select)="select($event,'color3')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color3" name="colorpicker"/>
+            <input ejs-colorpicker type="color" (select)="select($event,'color4')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color4" name="colorpicker"/>
+            <input ejs-colorpicker type="color" (select)="select($event,'color5')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color5" name="colorpicker"/>
+            <input ejs-colorpicker type="color" (select)="select($event,'color6')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color6" name="colorpicker"/>
+            <input ejs-colorpicker type="color" (select)="select($event,'color7')" class="form-control" id="colorpicker" required [(value)]="Theme.Options.animatedBorderColors.color7" name="colorpicker"/>
+            <hr>
+        </div>
+        <button class="btn btn-light" type="button" (click)="doChange()"> VIEW </button>
+        <button class="btn btn-light" type="button" (click)="saveTheme()"> SAVE </button>        
+    </div>
+    <div class="col-two">
+        THE PAGE YOU SEE IS JUST AN EXAMPLE TO HELP YOU VISUALIZE THE COMPONENT
+        IT MAY APEAR OFFCENTER OR DIFFRENT THAN REAL ONE - will be fixed on next updates
+        <app-bonus-hunt></app-bonus-hunt>
     </div>
 </div>
-<br>
-<!-- <div class="options d-flex">
-    <div class="col-1">
-        <div class="label"> Style 1
-            <button class="btn btn-primary" required>Create New</button>
-        </div>
-    </div>
-    <div class="col-1">
-        <div class="label"> Style 1
-            <button class="btn btn-primary" required>Create New</button>
-        </div>
-    </div>
-</div> -->
-<app-tournament-livebattle-next></app-tournament-livebattle-next>
+

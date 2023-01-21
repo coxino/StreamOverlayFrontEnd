@@ -1,27 +1,20 @@
 <div class="container-fluid fixed">   
-    <h3> Depuneri si Retrageri</h3>
+    <h3> DEPOSITS/WITHDRAWS </h3>
     <div class="row">
         <div class="col-2">
-            <div class="label"> Depunere
-                <input class="input-group-text" (keydown.enter)="Update()" type="number" class="form-control"required [(ngModel)]="Tranzactii.depunere"/>
+            <div class="label"> Deposit
+                <input class="input-group-text" (keydown.enter)="UpdateTranzactii()" type="number" class="form-control"required [(ngModel)]="Tranzactii.depunere"/>
             </div>
         </div>
         <div class="col-2" style="display:inline-flex">
-            <div class="label" > Retragere  
-                <input class="input-group-text" (keydown.enter)="Update()" type="number" class="form-control"required [(ngModel)]="Tranzactii.retragere">
+            <div class="label" > Withdraw  
+                <input class="input-group-text" (keydown.enter)="UpdateTranzactii()" type="number" class="form-control"required [(ngModel)]="Tranzactii.retragere">
             </div>          
         </div>
-    </div>
-    <h3> Hot Words</h3>
-    <h6>Enable this and betting feature?  Contact coxinotv@gmail.com</h6>
-    <div class="row">        
-        <div class="col-2">
-            <div class="label"> Reset
-                <button class="input-group-text" (click)="ResetHotWords()" type="number" class="form-control">Reset</button>
+        <div class="col-4">
+            <div class="label"> Game Name
+                <input id="typeahead-basic" (keydown.enter)="UpdateInPlay()" class="input-group-text" type="text" class="form-control"required [(ngModel)]="LiveGame.game.name" [ngbTypeahead]="search"/>
             </div>
-        </div>       
+        </div>
     </div>
 </div>
-
-<img src="/assets/img/hotwords.png">
-<img src="/assets/img/betting.png">

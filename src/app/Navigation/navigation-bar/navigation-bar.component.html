@@ -1,0 +1,16 @@
+<div class="navigation">
+    <div class="space"></div>
+    <a class="brand" href="#">     
+        <img src="assets/img/Landing/logo.png"> {{title}}
+    </a>
+    <div class="space"></div>
+    <div class="navigation-links">        
+        <button class="btn btn-light" [routerLink]="['/editor/']" *ngIf="isLogedIn"><i class="fa fa-sliders" aria-hidden="true">Dashboard</i></button>
+        <button class="btn btn-success" (click)="login()" *ngIf="!isLogedIn"><i class="fa fa-sign-in" aria-hidden="true">Login</i></button>
+        <button class="btn btn-danger" (click)="logout()" *ngIf="isLogedIn"><i class="fa fa-sign-out" aria-hidden="true">LogOut</i></button>
+    </div>     
+</div>
+
+<div class="login-box" *ngIf="showLoginBox">    
+    <app-login class="login"></app-login>    
+</div>

@@ -1,52 +1,17 @@
-    <div class="container-fluid" style="margin-top: 150px;">
-        <div class="row">
-            <div class="col-12">
-                <div class="label"> 
-                    <h1>Transactions View</h1>
-                    <h3>Link : http://streamag.westeurope.cloudapp.azure.com:8080/tranzactii?username={{username}}&disableNav=true</h3>
-                    <h3>Width : 500</h3>
-                    <h3>Height : 80</h3>
-                </div>                
-            </div>
-            <div class="col-12">
-                <div class="label">
-                    <h1>Bonus Hunt View</h1>
-                    <h3>Link : http://streamag.westeurope.cloudapp.azure.com:8080/bh?username={{username}}&disableNav=true</h3>
-                    <h3>Width : 500</h3>
-                    <h3>Height : 320</h3>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="label">
-                    <h1>Bonus Hunt View(Only Bonuses)</h1>
-                    <h3>Link : http://streamag.westeurope.cloudapp.azure.com:8080/innerbh?username={{username}}&disableNav=true</h3>
-                    <h3>Width : 500</h3>
-                    <h3>Height : 320</h3>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="label"> 
-                    <h1>In Play</h1>
-                    <h3>Link : http://streamag.westeurope.cloudapp.azure.com:8080/in-play?username={{username}}&disableNav=true</h3>
-                    <h3>Width : 350</h3>
-                    <h3>Height : 240</h3>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="label">
-                    <h1>Tournament Current Fight</h1>
-                    <h3>Link : http://streamag.westeurope.cloudapp.azure.com:8080/bf?username={{username}}&disableNav=true</h3>
-                    <h3>Width : 500</h3>
-                    <h3>Height : 280 (+30 foreach buy if buys count > 3)</h3>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="label">
-                    <h1>Tournament Bracket</h1>
-                    <h3>Link : http://streamag.westeurope.cloudapp.azure.com:8080/bfnext?username={{username}}&disableNav=true</h3>
-                    <h3>Width : 500</h3>
-                    <h3>Height : 730</h3>
-                </div>
-            </div>
+    <div class="container-grid">
+        <div [ngClass]="option.displaypos" *ngFor="let option of websites">
+            <div class="">
+                <h1><i class="fa fa-cogs" aria-hidden="true"></i>{{option.nume}}</h1>               
+                <h4>
+                    <span>
+                        {{website}}/{{option.path}}?username={{username}}
+                        <button class="btn btn-primary" (click)="copy(website+'/'+option.path+'?username='+username)" type="button"><i class="fa fa-copy"></i></button>
+                    </span>
+                </h4>
+                <h4><i class="fa fa-info"></i> Info: {{option.description}}</h4>
+                <h3>Width : {{option.width}} <button class="btn btn-primary" (click)="copy(option.width)" type="button"><i class="fa fa-copy"></i></button></h3>
+                <h3>Height :  {{option.height}} <button class="btn btn-primary" (click)="copy(option.height)" type="button"><i class="fa fa-copy"></i></button></h3>           
+            </div>             
+            <iframe frameBorder="0" [style]="{'width': (option.width+10)+'px', 'height':(option.height+10)+'px'}" [src]="website + '/' + option.path + '?username=' + username | safe"></iframe>         
         </div>
     </div>

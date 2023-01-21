@@ -1,0 +1,30 @@
+.container-grid
+{
+    text-align: left;
+    display: grid;
+    gap: 20px;
+}
+
+.two-cols
+{
+    border-radius: 20px;
+    background: linear-gradient(90deg, #FFAF87 0%, #4CE0B3 50%, #FFAF87 100%);   
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 20px;    
+    :last-child{
+        margin: auto;
+    }
+}
+
+.two-rows
+{   
+    border-radius: 20px;
+    background: linear-gradient(90deg, #FFAF87 0%, #4CE0B3 50%, #FFAF87 100%);   
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 20px;  
+    :last-child{
+        margin: auto;
+    }
+}

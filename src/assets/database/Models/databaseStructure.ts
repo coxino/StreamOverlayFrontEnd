@@ -66,4 +66,5 @@ export class Settings{
         //public static readonly GetGiveawayCount: string = "hotwords/lmausers";
         public static readonly GetBalantaFinalaCount: string = "hotwords/bfusers";
         public static readonly Qualifier: string = "Bonushunt/qualifiers";
+        static SiteName: "Casino Streaming Companion";
 }

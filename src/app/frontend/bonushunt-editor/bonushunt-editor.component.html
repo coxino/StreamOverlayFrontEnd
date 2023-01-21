@@ -1,7 +1,5 @@
 
-<div class="container-fluid fixed">
-    <button class="btn btn-primary" (click)="newBonusHunt()">Save and Create New Bonus Hunt</button>
-    
+<div class="container fixed">    
     <h3> Current Bonus Hunt</h3>
     <div class="row">
         <div class="col-2">
@@ -20,25 +18,14 @@
         <div class="col-2">
             <div class="label"> Hunt Value                
                 <input class="input-group-text" type="number" class="form-control"required [(ngModel)]="bonusHunt.huntValue">
-                
             </div>
         </div>
         <div class="col-2">
             <div class="label"> Hunt Payed
                 <input class="input-group-text" readonly type="number" class="form-control" required value="{{bonusHunt.bonuses | sum:'payed'}}"/>
             </div>
-        </div>
-        <div class="col-1">
-            <div class="label"> Scroll Bonuses<br>
-                <div class="toggle-switch" [class.toggle-on]="bonusHunt.isScrolling" [class.toggle-off]="!bonusHunt.isScrolling" (click)="toogleScroll()">
-                    <div class="toggle-wrap">
-                        <div class="toggle-bg-on"></div>
-                    </div>
-                    <div class="toggle-handler"></div>
-                </div>{{bonusHunt.isScrolling}}
-            </div>
-        </div>
-        <div class="col-1">
+        </div>       
+        <div class="col-2">
             <div class="label"> Hunting In Progress<br>
                 <div class="toggle-switch" [class.toggle-on]="bonusHunt.isHunting" [class.toggle-off]="!bonusHunt.isHunting" (click)="toogleIsHunting()">
                     <div class="toggle-wrap">
@@ -57,20 +44,7 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-2" style="margin-left: 120px;">
-        <div class="label"> Max Bet                
-            <input class="input-group-text" type="number" class="form-control"required [(ngModel)]="maxBet">
-            
-        </div>
-    </div>          
-    <div class="col-2" style="margin-left: 40px;">
-        <div class="label"> Create Betting From BH Value
-            <button class="btn btn-primary" (click)="BetFromBH()" required>Start Betting</button>
-        </div>
-    </div>
-</div>
-<div class="" style="margin-top: 10px;">
+<div class="container" style="margin-top: 10px;">
     <h4>Bonuses</h4>
     <div class="row" *ngFor="let bonus of bonusHunt.bonuses;let i = index" [attr.data-index]="i">
         <div class="col">
@@ -85,12 +59,12 @@
         </div>
         <div class="col">
             <div class="label">  Payed
-                <input class="input-group-text"  (keydown.enter)="SaveBonusHunt()" type="number" (input)="payChanged(bonus)" class="form-control" cha required [(ngModel)]="bonus.payed"/>
+                <input class="input-group-text"  (keydown.enter)="SaveBonusHunt()" type="number" class="form-control" cha required [(ngModel)]="bonus.payed"/>
             </div>
         </div>
         <div class="col">
             <div class="label">  Multi
-                <input class="input-group-text" readonly type="number" class="form-control" required  [(ngModel)]="bonus.multiplier"/>
+                <input class="input-group-text" readonly type="number" class="form-control" required  [(ngModel)]="bonus.payed / bonus.betSize"/>
             </div>
         </div>      
         <div class="label" >Delete<br>  
@@ -98,3 +72,25 @@
         </div>  
     </div>
 </div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <div class="label">            
+                VIP SETTINGS
+            </div>
+        </div> 
+        <div class="col-3">
+            <div class="label"> Max Bet                
+                <input class="input-group-text" type="number" class="form-control"required [(ngModel)]="maxBet">
+                
+            </div>
+        </div>          
+        <div class="col-3">
+            <div class="label"> Create Betting From BH Value
+                <button class="btn btn-primary" (click)="BetFromBH()" required>Start Betting</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>

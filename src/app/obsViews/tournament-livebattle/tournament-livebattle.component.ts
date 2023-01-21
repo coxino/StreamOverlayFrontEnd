@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { SiteSettings } from 'src/assets/SiteSettings';
+import { ThemedComponent } from 'src/Factory/ThemedComponent';
 import { LocalGame } from 'src/models/local-game';
+import { GameHolderService } from 'src/services/game-holder.service';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 
 @Component({
@@ -11,53 +13,27 @@ import { IntervalRequestService } from 'src/services/interval-request.service';
   templateUrl: './tournament-livebattle.component.html',
   styleUrls: ['./tournament-livebattle.component.scss']
 })
-export class TournamentLivebattleComponent implements OnInit {
-  fightDetails: any;
-  loadingOver = false;
-  timer$ = interval(1000);
-  IsAnimatedBorder = false;
-  currencyCode = SiteSettings.currency;
-  games:LocalGame[] = [];
-  themeWrapper = document.querySelector('html');  
 
-  constructor(private intervalRequest: IntervalRequestService) {
-    this.intervalRequest.readLocaFile().subscribe((data:any)=>{
-      this.games = data;
-    });
-    this.intervalRequest.apiGetRequest(Settings.BonusBuyTournamentLiveFight).subscribe((data:any) =>{         
+export class TournamentLivebattleComponent extends ThemedComponent implements OnInit {
+  fightDetails: any;
+  currencyCode = SiteSettings.currency;
+  
+  serverRequest = () => {
+    this.intervalRequest.apiGetRequest(Settings.BonusBuyTournamentLiveFight).subscribe((data:any) =>{
+      if(this.fightDetails?.team1?.payout?.length ?? 0 != data.team1.payout.length)
+      {
+        this.themeWrapper.style.setProperty('--repeatAmount',data.team1.payout.length);
+      }
       this.fightDetails = data;
-      if(this.loadingOver == false)
-      this.loadingOver = true;
-      this.themeWrapper.style.setProperty('--repeatAmount',this.fightDetails.team1.payout.length);
-    }); 
-    this.timer$.subscribe(()=>{
-      this.intervalRequest.apiGetRequest(Settings.BonusBuyTournamentLiveFight).subscribe((data:any) =>{         
-        if(this.fightDetails.team1.payout.length != data.team1.payout.length)
-        {
-          window.location.reload();
-        }
-        this.fightDetails = data;
-        if(this.loadingOver == false)
-        this.loadingOver = true;
-      });  
     });  
-    this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
-      this.IsAnimatedBorder = data.Options.animatedBorder;    
-    });
+  }
+  
+  constructor(intervalRequest: IntervalRequestService,public gameHolder:GameHolderService) {
+    super(intervalRequest);    
+    this.themeWrapper.style.setProperty('--fit-content' ,'fit-content');
   }
   
   ngOnInit(): void { 
     
-  }
-  
-  getImage(name:string)
-  {
-    var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
-    if(toReturn == "")
-    {
-      toReturn = "/assets/img/image-not-found.jpg";
-    }
-    return  toReturn;
-  }
-  
+  }  
 }

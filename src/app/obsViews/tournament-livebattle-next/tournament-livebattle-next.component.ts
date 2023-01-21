@@ -1,7 +1,9 @@
   import { Component, OnInit } from '@angular/core';
   import { interval } from 'rxjs';
   import { Settings } from 'src/assets/database/Models/databaseStructure';
+  import { ThemedComponent } from 'src/Factory/ThemedComponent';
   import { LocalGame } from 'src/models/local-game';
+  import { GameHolderService } from 'src/services/game-holder.service';
   import { IntervalRequestService } from 'src/services/interval-request.service';
   
   @Component({
@@ -9,26 +11,22 @@
     templateUrl: './tournament-livebattle-next.component.html',
     styleUrls: ['./tournament-livebattle-next.component.scss']
   })
-  export class TournamentLivebattleNextComponent implements OnInit {
+  export class TournamentLivebattleNextComponent extends ThemedComponent implements OnInit {
     bracket: any;
     MeciFinal:any;
     MeciuriOptimi:any[]=[];
     MeciuriSferturi:any[] = [];
     MeciuriSemiFinale:any[] = [];
     semiFinalists:any[] = [];
-    IsAnimatedBorder = false;
-    loadingOver = false;
     
     _isQuarterVisible = false;
     _isSemisVisible = false;
     
-    timer$ = interval(1200);
     games:LocalGame[] = [];
     isOptimi = false;
     
-    serverRequest(){
+    serverRequest = () => {
       this.intervalRequest.apiGetRequest(Settings.BonusBuyTournament).subscribe((data:any) =>{ 
-        this.isServerOn = true;
         if(data != null || data != undefined)
         {        
           this.bracket = data;                       
@@ -42,13 +40,11 @@
           this.isFinal = data.isFinal;
         }
         else{
-          this.isServerOn = false;
           this.isQuarterVisible = false;
           this.isSemisVisible = false;
           this.isFinal = false;
         }
       },()=>{
-        this.isServerOn = false;
         this.isQuarterVisible = false;
         this.isSemisVisible = false;
         this.isFinal = false;
@@ -62,104 +58,23 @@
       return this._isSemisVisible;
     }  
     
-    constructor(private intervalRequest: IntervalRequestService) {
-      this.intervalRequest.readLocaFile().subscribe((data:any)=>{
-        this.games = data;
-      });
-      this.serverRequest();	      
-      this.timer$.subscribe(()=>{			
-        this.serverRequest(); 
-        if(this.loadingOver == false)
-        {
-          this.loadingOver = true;
-        }	
-      });  
-      this.intervalRequest.apiGetRequest(Settings.CustomTheme).subscribe((data:any) =>{	
-        this.IsAnimatedBorder = data.Options.animatedBorder;    
-      }); 
+    constructor(intervalRequest: IntervalRequestService,public gameHolder:GameHolderService) {
+      super(intervalRequest);
+      this.themeWrapper.style.setProperty('--fit-content' ,'fit-content');    
     }
     
-    hasPlayedarr:boolean[] = new Array();
-    hasPlayed(no:number)
-    {
-      var toreturn = this.hasPlayedarr[no];
-      this.hasPlayedarr[no] = true;
-      return toreturn;
-    }
-    
+    //TODO:SCOR GRAPH
     scorTotal()
-    {
+    {      
       var toReturn = 0;
-      this.MeciuriSferturi.forEach(element => {      
-        toReturn += element.team1.scor;      
-        toReturn += element.team2.scor;      
-      });
+      toReturn += this.MeciuriOptimi.reduce((a,b)=> a+b.team1.scor + b.team2.scor);
+      toReturn += this.MeciuriSferturi.reduce((a,b)=> a+b.team1.scor + b.team2.scor);
+      toReturn += this.MeciuriSemiFinale.reduce((a,b)=> a+b.team1.scor + b.team2.scor);
       
-      this.MeciuriSemiFinale.forEach(element => {      
-        toReturn += element.team1.scor;      
-        toReturn += element.team2.scor;      
-      });      
       toReturn += this.MeciFinal.team1.scor;      
       toReturn += this.MeciFinal.team2.scor;
       
       return (toReturn ?? 0).toFixed(2);
-    }
-    
-    scorTotalMeci(name:string)
-    {
-      var toReturn = 0;
-      this.MeciuriSferturi.forEach(element => {
-        if(element.team1.nume == name)
-        {
-          toReturn += element.team1.scor;
-        }
-        if(element.team2.nume == name)
-        {
-          toReturn += element.team2.scor;
-        }
-      });
-      
-      this.MeciuriSemiFinale.forEach(element => {
-        if(element.team1.nume == name)
-        {
-          toReturn += element.team1.scor;
-        }
-        if(element.team2.nume == name)
-        {
-          toReturn += element.team2.scor;
-        }
-      });
-      
-      
-      if(this.MeciFinal.team1.nume == name)
-      {
-        toReturn += this.MeciFinal.team1.scor;
-      }
-      if(this.MeciFinal.team2.nume == name)
-      {
-        toReturn += this.MeciFinal.team2.scor;
-      }
-      return (toReturn ?? 0).toFixed(2);
-    }
-
-    hasImage(name:string)
-    {
-      var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
-      if(toReturn == "")
-      {
-        return false;
-      }
-      return true;
-    }
-    
-    getImage(name:string)
-    {
-      var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
-      if(toReturn == "")
-      {
-        toReturn = "/assets/img/image-not-found.jpg";
-      }
-      return  toReturn;
     }
     
     ngOnInit(): void {
@@ -169,7 +84,6 @@
     isQuarter = false;
     isSemis = false;
     isFinal = false;
-    isServerOn = false;
     
     set isQuarterVisible(value:boolean){
       if(this.isQuarterVisible != value)
