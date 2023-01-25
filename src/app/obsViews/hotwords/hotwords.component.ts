@@ -23,7 +23,7 @@ export class HotwordsComponent extends ThemedComponent implements OnInit {
 	serverRequest = ()=>{
 		this.intervalRequest.apiGetRequest(Settings.HotWords).subscribe((data:any) =>{	
 			this.hotWords = data;		
-		})
+		},()=>{},()=>{this.loadingOver = true;})
 	}
 
 	ngOnInit(): void {		

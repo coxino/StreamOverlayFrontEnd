@@ -1,0 +1,39 @@
+<h1> - {{userdataService.ViewerLoginProfile.StreamerID}} - Loyalty Page</h1>
+<div class="navbar-streamer">
+    <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.ViewerLoginProfile.StreamerID+'/shop']"><i class="fa fa-shopping-cart" aria-hidden="true"> </i> Shop</button>
+    <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.ViewerLoginProfile.StreamerID+'/history']"><i class="fa fa-bar-chart" aria-hidden="true"></i> History</button>
+    <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.ViewerLoginProfile.StreamerID+'/giveaways']"><i class="fa fa-ticket" aria-hidden="true"></i> Giveaways</button>
+    <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.ViewerLoginProfile.StreamerID+'/casinos']"><i class="fa fa-gift" aria-hidden="true"></i> Casinos </button>
+</div>
+<div class="heroSection">
+    <div class="login-section" *ngIf="!IsLoggedin()">
+        <button class="btn-google" (click)="loginWithGoogle()"></button>
+        <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="twitchLoginCallback($event)" label="Login Twitch 🚀"></twitch-login> 
+    </div>
+    <div class="userProfile" *ngIf="IsLoggedin()">
+        <div class="profile-header">
+            <div class="cover-photo"></div>
+            <div class="profile-details">
+                <img  [src]="ProfilePicture()" class="profile-picture">
+                <div class="grid-details">
+                    <h3>{{userdataService.ViewerLoginProfile.UserName}}</h3> 
+                    <span> {{userdataService.StreamerCoinsName}} : {{userdataService.ViewerCoinsOnCurrentShop}}</span>
+                    <button (click)="refreshPoints()" class="refresh-points">                        
+                        <i [ngClass]="{'spin':refresh}" class="fa fa-refresh" aria-hidden="true"></i>
+                    </button>
+                    <p *ngIf="!userdataService.ViewerLoginProfile.IsMember">Viewer</p>
+                    <p *ngIf="userdataService.ViewerLoginProfile.IsMember">Subscriber</p>
+                    <div class="logout">
+                        <button (click)="userdataService.logOut()" class="small-button"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</button>
+                        <button (click)="userdataService.logOut()" class="small-button"><i class="fa fa-sign-out fa-6" aria-hidden="true"></i>Log Out</button>
+                    </div>                   
+                </div>
+                
+            </div>           
+        </div>        
+    </div>
+</div>
+
+<div class="">
+    <router-outlet></router-outlet>
+</div>

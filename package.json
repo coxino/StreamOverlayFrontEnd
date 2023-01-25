@@ -22,6 +22,7 @@
     "@nth-cloud/ng-toggle": "^8.0.2",
     "@syncfusion/ej2-angular-inputs": "^19.2.60",
     "angular-bootstrap-toggle": "^0.4.2",
+    "angularx-social-login": "^4.1.0",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-autocomplete": "^2.3.7",
     "file-saver": "^2.0.5",
@@ -35,6 +36,7 @@
     "rxjs": "~6.6.0",
     "toastr": "^2.1.4",
     "tslib": "^2.3.0",
+    "twitch-login-sdk": "^2.0.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

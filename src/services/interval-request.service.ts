@@ -6,6 +6,7 @@ import { BonusHunt } from 'src/assets/database/Models/BonusHunt';
 import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { LigaUser } from 'src/assets/database/Models/LigaUser';
 import { Meci } from 'src/assets/database/Models/Meci';
+import { ShopItem } from 'src/assets/database/Models/ShopItem';
 import { TournamentModel } from 'src/assets/database/Models/Tournament';
 import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
 import { ClasamentPacaniada } from 'src/assets/database/Models/UserPacaniada';
@@ -21,7 +22,7 @@ export class IntervalRequestService {
     var coxiUrl = "https://coxino.go.ro:5000/api/getAllGames";
     return this.httpClient.get(coxiUrl,{headers:headers});    
   }
-  saveShopItems(shopItems: string) {
+  saveShopItems(shopItems: ShopItem[]) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
     return this.httpClient.post<any>(Settings.ApiServer + Settings.SaveShop,shopItems,{headers});
@@ -213,7 +214,8 @@ export class IntervalRequestService {
 
   apiGetShopRequest()
   {
-    return this.httpClient.get(Settings.ApiServer + Settings.ShopItems);
+    var username = this.cookieService.get("username")
+    return this.httpClient.get(Settings.ApiServer + Settings.ShopItems + username);
   }
   
   apiSetCustomTheme(url:string,_customTheme:string)
@@ -235,5 +237,9 @@ export class IntervalRequestService {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};  
     return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveBonusHuntUpdate,bonusHunt,{headers});
+  }
+
+  CheckIfStreamerExists(streamerID:string){
+    return this.httpClient.get(Settings.ApiServer + Settings.StreamerPage + streamerID);
   }
 }

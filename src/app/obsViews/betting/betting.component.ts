@@ -102,6 +102,6 @@ export class BettingComponent extends ThemedComponent implements OnInit {
       }
       this.totalVoturi = this.beturi.options.map(x=>x.voturi).reduce((x,y)=> x+y);
       this.totalFise = this.beturi.options.map(x=>x.totalPariat).reduce((x,y)=> x+y);     
-    });
+    },()=>{},()=>{this.loadingOver = true;});
   }
 }

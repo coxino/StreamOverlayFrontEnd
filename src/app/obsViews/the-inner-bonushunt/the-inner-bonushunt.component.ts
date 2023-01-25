@@ -23,10 +23,11 @@ export class TheInnerBonushuntComponent extends ThemedComponent implements OnIni
       this.bonusHunt = data;				
       this.bonusList = this.bonusHunt.bonuses;
       this.sliceIndex = this.bonusHunt.sliceIndex;
-      this.isScrolling = this.bonusList.length > 7 && data.isScrolling;
+      this.isScrolling = this.bonusList.length > 6 && data.isScrolling;
             
-      this.themeWrapper.style.setProperty('--animation-timer', (1.5*this.bonusList.length)+"s");       
-    });
+      this.themeWrapper.style.setProperty('--animation-timer', (1.5*this.bonusList.length)+"s");    
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden';   
+    },()=>{},()=>{this.loadingOver = true;});
   }
   
   constructor(intervalRequest: IntervalRequestService) {    

@@ -42,7 +42,7 @@ export class VarianteComponent extends ThemedComponent implements OnInit {
       this.variantB = b / tot * 100;
       this.variantC = c / tot * 100;
       this.variantD = d / tot * 100;
-    })
+    },()=>{},()=>{this.loadingOver = true;})
   }
   
   ResetHotWords(){    

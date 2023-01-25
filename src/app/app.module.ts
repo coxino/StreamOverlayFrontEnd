@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +63,9 @@ import { EditorHomePageComponent } from './editor/editor-home-page/editor-home-p
 import { ToastrModule } from 'ngx-toastr';
 import { TournamentTooltipComponent } from './tooltips/tournament-tooltip/tournament-tooltip.component';
 import { BonushuntTooltipComponent } from './tooltips/bonushunt-tooltip/bonushunt-tooltip.component';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { TwitchLoginSdkModule } from 'twitch-login-sdk';
+import { UserdataService } from './streamer/userdata.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +118,8 @@ import { BonushuntTooltipComponent } from './tooltips/bonushunt-tooltip/bonushun
     TournamentTooltipComponent,
     BonushuntTooltipComponent,
     ],
-  imports: [
+  imports: [    
+    SocialLoginModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -128,9 +133,29 @@ import { BonushuntTooltipComponent } from './tooltips/bonushunt-tooltip/bonushun
     NgxWheelModule,
     EditorRoutingModule,
     ObsviewsRoutingModule,
-    ToastrModule.forRoot()
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    TwitchLoginSdkModule.forRoot({ 
+      twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈
+      //redirect:  "https://coxino.ro/shop" //<***** YOUR CALLBACK REDIRECT 👈
+      redirect:  "http://localhost:4200/streamer/coxino/" //<***** YOUR CALLBACK REDIRECT 👈
+  })
   ],
-  providers: [IntervalRequestService],
+  providers: [IntervalRequestService,UserdataService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {  
+        autoLogin: false,      
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,          
+            provider: new GoogleLoginProvider(
+              '245884125377-c6kqdrfpr602abhaa8m3g3cqeluctpod.apps.googleusercontent.com', { scope: 'https://www.googleapis.com/auth/youtube.readonly', }
+            )         
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

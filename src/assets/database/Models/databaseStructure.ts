@@ -60,9 +60,11 @@ export class Settings{
         public static readonly GiveAwaysSetWinner: string = "giveaway/setWinner";
         public static readonly SaveShop: string = "shop/saveshop"
         
-        public static readonly ShopItems: string = "shop?username=coxino&viewerId=";
-
-
+        public static readonly ShopItems: string = "shop?username=";
+        
+        public static readonly StreamerPage: string =  "streamer/";
+        
+        
         //public static readonly GetGiveawayCount: string = "hotwords/lmausers";
         public static readonly GetBalantaFinalaCount: string = "hotwords/bfusers";
         public static readonly Qualifier: string = "Bonushunt/qualifiers";

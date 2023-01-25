@@ -35,7 +35,7 @@ export class NewInplayComponent extends ThemedComponent implements OnInit {
     this.topMultyPay = this.rounds.find(x=>x.multiplier == this.topMultyX).payAmount;
     
     this.avgWins = this.rounds.reduce((a,b)=> a+b.payAmount,0) / this.rounds.length;  
-  });
+  },()=>{},()=>{this.loadingOver = true;});
 }
   
   constructor(intervalRequest: IntervalRequestService,public gameHolderService:GameHolderService) {

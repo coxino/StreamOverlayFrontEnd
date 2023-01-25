@@ -8,6 +8,8 @@ import { ConfigureObsComponent } from './frontend/configure-obs/configure-obs.co
 import { CustomThemeEditorComponent } from './frontend/custom-theme-editor/custom-theme-editor.component';
 import { GiveawayComponent } from './frontend/giveaway/giveaway.component';
 import { TournamentComponent } from './frontend/tournament/tournament.component';
+import { TranzactiiComponent } from './frontend/tranzactii/tranzactii.component';
+import { ShopEditorComponent } from './shop-editor/shop-editor.component';
 
 export const editorRoutes: Routes = [
   { 
@@ -22,6 +24,8 @@ export const editorRoutes: Routes = [
       { path: 'tournament', component: TournamentComponent },
       { path: 'givewayTimer', component: GiveawayComponent },
       { path: 'bettingedit', component: BettingEditComponent },
+      { path: 'general', component: TranzactiiComponent },  
+      { path: 'shop', component:ShopEditorComponent },
     ]
   }];
   

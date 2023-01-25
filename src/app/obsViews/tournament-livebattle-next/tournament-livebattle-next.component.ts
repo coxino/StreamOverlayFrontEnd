@@ -50,7 +50,7 @@
         this.isFinal = false;
       },
       ()=>{
-        
+        this.loadingOver = true;
       });
     }
     

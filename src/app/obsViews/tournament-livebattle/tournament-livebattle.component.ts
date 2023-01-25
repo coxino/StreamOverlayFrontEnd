@@ -25,7 +25,7 @@ export class TournamentLivebattleComponent extends ThemedComponent implements On
         this.themeWrapper.style.setProperty('--repeatAmount',data.team1.payout.length);
       }
       this.fightDetails = data;
-    });  
+    },()=>{},()=>{this.loadingOver = true;});  
   }
   
   constructor(intervalRequest: IntervalRequestService,public gameHolder:GameHolderService) {

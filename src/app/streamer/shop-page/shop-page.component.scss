@@ -1,0 +1,144 @@
+.shop
+{
+    background-color: rgb(255, 255, 255);    
+    color: white;
+}
+
+.shop-items
+{
+    padding: 1rem;
+    background: linear-gradient(90deg, #030912 0%, #0F3540 100%);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;    
+}
+
+.shop-item
+{
+    display: grid;  
+    //grid-template-rows: 0.5fr 1fr 0.25fr;  
+    padding: 1rem;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 1rem;
+    background-color:#2A2F40;
+    
+    .title
+    {  
+        color: #FE6D39;
+        border-radius: 1rem;
+        //background-color: rgb(113, 238, 255);
+        font-size: x-large;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.description-card
+{ 
+    align-self: start;
+    padding: 0.2rem;
+    font-size: 1rem;
+    min-height: 4rem;
+}
+
+.inline-label
+{
+    display: flex;
+    .bold-value{
+        font-weight: bold;
+    }
+}
+
+.image-card {   
+    align-self: end; 
+    img{
+        
+        border-radius: 1rem;
+        width: 100%;
+    }
+}
+
+.green
+{
+    padding: 2px;
+    background-color: green;
+}
+
+.shop-button{
+    align-self: end;
+    padding: 1rem;
+    button{
+        width: 100%;
+    }
+}
+
+.tags
+{
+    display: flex;
+    padding: 1%;
+    font-size: small;
+    gap: 2%;
+    flex-wrap: wrap;
+    flex: 1;
+    min-height: 2rem;
+}
+
+.tag
+{
+   // border: 1px solid rebeccapurple;
+    border-radius: 8px;
+    padding: 4px;
+    color: white;
+     
+}
+
+.green
+{ background-color: green;}
+
+.pink
+{background-color: magenta;}
+
+.blue
+{background-color: blue;}
+
+.black
+{background-color: #030912;}
+
+.white
+{background-color: rgb(255, 255, 255); color: #030912;}
+
+.small
+{color: #000000; font-size: 0.7rem; background-color: white;}
+
+.price{
+    background-color: #36363600;
+    // /color: #0164f8;    
+}
+
+@media screen and (max-width: 1600px){
+    .shop-items
+    {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 1300px){
+    .shop-items
+    {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 980px){
+    .shop-items
+    {       
+        grid-template-columns: repeat(2,1fr);        
+    }    
+}
+
+@media screen and (max-width: 540px){
+    .shop-items
+    {       
+        grid-template-columns: repeat(1,1fr);        
+    }    
+}

@@ -1,0 +1,34 @@
+<div class="shop">
+  <div class="shop-items">
+    <div class="shop-item" *ngFor="let item of ShopItems;let i = index" [attr.data-index]="i">
+      <div class="header">               
+        <div class="tags">                    
+          <b class="tag green" *ngIf="item.pret <= 0"> FREE </b>
+          <b class="tag black"> Stock {{item.stoc}} </b> 
+          <b class="tag blue" *ngIf="item.itemType == 1"> Mistery Box </b>
+          <b class="tag pink" *ngIf="item.onlyMembers"> Subscribers Only </b>
+          <b class="tag white" *ngIf="!item.onlyMembers"> Viewers </b>          
+        </div>
+        <div class="title">{{item.nume}}</div>         
+        <div class="tags">   
+          <b >Drops: </b>                 
+          <b class="tag small" *ngIf="item.itemType == 0"> {{item.nume}} </b>                 
+          <b class="tag small" *ngFor="let drop of item.drops"> {{drop.name}} </b>         
+        </div>
+      </div>      
+      <div class="image-card">
+        <img [src]="item.imagine">
+      </div>
+      <div class="description-card"> 
+        {{item.descriere}}       
+      </div>
+      <div class="shop-button">
+        <button (click)="buyItem(item)" class="btn btn-light" [disabled]="item.cooldownValue > 0 || item.stoc <= 0" [ngClass]="{'disabled':item.cooldownValue > 0}">
+          <div class="bold-value" *ngIf="item.pret > 0 && item.cooldownValue <= 0">  Buy Now   - {{item.pret }} Coins  </div>
+          <b class="bold-value" *ngIf="item.cooldownValue > 0 && userdataService.IsLoggedin()"> Cooldown: {{item.optionalData}} </b>
+          <div class="bold-value green" *ngIf="item.pret <= 0 && item.cooldownValue <= 0"> Open Free </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

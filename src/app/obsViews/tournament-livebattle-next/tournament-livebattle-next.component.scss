@@ -8,7 +8,7 @@
 .fight-box-container
 {
     display: grid;
-    grid-template-columns: 1fr 30px 1fr;
+    grid-template-columns: 130px 30px 130px;
     text-align: center;
     align-items: center;
 }
@@ -74,4 +74,15 @@
 {       
     text-align: center;
     align-self: center;
+}
+
+.notKnown
+{  
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(18, 11, 51, 0.055) 50%, rgba(18, 11, 51, 0.425) 100%);   
+    font-size:18px;
+    overflow: hidden;
+    height: 100px;
+    border-radius: 1rem;
+    border-radius: 10%;
+    text-align:justify-all;
 }

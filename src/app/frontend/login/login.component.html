@@ -1,4 +1,4 @@
-<div *ngIf="!isLogedIn">
+<div class="login-box" *ngIf="!isLogedIn">
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -13,28 +13,12 @@
                 <input type="password"  (keydown.enter)="doAction()" class="form-control" required [(ngModel)]="password"/>
             </div>
         </div>
-    </div>
-    <div class="row" *ngIf="IsRegister">
-        <div class="col-sm">
-            <div class="label"> Email
-                <input type="email"  (keydown.enter)="doAction()" class="form-control" required [(ngModel)]="email" [email]="true">
-            </div>
-        </div>
-    </div>
+    </div>    
     <div class="row" *ngIf="!IsRegister">
         <div class="col-sm">
             <div class="label"> Submit
                 <input type="button" class="form-control" required (click)="login()" value="Login"/>
-            </div>
-            Or <a href="#" (click)="IsRegister = !IsRegister">Register</a> 
-        </div>
-    </div>
-    <div class="row" *ngIf="IsRegister">
-        <div class="col-sm">
-            <div class="label"> Submit
-                <input type="button" class="form-control" required (click)="register()" value="Register"/>
-            </div>
-            Or <a href="#" (click)="IsRegister = !IsRegister"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a> 
+            </div>           
         </div>
     </div>
     <h5 style="color:tomato;text-align: center;" *ngIf="emailFail" >{{alertText}}</h5>
