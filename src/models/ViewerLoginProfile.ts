@@ -5,7 +5,9 @@ export class ViewerLoginProfile{
     AuthPlatform:AuthPlatformEnum = AuthPlatformEnum.Disconected;
     UserName:string = null;
     IsMember:boolean = false;
+    IsVerified = false;
     Email:string = null;
+    HasNotifications = false;
     constructor(){}
 }
 

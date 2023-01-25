@@ -16,6 +16,11 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  apiLogUserIn(authToken: string) {
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/setyoutubetoken?token=${_token}&youtubetoken=${authToken}`;
+    return this.httpClient.get(link);
+  }
   GetAllGames() {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};

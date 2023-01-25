@@ -8,10 +8,11 @@ import { StreamerComponent } from './streamer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { StreamerpagerequestsService } from 'src/services/streamerpagerequests.service';
 import { ShopPageComponent } from './shop-page/shop-page.component';
-import  {TwitchLoginSdkModule} from "twitch-login-sdk";
+import { TwitchLoginSdkModule } from "twitch-login-sdk";
 import { UserdataService } from './userdata.service';
 import { GiveawaysComponent } from './giveaways/giveaways.component';
 import { CasinosComponent } from './casinos/casinos.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { CasinosComponent } from './casinos/casinos.component';
     CommonModule,
     StreamerRoutingModule, 
     BrowserModule,
-    TwitchLoginSdkModule    
+    TwitchLoginSdkModule,
+    FormsModule,
+    
   ],
   providers: [StreamerpagerequestsService, UserdataService],
   bootstrap: [StreamerModule]

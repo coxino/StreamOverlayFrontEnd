@@ -3,6 +3,7 @@
         <button class="btn btn-primary"> Edit Items </button>
         <button class="btn btn-primary"> Redeems</button>
         <button class="btn btn-primary" (click)="viewMyPage()"> View My Personal Page</button>        
+        <button class="btn btn-primary" (click)="setYoutoubeToken()"> Set Youtoube Token </button>        
     </div>
     <div class="edit-shop-item">
         <div class="item-edit" *ngFor="let item of ShopItems;let i = index" [attr.data-index]="i">            

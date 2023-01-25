@@ -8,7 +8,7 @@ import { Settings } from 'src/assets/database/Models/databaseStructure';
   providedIn: 'root'
 })
 export class StreamerpagerequestsService {
- 
+
   constructor(private httpClient: HttpClient,private cookieService: CookieService,private activatedRoute: ActivatedRoute) {}
   
   apiGetShopRequest(streamerID:string,localUserToken:string)
@@ -31,5 +31,25 @@ export class StreamerpagerequestsService {
     var link = Settings.ApiServer +  `streamerpage/viwerprofile?localUserToken=${localUserToken}&streamerID=${streamerID}`;
     return this.httpClient.get(link);
   }
-  
+
+  apiGetSettingsForStreamerPage(localUserToken:string,streamerId:string){
+    var link = Settings.ApiServer +  `streamersettings/getstreamerviewerformsetting?localUserToken=${localUserToken}&streamerId=${streamerId}`;
+    return this.httpClient.get(link);
+  }
+
+  apiSaveUserSettingsForStreamerPage(localUserToken:string,streamerId:string,viewerForm:any[]){
+    var link = Settings.ApiServer +  `streamersettings/saveusersettingsforstreamerpage?localUserToken=${localUserToken}&streamerId=${streamerId}`;
+    //var headers = {localUserToken:localUserToken,streamerId:streamerId};
+    return this.httpClient.post<any>(link,viewerForm);
+  }
+
+  apiGetUserSettingsForStreamerPage(localUserToken:string,streamerId:string){
+    var link = Settings.ApiServer +  `streamersettings/getusersettingsforstreamerpage?localUserToken=${localUserToken}&streamerId=${streamerId}`;
+    return this.httpClient.get(link);
+  }
+
+  apiVerifyUserAccount(userID: string,redirect:string) {    
+    var link = Settings.ApiServer + `shop/genvalcode?userID=${userID}&redirect=${redirect}`;
+    return this.httpClient.get(link);
+  }
 }

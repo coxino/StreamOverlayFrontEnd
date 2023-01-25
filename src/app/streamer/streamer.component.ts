@@ -13,16 +13,26 @@ import { UserdataService } from './userdata.service';
 export class StreamerComponent extends StreamerPageBase implements OnInit, AfterViewInit {
   
   refresh = false;
-
+  IsModalOpen: boolean = false;
+  
   constructor(requestService:StreamerpagerequestsService,
     routeService:ActivatedRoute,
     toastrService:ToastrService,
     userdataService:UserdataService) {
     super(requestService,routeService,toastrService,userdataService);
-      
   }
   ngAfterViewInit(): void {
     this.refreshPoints();
+  }
+
+  OpenSettings()
+  {
+   this.IsModalOpen = !this.IsModalOpen;
+  }
+
+  SaveSettings()
+  {
+    this.userdataService.SaveUserSettingsForCurrentPage();
   }
   
   ngOnInit(): void {

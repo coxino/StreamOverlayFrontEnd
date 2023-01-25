@@ -1,5 +1,6 @@
 .btn-google
 {
+    margin-top: 8px;
     border: 0px;
     height: 40px;
     width: 150px;   
@@ -29,22 +30,34 @@
     gap: 1rem;
 }
 
+.login-buttons
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 150px; 
+    background-size: cover; 
+    color: black;
+    justify-content:space-around;  
+    align-items: center;   
+}
+
 .profile-header{
     display: flex;
     width: 100%;
     height: 300px;
     background-image: url(https://cdn.discordapp.com/attachments/1008571223543922809/1067652158616514580/Zeeekk_futuristic_casino_interior_neon_lights_shadows_hard_smok_8810390f-7672-4a44-b043-8d984647b109.png);
-   //background-image: url(https://cdn.discordapp.com/attachments/1008571223543922809/1067648049268138084/fahim_space_nature_217da7f6-24a4-4662-9aa3-46bda26711cd.png);
-   background-attachment: fixed; 
-   background-position: 50% 98%;
-   background-size: cover; 
+    //background-image: url(https://cdn.discordapp.com/attachments/1008571223543922809/1067648049268138084/fahim_space_nature_217da7f6-24a4-4662-9aa3-46bda26711cd.png);
+    background-attachment: fixed; 
+    background-position: 50% 98%;
+    background-size: cover; 
     color: black;
     justify-content: flex-end;
 }
 
 .profile-details
 {
-    padding: 1rem;
+    margin: 1rem;   
     border-radius: 1rem;
     background-color: #ffffff;
     display: flex;
@@ -55,19 +68,45 @@
 
 .grid-details
 {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 1rem;
+    text-align: center; 
+}
+
+.center-div
+{   
+    display: flex;
     text-align: center;
+    button
+    {        
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.fa-refresh
+{
+   font-size: 1.2rem;
+   cursor: pointer;
 }
 
 .profile-picture {
+    margin-left: 1rem;
     border-radius: 1rem;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     align-self: center;
+    border-right: 1px solid gray;
 }
 
 .logout
-{     
+{    
+    width: 100%; 
     display: flex;
     justify-content: space-between;
 }
@@ -100,26 +139,67 @@
     gap: 1rem;
 }
 
-.refresh-points
-{ 
-    text-align: center;
-    padding: 8px;
-    border: 0;
-    background-color: transparent;
-    font-size: 1.2rem;
-    &:hover
-    { 
-        cursor: pointer;
-        color: #0e2c53;  
-    }
-    &:focus{ outline: none; border: 0; }
+.settings-modal
+{
+    z-index: 100;
+    background-color: #0e2c539a;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;    
     
-    &:active { outline: none; border: 0; }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options-page
+{       
+    border-radius: 1rem;
+    z-index: 105;
+    padding: 6rem;
+    background-color: white;
+}
+
+.option{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+}
+.option-nume
+{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.options-page >*{    
+    flex: 1;
+}
+
+.option-value
+{
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 12px;
+font-size: 1.0rem;
+}
+
+.options-page-buttons{    
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.options-page{
+    padding: 1rem;
 }
 
 .spin{
     animation-name: spin;
-    animation-duration: 100ms;
+    animation-duration: 2000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
