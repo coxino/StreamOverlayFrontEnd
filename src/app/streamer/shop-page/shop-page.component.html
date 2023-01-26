@@ -6,7 +6,7 @@
           <b class="tag green" *ngIf="item.pret <= 0"> FREE </b>
           <b class="tag black"> Stock {{item.stoc}} </b> 
           <b class="tag blue" *ngIf="item.itemType == 1"> Mistery Box </b>
-          <b class="tag pink" *ngIf="item.onlyMembers"> Subscribers Only </b>
+          <b (click)="MemberLink()" class="tag pink" *ngIf="item.onlyMembers">Subscribers Only</b>
           <b class="tag white" *ngIf="!item.onlyMembers"> Viewers </b>          
         </div>
         <div class="title">{{item.nume}}</div>         

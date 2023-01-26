@@ -66,6 +66,7 @@ import { BonushuntTooltipComponent } from './tooltips/bonushunt-tooltip/bonushun
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { TwitchLoginSdkModule } from 'twitch-login-sdk';
 import { UserdataService } from './streamer/userdata.service';
+import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +118,7 @@ import { UserdataService } from './streamer/userdata.service';
     EditorHomePageComponent,
     TournamentTooltipComponent,
     BonushuntTooltipComponent,
+    RedeemspageComponent,
     ],
   imports: [    
     SocialLoginModule,

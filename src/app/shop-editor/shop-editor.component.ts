@@ -110,5 +110,10 @@ export class ShopEditorComponent extends EditorBase implements OnInit {
       var username = this.cookieService.get('username');
       this.router.navigate(['/streamer/' +username+ ''], { queryParams: { } });
     }
+
+    viewRedeems()
+    {
+      
+    }
   }
   

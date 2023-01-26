@@ -28,7 +28,7 @@ export class ShopPageComponent extends StreamerPageBase implements OnInit {
       super(requestService,routeService,toastrService,userdataService);
       
       this.ShopItems.push(new ShopItem());
-      this.requestService.apiGetShopRequest(userdataService.ViewerLoginProfile.StreamerID,userdataService.ViewerLoginProfile.LocalUserToken).subscribe((data:any)=>{
+      this.requestService.apiGetShopRequest(userdataService.StreamerProfilePage.StreamerID,userdataService.ViewerLoginProfile.LocalUserToken).subscribe((data:any)=>{
         this.ShopItems = data;
         var cds = this.ShopItems.filter(x=>x.cooldownValue > 0);
         cds.forEach(element => {element.cooldownValue = element.cooldownValue * 60});
@@ -50,11 +50,12 @@ export class ShopPageComponent extends StreamerPageBase implements OnInit {
     
     buyItem(item:ShopItem)
     {
-      this.requestService.apiBuyShopItem(item.itemID,this.userdataService.ViewerLoginProfile.StreamerID,this.userdataService.ViewerLoginProfile.LocalUserToken).subscribe((data:any)=>{
+      this.requestService.apiBuyShopItem(item.itemID,this.userdataService.StreamerProfilePage.StreamerID,this.userdataService.ViewerLoginProfile.LocalUserToken).subscribe((data:any)=>{
         if(data.status == true)
         {
           item.cooldownValue = item.cooldown * 60;
           item.stoc -=1;
+          this.userdataService.GetUserCoins(()=>{});
           this.toastrService.success(data.reason,'You bought : ' + item.nume);
         }
         else
@@ -67,5 +68,8 @@ export class ShopPageComponent extends StreamerPageBase implements OnInit {
     ngOnInit(): void {
     }
     
+    MemberLink(){
+      window.open(`https://www.youtube.com/channel/${this.userdataService.StreamerProfilePage.ChannelId}/join`, '_blank').focus();
+    }
   }
   

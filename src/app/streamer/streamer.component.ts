@@ -10,9 +10,8 @@ import { UserdataService } from './userdata.service';
   templateUrl: './streamer.component.html',
   styleUrls: ['./streamer.component.scss']
 })
-export class StreamerComponent extends StreamerPageBase implements OnInit, AfterViewInit {
+export class StreamerComponent extends StreamerPageBase implements OnInit, AfterViewInit {  
   
-  refresh = false;
   IsModalOpen: boolean = false;
   
   constructor(requestService:StreamerpagerequestsService,
@@ -22,7 +21,8 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
     super(requestService,routeService,toastrService,userdataService);
   }
   ngAfterViewInit(): void {
-    this.refreshPoints();
+    this.refreshPoints();    
+    this.userdataService.GetSetreamerSettingsForCurrentPage(); 
   }
 
   OpenSettings()
@@ -33,6 +33,7 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
   SaveSettings()
   {
     this.userdataService.SaveUserSettingsForCurrentPage();
+    this.OpenSettings();
   }
   
   ngOnInit(): void {
@@ -64,6 +65,11 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
       this.toastrService.success('Up to Date');      
       this.refresh = false;
     });
+    
+  }
+
+  StreamerProfilePicture(){
+    return this.userdataService.StreamerProfilePage.ProfilePicture;
   }
   
 }
