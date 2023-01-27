@@ -16,6 +16,21 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  getAllRedeems() {
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/getredeems?token=${_token}`;
+    return this.httpClient.get(link);
+  }
+  getStreamerSettings(){
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/getstreamersettings?token=${_token}`;
+    return this.httpClient.get(link);
+  }
+  setStreamerSettings(_settings:any){
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/savestreamersettings?token=${_token}`;
+    return this.httpClient.post<any>(link,_settings);
+  }
   apiLogUserIn(authToken: string) {
     var _token = this.cookieService.get("token") ?? "";
     var link = Settings.ApiServer +  `streamersettings/setyoutubetoken?token=${_token}&youtubetoken=${authToken}`;
@@ -24,7 +39,7 @@ export class IntervalRequestService {
   GetAllGames() {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    var coxiUrl = "https://coxino.go.ro:5000/api/getAllGames";
+    var coxiUrl = Settings.ApiServer + "getAllGames";
     return this.httpClient.get(coxiUrl,{headers:headers});    
   }
   saveShopItems(shopItems: ShopItem[]) {

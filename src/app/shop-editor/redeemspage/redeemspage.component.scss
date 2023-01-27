@@ -1,0 +1,22 @@
+.redeemPage
+{
+    padding: 1rem;
+}
+
+.row
+{
+    border-bottom: 2px solid rebeccapurple;
+}
+
+.header
+{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: 1;
+    gap: 1rem;
+
+    button:active
+    {
+        background-color: rebeccapurple;
+    }
+}

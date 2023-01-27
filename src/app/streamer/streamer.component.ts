@@ -19,8 +19,9 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
     toastrService:ToastrService,
     userdataService:UserdataService) {
     super(requestService,routeService,toastrService,userdataService);
+    
   }
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void {    
     this.refreshPoints();    
     this.userdataService.GetSetreamerSettingsForCurrentPage(); 
   }
@@ -37,6 +38,7 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
   }
   
   ngOnInit(): void {
+    
   }
   
   IsLoggedin()
@@ -60,16 +62,16 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
 
   refreshPoints()
   {
+    console.log(JSON.stringify(this.userdataService.StreamerProfilePage.streamerID));
     this.refresh = true;
     this.userdataService.GetUserCoins(()=>{
       this.toastrService.success('Up to Date');      
       this.refresh = false;
     });
-    
   }
 
   StreamerProfilePicture(){
-    return this.userdataService.StreamerProfilePage.ProfilePicture;
+    return this.userdataService.StreamerProfilePage.Infos.profilePicture;
   }
   
 }

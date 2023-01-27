@@ -16,8 +16,8 @@
                         <img  [src]="StreamerProfilePicture()" class="profile-picture-streamer">  
                     </div>
                     <div class="grid-details green-50o"> 
-                        <h3> <b>{{userdataService.StreamerProfilePage.ChannelName}}</b> </h3> 
-                        <p> <b>{{userdataService.StreamerProfilePage.LoyaltySettings.rewardPerMinute | currency:'':userdataService.StreamerProfilePage.LoyaltySettings.loyaltyName:'.0'}}</b> <b></b> / 10 minutes</p>
+                        <h3> <b>{{userdataService.StreamerProfilePage.Infos.channelName}}</b> </h3> 
+                        <p> <b>{{userdataService.StreamerProfilePage.Infos.loyaltySettings.rewardPerMinute | currency:'':userdataService.StreamerProfilePage.Infos.loyaltySettings.loyaltyName:'.0'}}</b> <b></b> / 10 minutes</p>
                     </div>
                 </div>
                 <div class="profile-details">
@@ -28,7 +28,7 @@
                         <p *ngIf="userdataService.ViewerLoginProfile.IsMember">Subscriber</p>  
                         <div class="inline">
                             <i class="fa fa-refresh" (click)="refreshPoints()" [ngClass]="{'spin':refresh}" aria-hidden="true"></i> 
-                            {{userdataService.ViewerCoinsOnCurrentShop | currency:'':userdataService.StreamerProfilePage.LoyaltySettings.loyaltyName:'.0'}}
+                            {{userdataService.ViewerCoinsOnCurrentShop | currency:'':userdataService.StreamerProfilePage.Infos.loyaltySettings.loyaltyName:'.0'}}
                         </div>       
                         <button *ngIf="!userdataService.ViewerLoginProfile.IsVerified"
                         class="btn btn-danger"
@@ -67,10 +67,10 @@
         
     </div>
     <div class="navbar-streamer">
-        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.StreamerID+'/shop']"><i class="fa fa-shopping-cart" aria-hidden="true"> </i> Shop</button>
-        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.StreamerID+'/history']"><i class="fa fa-bar-chart" aria-hidden="true"></i> History</button>
-        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.StreamerID+'/giveaways']"><i class="fa fa-ticket" aria-hidden="true"></i> Giveaways</button>
-        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.StreamerID+'/casinos']"><i class="fa fa-gift" aria-hidden="true"></i> Casinos </button>
+        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/shop']"><i class="fa fa-shopping-cart" aria-hidden="true"> </i> Shop</button>
+        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/history']"><i class="fa fa-bar-chart" aria-hidden="true"></i> History</button>
+        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/giveaways']"><i class="fa fa-ticket" aria-hidden="true"></i> Giveaways</button>
+        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/casinos']"><i class="fa fa-gift" aria-hidden="true"></i> Casinos </button>
     </div>
     <div class="">
         <router-outlet></router-outlet>

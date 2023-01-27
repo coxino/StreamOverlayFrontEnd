@@ -10,6 +10,7 @@ import { GiveawayComponent } from './frontend/giveaway/giveaway.component';
 import { TournamentComponent } from './frontend/tournament/tournament.component';
 import { TranzactiiComponent } from './frontend/tranzactii/tranzactii.component';
 import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.component';
+import { SettingsPageComponent } from './shop-editor/settings-page/settings-page.component';
 import { ShopEditorComponent } from './shop-editor/shop-editor.component';
 
 export const editorRoutes: Routes = [
@@ -28,6 +29,7 @@ export const editorRoutes: Routes = [
       { path: 'general', component: TranzactiiComponent },  
       { path: 'shop', component:ShopEditorComponent },
       { path: 'redeems', component:RedeemspageComponent },
+      { path: 'settings', component:SettingsPageComponent },
     ]
   }];
   

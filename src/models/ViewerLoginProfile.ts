@@ -16,20 +16,31 @@ export enum AuthPlatformEnum{
     Twitch
 }
 
-export class StreamerProfilePage{
-    //Configurable
-    ChannelId:string = null;
-    ChannelName:string = null;    
-    ProfilePicture:string = null;
-    ShopSettings: any[] = [];
+export class StreamerProfilePage{    
     //Internal
-    StreamerID:string = null;
-    BackgroundImage: string;
-    LoyaltySettings:LoyaltySettings = new LoyaltySettings();
+    streamerID:string = null;
+    Infos: Info = new Info();
     constructor(){}
 }
 
 export class LoyaltySettings{
     loyaltyName: "COX"
     rewardPerMinute: 5
+}
+
+export class RequestFromViewerForm{
+    key:string;
+    value:string;
+    reason:string;    
+}
+
+export class Info
+{
+    //Configurable
+    channelId:string = null;
+    channelName:string = null;    
+    profilePicture:string = null;    
+    backgroundImage: string;    
+    loyaltySettings:LoyaltySettings = new LoyaltySettings();
+    shopSettings: RequestFromViewerForm[] = [];
 }

@@ -1,8 +1,7 @@
 export class Settings{
         
-        
-        public static readonly ApiServer = "https://coxino.go.ro:5000/api/";
-        // public static readonly ApiServer = "http://streamag.westeurope.cloudapp.azure.com:5000/api/";
+        //public static readonly ApiServer = "https://coxino.go.ro:5000/api/";
+        public static readonly ApiServer = "https://coxino.go.ro:8080/api/";
         public static readonly LoginUrl = "user/login";
         public static readonly RegisterUser = "user/register";
         // public static readonly ApiServer = "";

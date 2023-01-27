@@ -53,22 +53,17 @@ export class UserdataService {
     }
     
     GetSetreamerSettingsForCurrentPage() {
-      this.requestService.apiGetSettingsForStreamerPage(this.ViewerLoginProfile.LocalUserToken, this.StreamerProfilePage.StreamerID).subscribe((data:any)=>{
-        this.StreamerProfilePage.ShopSettings = data.streamerSettings.shopSettings;
-        this.StreamerProfilePage.ChannelId = data.streamerSettings.channelId;
-        this.StreamerProfilePage.ProfilePicture = data.streamerSettings.profilePicture;
-        this.StreamerProfilePage.ChannelName = data.streamerSettings.channelName;
-        this.StreamerProfilePage.BackgroundImage = data.streamerSettings.backgroundImage;
-        this.StreamerProfilePage.LoyaltySettings = data.streamerSettings.loyaltySettings;
+      this.requestService.apiGetSettingsForStreamerPage(this.ViewerLoginProfile.LocalUserToken, this.StreamerProfilePage.streamerID).subscribe((data:any)=>{
+        this.StreamerProfilePage.Infos = data.streamerSettings;
         this.IsValidStreamer = true;
         this.GetUserSettingsForCurrentPage();
       });
     }
     
     private GetUserSettingsForCurrentPage(){
-      this.requestService.apiGetUserSettingsForStreamerPage(this.ViewerLoginProfile.LocalUserToken, this.StreamerProfilePage.StreamerID).subscribe((data:any)=>{        
+      this.requestService.apiGetUserSettingsForStreamerPage(this.ViewerLoginProfile.LocalUserToken, this.StreamerProfilePage.streamerID).subscribe((data:any)=>{        
         this.SettingsOfThisPage = data.form ?? [];
-        var arr1 = [...this.StreamerProfilePage.ShopSettings];
+        var arr1 = [...this.StreamerProfilePage.Infos.shopSettings];
         arr1.forEach(element => {
           var obj = element;
           obj.value = this.SettingsOfThisPage?.find(x=>x.key == element.key)?.value ?? ""; 
@@ -81,7 +76,7 @@ export class UserdataService {
     }
     
     SaveUserSettingsForCurrentPage(){
-      this.requestService.apiSaveUserSettingsForStreamerPage(this.ViewerLoginProfile.LocalUserToken, this.StreamerProfilePage.StreamerID,this.SettingsOfThisPage).subscribe((data:any)=>{
+      this.requestService.apiSaveUserSettingsForStreamerPage(this.ViewerLoginProfile.LocalUserToken, this.StreamerProfilePage.streamerID,this.SettingsOfThisPage).subscribe((data:any)=>{
         this.toastrService.success("Information Sent");
         this.ViewerLoginProfile.HasNotifications =  this.SettingsOfThisPage?.filter(x=>x?.value == null || x.value?.length == 0).length > 0;
       });
@@ -119,7 +114,7 @@ export class UserdataService {
     GetUserCoins(Callback:Function,CallbackError:Function = null,CallbackComplete:Function = null)
     {
       if(!this.IsLoggedin()){ Callback(); return;}
-      this.requestService.apiGetViewerCoins(this.ViewerLoginProfile.LocalUserToken,this.StreamerProfilePage.StreamerID).subscribe((data:any)=>{
+      this.requestService.apiGetViewerCoins(this.ViewerLoginProfile.LocalUserToken,this.StreamerProfilePage.streamerID).subscribe((data:any)=>{
         this.ViewerCoinsOnCurrentShop = data.coins;
         this.ViewerLoginProfile.IsMember = data.isMember;
         this.ViewerLoginProfile.Email = data.email;

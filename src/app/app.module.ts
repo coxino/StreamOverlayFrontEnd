@@ -67,6 +67,7 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 import { TwitchLoginSdkModule } from 'twitch-login-sdk';
 import { UserdataService } from './streamer/userdata.service';
 import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.component';
+import { SettingsPageComponent } from './shop-editor/settings-page/settings-page.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.comp
     TournamentTooltipComponent,
     BonushuntTooltipComponent,
     RedeemspageComponent,
+    SettingsPageComponent,
     ],
   imports: [    
     SocialLoginModule,

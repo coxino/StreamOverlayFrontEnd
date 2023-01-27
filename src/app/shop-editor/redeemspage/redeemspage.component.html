@@ -1,1 +1,28 @@
-<p>redeemspage works!</p>
+<div class="header">
+    <div class="label"  *ngFor="let ft of filters"> {{ft}}
+        <input type="checkbox" (click)="enableDisable(ft)" class="btn btn-light" value="" checked>
+    </div>
+   
+</div>
+
+<div class="redeemPage">
+    <div class="row">
+        <div class="col">Time</div>
+        <div class="col">Winner Name</div>
+        <div class="col">Shop Item</div>
+        <div class="col">Has Won</div>
+        <div class="col">User Settings</div>
+    </div>
+    <div class="row" *ngFor="let item of redeems">  
+        <div *ngIf="!item.hide" class="col">{{item.timeOfWin ?? 0}}</div>      
+        <div *ngIf="!item.hide" class="col">{{item.winnerName}}</div>
+        <div *ngIf="!item.hide" class="col">{{item.shopItem.nume}}</div>
+        <div *ngIf="!item.hide" class="col">{{item.shopItem.optionalData ?? item.shopItem.nume}}</div>
+        <div *ngIf="!item.hide" class="col">  
+            <div class="" *ngFor="let set of item.viewerSettings">
+                {{set.key}}: {{set.value}}
+            </div>
+        </div>    
+    </div>
+</div>
+
