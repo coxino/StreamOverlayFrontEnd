@@ -239,3 +239,33 @@ font-size: 1.0rem;
         transform:rotate(360deg);
     }
 }
+
+@media screen and (max-width: 540px){
+    
+    .profile-details{
+        min-width: 80%;
+        word-wrap:break-word;
+        width: 100%;
+    }
+
+    .profile-header{
+        padding: .1rem;
+    }
+
+    .grid-details
+    {
+
+        h3{
+            width: 100%;
+            //background-color: #0e2c53;            
+        }
+    }
+    
+    .navbar-streamer
+    {
+        max-width: 100%;
+        > * {
+            padding: 4px;
+        }
+    }
+}
