@@ -16,6 +16,12 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  apiTwitchLogUserIn(_TwitchToken: any, id: any) {
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/settwitchtoken?token=${_token}&twitchtoken=${_TwitchToken}&twitchid=${id}`;
+    return this.httpClient.get(link);
+ 
+  }
   getAllRedeems() {
     var _token = this.cookieService.get("token") ?? "";
     var link = Settings.ApiServer +  `streamersettings/getredeems?token=${_token}`;

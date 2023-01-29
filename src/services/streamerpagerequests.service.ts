@@ -22,8 +22,13 @@ export class StreamerpagerequestsService {
     return this.httpClient.get(link);
   }
 
-  apiLogUserIn(googleToken:string, googleName :string = "", googleEmail = ""){
+  apiLogYoutubeUserIn(googleToken:string, googleName :string = "", googleEmail = ""){
     var link = Settings.ApiServer +  `streamerpage/viwerloginYoutube?googleToken=${googleToken}&googleName=${googleName}&googleEmail=${googleEmail}`;
+    return this.httpClient.get(link);
+  }
+
+  apiLogTwitchUserIn(twitchToken:string, twitchName :string, twitchId:string,twitchEmail:string){
+    var link = Settings.ApiServer +  `streamerpage/viwerloginTwitch?twitchToken=${twitchToken}&twitchName=${twitchName}&twitchId=${twitchId}&twitchEmail=${twitchEmail}`;
     return this.httpClient.get(link);
   }
 

@@ -15,15 +15,15 @@ export class UserdataService {
   public StreamerProfilePage:StreamerProfilePage = new StreamerProfilePage();
   public ViewerLoginProfile:ViewerLoginProfile = new ViewerLoginProfile();
   public ViewerCoinsOnCurrentShop = 0;
-
+  
   IsValidStreamer:boolean = false;
-
+  
   private userGoogleProfile:SocialUser;
-  private userTwitchProfile:any;
+  public userTwitchProfile:any;
   StreamerCoinsName: string = 'Coins';
   
   SettingsOfThisPage:any[] = [];
-
+  
   constructor(private requestService:StreamerpagerequestsService,
     private socialAuthService: SocialAuthService,
     private toastrService:ToastrService,
@@ -38,7 +38,7 @@ export class UserdataService {
       
       this.socialAuthService.authState.subscribe((_user) => {
         this.userGoogleProfile = _user;
-        requestService.apiLogUserIn(_user.authToken, this.userGoogleProfile.lastName + ' ' + this.userGoogleProfile.firstName, this.userGoogleProfile.email).subscribe((data:any)=>{
+        requestService.apiLogYoutubeUserIn(_user.authToken, this.userGoogleProfile.lastName + ' ' + this.userGoogleProfile.firstName, this.userGoogleProfile.email).subscribe((data:any)=>{
           this.ViewerLoginProfile.LocalUserToken = data.token,
           this.ViewerLoginProfile.ProfilePicture = data.profilePicture;
           this.ViewerLoginProfile.AuthPlatform = AuthPlatformEnum.Youtube;
@@ -95,10 +95,19 @@ export class UserdataService {
     /**Twitch Callback Data **/
     public twitchLoginCallback = ($event: any) =>  {
       this.userTwitchProfile = $event;
-      // this.requestService.apiLogUserIn(this.userTwitchProfile.login,"twitch").subscribe((response:any)=>{          
-      //   // this.LocalUserTokenSubject$.next(response.token); 
-      //   this.ViewerLoginProfile.AuthPlatform = AuthPlatformEnum.Twitch;        
-      // });
+      console.log("CHECK MEMEBER");
+      this.ViewerLoginProfile.AuthPlatform = AuthPlatformEnum.Twitch;     
+      this.requestService.apiLogTwitchUserIn(this.userTwitchProfile.token,this.userTwitchProfile.login,this.userTwitchProfile.id,this.userTwitchProfile.email).subscribe((response:any)=>{          
+        if(response.success == true){
+          this.ViewerLoginProfile.AuthPlatform = AuthPlatformEnum.Twitch;   
+          this.ViewerLoginProfile.LocalUserToken = response.token,
+          this.ViewerLoginProfile.ProfilePicture = this.userTwitchProfile.profile_image_url;
+          this.ViewerLoginProfile.UserName = this.userTwitchProfile.display_name;
+          this.ViewerLoginProfile.Email = this.userTwitchProfile.email;
+          this.cookieService.putObject('viwer-profile', this.ViewerLoginProfile);
+          window.location.reload();    
+        }
+      });
     };
     
     loginWithGoogle(): void {
@@ -120,7 +129,7 @@ export class UserdataService {
         this.ViewerLoginProfile.Email = data.email;
         this.ViewerLoginProfile.UserName = data.name;
         this.ViewerLoginProfile.IsVerified = data.isVerified;        
-        Callback();
+        Callback();        
       },()=>{
         if(CallbackError)
         CallbackError();

@@ -66,7 +66,7 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
     this.refresh = true;
     this.userdataService.GetUserCoins(()=>{
       this.toastrService.success('Up to Date');      
-      this.refresh = false;
+      this.refresh = false;      
     });
   }
 

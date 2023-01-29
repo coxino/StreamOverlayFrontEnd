@@ -140,9 +140,8 @@ import { SettingsPageComponent } from './shop-editor/settings-page/settings-page
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     TwitchLoginSdkModule.forRoot({ 
-      twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈
-      //redirect:  "https://coxino.ro/shop" //<***** YOUR CALLBACK REDIRECT 👈
-      redirect:  "http://localhost:4200/streamer/coxino/" //<***** YOUR CALLBACK REDIRECT 👈
+      twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈      
+      redirect:  "http://localhost:4200/editor/shop" //<***** YOUR CALLBACK REDIRECT 👈redirect_uri
   })
   ],
   providers: [IntervalRequestService,UserdataService,
@@ -156,7 +155,7 @@ import { SettingsPageComponent } from './shop-editor/settings-page/settings-page
             provider: new GoogleLoginProvider(
               '245884125377-c6kqdrfpr602abhaa8m3g3cqeluctpod.apps.googleusercontent.com', { scope: 'https://www.googleapis.com/auth/youtube.readonly', }
             )         
-          }
+          }          
         ]
       } as SocialAuthServiceConfig,
     }],

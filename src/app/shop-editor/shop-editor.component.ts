@@ -22,9 +22,25 @@ export class ShopEditorComponent extends EditorBase implements OnInit {
   DropTypeEnum = DropType;
   DropTypes = Object.keys(DropType).filter(f => !isNaN(Number(f))).map(function(item) {return parseInt(item, 10);})
   public ShopItems:ShopItem[] = []; 
+  loginSRC: string;
   
   setYoutoubeToken(){
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID,{scope:'https://www.googleapis.com/auth/youtube.channel-memberships.creator'});
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+
+  public twitchLoginCallback = ($event: any) =>  {
+    var userTwitchProfile = $event;
+    this.intervalRequest.apiTwitchLogUserIn(userTwitchProfile.token,userTwitchProfile.id).subscribe((data:any)=>{
+      if(data.status == true)
+      {
+        this.toastr.success("Also found " + data.count + " subscribers on your channel!","Token Saved!");
+      }
+      else
+      {
+        this.toastr.error("Error Saving Token");
+      }
+    })
   }
   
   constructor(intervalRequest: IntervalRequestService,
@@ -37,13 +53,13 @@ export class ShopEditorComponent extends EditorBase implements OnInit {
       
       this.socialAuthService.authState.subscribe((_user) => {       
         intervalRequest.apiLogUserIn(_user.authToken).subscribe((data:any)=>{
-          if(data == true)
+          if(data.status == true)
           {
-            toastr.success("Token Saved!");
+            this.toastr.success("Also found " + data.count + " subscribers on your channel!","Token Saved!");
           }
           else
           {
-            toastr.error("Error Saving Token");
+            toastr.error("Error Saving Token" + JSON.stringify(data));
           }
         })
       });
