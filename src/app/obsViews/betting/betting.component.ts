@@ -14,7 +14,7 @@ export class BettingComponent extends ThemedComponent implements OnInit {
   totalVoturi = 0;
   totalFise = 0;
   timer = "";
-  seconds:number = 1200;
+  seconds:number = 1800;
   beturi: BettingModel = new BettingModel();
   timer$ = interval(2000);
   timer2$ = interval(1000);
@@ -23,6 +23,7 @@ export class BettingComponent extends ThemedComponent implements OnInit {
   
   constructor(intervalRequest: IntervalRequestService) { 
     super(intervalRequest);
+    this.themeWrapper.style.setProperty('--fit-content' ,'fit-content');
     this.timerStart();
   }
   
@@ -76,7 +77,8 @@ export class BettingComponent extends ThemedComponent implements OnInit {
 
           bet.isVisible = data.options[xcnt].isVisible;
           bet.optiune = data.options[xcnt].optiune;
-          bet.progress = data.options[xcnt].progress;
+          if(data.options[xcnt].voturi > 0)
+          bet.progress = Math.round(data.options[xcnt].voturi / data.options.reduce((a:number,b:any)=>a + Number(b.voturi),0) * 100) ?? 0;
           bet.totalPariat = data.options[xcnt].totalPariat;
           bet.voturi = data.options[xcnt].voturi;
           xcnt++;    
