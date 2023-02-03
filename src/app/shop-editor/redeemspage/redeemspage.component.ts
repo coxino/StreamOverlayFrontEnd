@@ -11,13 +11,19 @@ import { IntervalRequestService } from 'src/services/interval-request.service';
 })
 export class RedeemspageComponent extends EditorBase implements OnInit {
 
-  filters:any;
+  filters:any = [];
   redeems:any;
   constructor(gameholderService:GameHolderService, intervalRequest:IntervalRequestService,toastr:ToastrService) {
     super(gameholderService,intervalRequest,toastr);
     intervalRequest.getAllRedeems().subscribe((data:any)=>{
       this.redeems = data.redeems;
-      this.filters = this.redeems.map((x:any)=>x.shopItem.optionalData);
+      var _f = this.redeems.map((x:any)=>x.shopItem.optionalData);
+      _f.forEach((element:any) => {
+        if(!this.filters.includes(element))
+        {
+          this.filters.push(element);
+        }
+      });
     });
    }
 

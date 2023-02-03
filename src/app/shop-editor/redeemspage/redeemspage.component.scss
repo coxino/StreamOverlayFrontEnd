@@ -5,9 +5,25 @@
 
 .row
 {
+    background-color: white;
+    color: black;
     border-bottom: 2px solid rebeccapurple;
-}
 
+    :nth-child(n+1)
+    {
+      border-right: 1px solid rebeccapurple;  
+    }
+
+    :last-child >*
+    {
+        border-right: 0px solid rebeccapurple;  
+    }    
+}
+.headers{
+    background-color: black;
+    color: white;
+    font-size: larger;
+}
 .header
 {
     padding: 1rem;

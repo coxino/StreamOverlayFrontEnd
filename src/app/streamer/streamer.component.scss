@@ -243,13 +243,15 @@ font-size: 1.0rem;
 @media screen and (max-width: 540px){
     
     .profile-details{
-        min-width: 80%;
+        min-width: 90%;
         word-wrap:break-word;
-        width: 100%;
+        margin: auto;
+        padding: 0.1rem;
     }
 
     .profile-header{
         padding: .1rem;
+        gap: .5rem;
     }
 
     .grid-details

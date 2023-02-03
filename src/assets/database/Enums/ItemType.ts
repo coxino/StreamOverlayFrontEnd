@@ -7,5 +7,6 @@ export enum ItemType{
 export enum DropType{
     Normal = 0,
     Code = 1,
-    LoyaltyPoints = 2
+    LoyaltyPoints = 2,
+    Unlucky = 100,
 }

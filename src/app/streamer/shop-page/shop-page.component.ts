@@ -49,10 +49,19 @@ export class ShopPageComponent extends StreamerPageBase implements OnInit {
       this.requestService.apiBuyShopItem(item.itemID,this.userdataService.StreamerProfilePage.streamerID,this.userdataService.ViewerLoginProfile.LocalUserToken).subscribe((data:any)=>{
         if(data.status == true)
         {
-          item.cooldownValue = item.cooldown * 60;
-          item.stoc -=1;
-          this.userdataService.GetUserCoins(()=>{});
-          this.toastrService.success(data.reason,'You bought : ' + item.nume);
+          if(data.unlucky)
+          { 
+            item.cooldownValue = item.cooldown * 60;
+            this.userdataService.GetUserCoins(()=>{});
+            this.toastrService.warning(data.reason,'You bought : ' + item.nume);
+          }
+          else
+          {
+            item.cooldownValue = item.cooldown * 60;
+            item.stoc -=1;
+            this.userdataService.GetUserCoins(()=>{});
+            this.toastrService.success(data.reason,'You bought : ' + item.nume);
+          }
         }
         else
         {

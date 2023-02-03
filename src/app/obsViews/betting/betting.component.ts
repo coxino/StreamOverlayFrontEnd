@@ -23,7 +23,7 @@ export class BettingComponent extends ThemedComponent implements OnInit {
   
   constructor(intervalRequest: IntervalRequestService) { 
     super(intervalRequest);
-    this.themeWrapper.style.setProperty('--fit-content' ,'fit-content');
+    //this.themeWrapper.style.setProperty('--fit-content' ,'fit-content');
     this.timerStart();
   }
   

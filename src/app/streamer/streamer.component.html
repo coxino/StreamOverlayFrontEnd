@@ -1,16 +1,7 @@
 <div class="streamer-page-valid">
     <div class="heroSection">    
         <div class="userProfile" >        
-            <div class="profile-header" *ngIf="!IsLoggedin()">                 
-                <div class="profile-details"> 
-                    <div class="login-buttons">                          
-                        <button class="btn-google" (click)="loginWithGoogle()"></button>                    
-                        <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="twitchLoginCallback($event)" label="Login Twitch 🚀"></twitch-login> 
-                    </div>
-                </div>
-            </div>
-            
-            <div class="profile-header" *ngIf="IsLoggedin()"> 
+            <div class="profile-header"> 
                 <div class="profile-details transparent">
                     <div class="profile-details-image">                        
                         <img  [src]="StreamerProfilePicture()" class="profile-picture-streamer">  
@@ -20,8 +11,14 @@
                         <p> <b>{{userdataService.StreamerProfilePage.Infos.loyaltySettings.rewardPerMinute | currency:'':userdataService.StreamerProfilePage.Infos.loyaltySettings.loyaltyName:'.0'}}</b> <b></b> / 10 minutes</p>
                     </div>
                 </div>
-                <div class="profile-details">
-                    <img  [src]="ProfilePicture()" class="profile-picture">
+                <div class="profile-details"  *ngIf="!IsLoggedin()"> 
+                    <div class="login-buttons">                          
+                        <button class="btn-google" (click)="loginWithGoogle()"></button>                    
+                        <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="twitchLoginCallback($event)" label="Login Twitch 🚀"></twitch-login> 
+                    </div>
+                </div>
+                <div class="profile-details" *ngIf="IsLoggedin()">
+                    <img [src]="ProfilePicture()" class="profile-picture">
                     <div class="grid-details">                    
                         <h3>{{userdataService.ViewerLoginProfile.UserName}}</h3>                    
                         <p *ngIf="!userdataService.ViewerLoginProfile.IsMember">Viewer</p>
