@@ -1,6 +1,6 @@
 .full-inplay
 {
-    display: grid;
+    display: grid;    
     grid-template-columns: 0.2fr 0.8fr 1fr 1fr;
     text-align: center;    
     :nth-child(4){
@@ -10,9 +10,9 @@
 
 .game-component
 {
-    width: 200px;
+    width: 100%;
     display: grid;
-    grid-template-rows: 0.1fr 0.1fr 0.1fr;
+    
     border-right: 1px solid gray;
     border-radius: 8px;
     gap: 0.5rem;
@@ -30,18 +30,21 @@
 
 .game-name
 {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .provider
 {
-    font-size: 12px;
+    align-self: end;
+    font-size: 14px;
 }
 
 .game-img
 {
+    padding: 2px;
+    align-self: end;
     height: 120px;
-    border-radius: 22px;
+    border-radius: 1.2rem;
 }
 
 .title-img{
@@ -54,11 +57,11 @@
 .left-18px
 {
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .right-18px
 {
     text-align: right;
-    font-size: 14px;
+    font-size: 15px;
 }

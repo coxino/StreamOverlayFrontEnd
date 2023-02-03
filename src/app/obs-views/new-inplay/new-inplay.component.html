@@ -4,17 +4,17 @@
         <!-- game-component -->
         <div class="game-component">  
             <div class="title">
-                <div class="title-img" style="-webkit-mask-box-image: url(../../assets/img/play-button.png);"></div>
-                Current game
+                <div class="title-img" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/686/686589.png);"></div>
+                Current Game
             </div>
-            <div class="game-name">{{currentGame.name}}</div> 
+            <div class="game-name">{{currentGame.name}}</div>             
             <div class="provider">{{currentGame.provider}}</div>
         </div>
         <!-- Game Info -->
         <div class="game-component">
             <div class="title">
-                <div class="title-img" style="-webkit-mask-box-image: url(../../assets/img/pie-chart.png);"></div>
-                Info
+                <div class="title-img" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/2936/2936690.png);"></div>
+               Game Info
             </div>
             <div class="row">
                 <div class="col left-18px">Potential</div>
@@ -32,15 +32,15 @@
         <!-- Personal Record -->
         <div class="game-component">
             <div class="title">
-                <div class="title-img" style="-webkit-mask-box-image: url(../../assets/img/medal.png);"></div>
-                Current game
+                <div class="title-img" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/969/969088.png);"></div>
+                Record
             </div>
             <div class="row">
-                <div class="col-2 left-18px">Win</div>
+                <div class="col left-18px">Win</div>
                 <div class="col right-18px">{{topPayBet | currency:' ':'bet':'.0' }} {{topPayX | currency:' ':'x':'.0'}} = {{topPay | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
             </div>
             <div class="row">
-                <div class="col-3 left-18px">x</div>
+                <div class="col left-18px">x</div>
                 <div class="col right-18px">{{topMultyBet | currency:' ':'bet':'.0' }} {{topMultyX | currency:' ':'x':'.0'}} = {{topMultyPay | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
             </div>
             <div class="row">
