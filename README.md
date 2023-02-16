@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
 
+## Swagger code-gen
+Open `src\scripts\openapi-generate-client.ts`
+Edit Variable: `generatePath`
+Edit Variable: `swaggerPath`
+Run `npm run update-swagger` 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
