@@ -5,9 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Swagger code-gen
 Open `src\scripts\openapi-generate-client.ts`
 
-Edit Variable: `generatePath`
+Edit Variable: `generatePath` - The path where swagger-codegen files will be generated as a library
 
-Edit Variable: `swaggerPath`
+Edit Variable: `swaggerPath` - The host of the `swagger.json`
 
 Run `npm run update-swagger` 
 
