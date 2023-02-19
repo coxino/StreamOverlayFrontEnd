@@ -1,0 +1,79 @@
+<div class="container fixed">    
+    <h3> Current Royale Rumble </h3>
+    <div class="row">
+        <div class="col-2">
+            <div class="label"> Rumble Id
+                <input class="input-group-text" type="number" class="form-control"required [(ngModel)]="slotsRumble.rumbleId"/>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="label"> Matches Played
+                <input class="input-group-text" type="number" class="form-control"required [(ngModel)]="slotsRumble.gameHistory.length "/>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="label"> Start New
+                <button class="btn btn-primary" (click)="ArchiveAndStartNewOne()" required>Archive and Start New One</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="history">
+    <button class="btn btn-primary" (click)="AddNewGame($event);" required>Next Fight</button>
+    <div class="iterator" *ngFor="let rumbleGame of slotsRumble.gameHistory.reverse();let i = index" [attr.data-index]="i">
+        <div class="titl">{{slotsRumble.gameHistory.length - i}}</div>
+        <div class="box" [ngClass]="{'loser': rumbleGame.team1 | haslost : rumbleGame.team2, 'winner': rumbleGame.team2 | haslost : rumbleGame.team1}">
+            <div class="title">{{rumbleGame.team1.gameName}}</div>
+            <div class="player">{{rumbleGame.team1.numeJucator}}</div>
+            <img [src]="gameHolder.getImage(rumbleGame.team1.gameName)" class="picture">
+            <div class="buy">Buy {{rumbleGame.team1.buyCost}}</div>
+            <div class="scor">Score {{(rumbleGame.team1.payout | score:rumbleGame.team1.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div>
+        </div>
+        <div class="vs"> vs </div>
+        <div class="box" [ngClass]="{'loser': rumbleGame.team2 | haslost : rumbleGame.team1, 'winner': rumbleGame.team1 | haslost : rumbleGame.team2}">
+            <div class="title">{{rumbleGame.team2.gameName}}</div>
+            <div class="player">{{rumbleGame.team2.numeJucator}}</div>
+            <img [src]="gameHolder.getImage(rumbleGame.team2.gameName)" class="picture">
+            <div class="buy">Buy {{rumbleGame.team2.buyCost}}</div>
+            <div class="scor">Score {{(rumbleGame.team2.payout | score:rumbleGame.team2.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div>
+        </div>
+    </div>    
+</div>
+<!-- {{slotsRumble | json}} -->
+<div class="meciuri">
+    <br>    
+    <div class="" *ngFor="let rumbleGame of slotsRumble.gameHistory;let i = index" [attr.data-index]="i">
+       <h4> Meci {{slotsRumble.gameHistory.length - i}}</h4>
+        <div class="row meci">
+            <div class="col">
+                <div class="label "> GameName
+                    <input type="text" class="form-control" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" [(ngModel)]="rumbleGame.team1.gameName" id="typeahead-basic" [ngbTypeahead]="gameHolder.search"/>   
+                </div>
+                <div class="label "> Nume Jucator
+                    <input class="input-group-text" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" type="text" class="form-control"required [(ngModel)]="rumbleGame.team1.numeJucator"/>
+                </div>  
+                <div class="label "> Game Buy Cost
+                    <input class="input-group-text" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" type="number" class="form-control"required [(ngModel)]="rumbleGame.team1.buyCost"/>
+                </div>                 
+                <div class="label"> Payout
+                    <input class="input-group-text" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" type="number" class="form-control"required [(ngModel)]="rumbleGame.team1.payout"/>                    
+                </div>   
+                
+            </div>
+            <div class="col">
+                <div class="label "> GameName
+                    <input type="text" class="form-control" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" [(ngModel)]="rumbleGame.team2.gameName" id="typeahead-basic" [ngbTypeahead]="gameHolder.search"/>   
+                </div>
+                <div class="label "> Nume Jucator
+                    <input class="input-group-text" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" type="text" class="form-control"required [(ngModel)]="rumbleGame.team2.numeJucator"/>
+                </div>  
+                <div class="label "> Game Buy Cost
+                    <input class="input-group-text" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" type="number" class="form-control"required [(ngModel)]="rumbleGame.team2.buyCost"/>
+                </div> 
+                <div class="label"> Payout
+                    <input class="input-group-text" onfocus="this.select()" (keydown.enter)="StartSlotsRumble()" type="number" class="form-control"required [(ngModel)]="rumbleGame.team2.payout"/>
+                </div>            
+            </div>           
+        </div>
+    </div>    
+</div>

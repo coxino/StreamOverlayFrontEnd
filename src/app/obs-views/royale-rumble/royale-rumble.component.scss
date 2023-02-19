@@ -1,0 +1,125 @@
+.battle-bracket
+{
+    padding: 1rem;
+    overflow-x: scroll;   
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.iterator
+{
+    display: flex;
+    background-color: rgb(2, 12, 20);
+    padding: .4rem;
+    border: 2px solid red;
+    border-radius: 1rem;
+}
+
+.box
+{       
+    position: relative;
+    margin: auto;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    padding: 1em;
+    img
+    {
+        margin: auto;
+        width: 320px;
+        height: 100%;
+        border-radius: 1rem;
+    }
+
+    .alt-text{
+        text-align: center;
+        font-size: 1.2em;
+        width: 64%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top:35%;
+        left: 18%;
+    }
+}
+
+
+
+.loser
+{
+    img{
+        filter: grayscale(100%);
+    }
+    .scor
+    {
+        color: red;
+    }
+}
+.winner
+{
+    .scor
+    {
+        color: green;
+    }
+}
+
+.vs
+{
+    width: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.clasament{
+    display: flex;
+    //background-color: rgb(2, 12, 20);
+    padding: .4rem;
+    
+    .mid
+    {
+        margin-top: 10%; 
+    }   
+}
+
+.pay-box
+{    
+    position: relative;
+    border-radius: 1rem;
+    border: 2px solid red;
+    .alt-text{
+        width: 64%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top:45%;
+        left: 18%;
+        text-align: center;
+    }
+}
+
+.topbox{    
+    width: 33%;
+    text-align: center;    
+    padding: 1rem;
+    img
+    {
+        max-width: 200px;
+        max-height: 180px;        
+        border-radius: 1rem;
+    }
+}
+
+.kda-box
+{
+    display: flex;
+}
+
+
+.header-image
+{
+    max-width: 32px;
+    max-height: 32px;
+}

@@ -63,6 +63,9 @@ export class Settings{
         
         public static readonly StreamerPage: string =  "streamer/";
         
+        public static readonly SlotsRumble: string = "RoyaleRumble";
+        public static readonly RumbleUpdate: string = "RoyaleRumble/RumbleUpdate";
+        public static readonly SlotsRumbleArchive: string = "RoyaleRumble/CreateNewRumble";
         
         //public static readonly GetGiveawayCount: string = "hotwords/lmausers";
         public static readonly GetBalantaFinalaCount: string = "hotwords/bfusers";

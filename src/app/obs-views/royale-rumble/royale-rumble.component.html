@@ -1,0 +1,75 @@
+<div class="animate__animated animate__bounceInDown" [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}" *ngIf="loadingOver">   
+    <div class="clasament">
+        <div class="topbox">    
+            <div class="pay-box">
+                <!-- <div class="title">{{TopPayGame.gameName}}</div> -->
+                <div class="header-image" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/3004/3004151.png);"> </div>  
+                {{maxPayout | currency:'':currencyCode:'.0'}}
+                <div class="player">{{TopPayGame.numeJucator}}</div>
+                <img [src]="gameHolder.getImage(TopPayGame.gameName)" class="picture">
+                <div class="alt-text" *ngIf="!gameHolder.hasImage(TopPayGame.gameName)">{{TopPayGame.gameName}}</div>    
+                <div class="premiu">
+                    <div class="header-image" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/3438/3438641.png);"> </div>        
+                    100 RON X1
+                </div>               
+                <!-- <div class="scor">Score {{(TopPayGame.payout | score:TopPayGame.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div> -->
+                
+            </div>
+        </div>
+        <div class="topbox mid">  
+            <div class="pay-box">        
+                <!-- <div class="title">{{TopKillsGame.gameName}}</div> -->
+                <div class="header-image" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/861/861891.png);"></div> 
+                KDA:{{maxKills}}
+                <div class="player">{{TopKillsGame.numeJucator}}</div>
+                <img [src]="gameHolder.getImage(TopKillsGame.gameName)" class="picture">    
+                <div class="alt-text" *ngIf="!gameHolder.hasImage(TopKillsGame.gameName)">{{TopKillsGame.gameName}}</div>           
+                <div class="premiu">
+                    <div class="header-image" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/3438/3438641.png);"> </div>        
+                    150 RON X1
+                </div>
+                <!-- <div class="scor">Score {{(TopKillsGame.payout | score:TopKillsGame.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div> -->
+            </div>    
+        </div>
+        <div class="topbox"> 
+            <div class="pay-box">                   
+                <!-- <div class="title">{{TopShitGame.gameName}}</div> -->
+                <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/multi.png);"> </div>        
+                {{maxX*100 | currency : 'X' : 'symbol' : '1.2'}}
+                <div class="player">{{TopShitGame.numeJucator}}</div>
+                <img [src]="gameHolder.getImage(TopShitGame.gameName)" class="picture">  
+                <div class="alt-text" *ngIf="!gameHolder.hasImage(TopShitGame.gameName)">{{TopShitGame.gameName}}</div>              
+                <div class="premiu">
+                    <div class="header-image" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/3438/3438641.png);"> </div>        
+                    100 RON X1
+                </div> 
+                <!-- <div class="scor">Score {{(TopShitGame.payout | score:TopShitGame.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div> -->
+            </div>
+        </div>
+    </div>
+    <div class="battle-bracket">
+        <div class="iterator" *ngFor="let rumbleGame of SlotsRumbleModel.gameHistory.reverse();let i = index" [attr.data-index]="i">
+            <div class="box" [ngClass]="{'loser': rumbleGame.team1 | haslost : rumbleGame.team2, 'winner': rumbleGame.team2 | haslost : rumbleGame.team1}">
+                <!-- <div class="title">{{rumbleGame.team1.gameName}}</div> -->
+                <div class="player">{{rumbleGame.team1.numeJucator}}</div>
+                <img [src]="gameHolder.getImage(rumbleGame.team1.gameName)" class="picture">
+                <div class="alt-text" *ngIf="!gameHolder.hasImage(rumbleGame.team1.gameName)">{{rumbleGame.team1.gameName}}</div>
+                <div class="buy">Buy {{rumbleGame.team1.buyCost}}</div>
+                <div class="buy">Pay {{rumbleGame.team1.payout}}</div>
+                <div class="scor">Score {{(rumbleGame.team1.payout | score:rumbleGame.team1.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div>
+            </div>
+            <div class="vs">
+                <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/versus.png);"> </div>  
+            </div>
+            <div class="box" [ngClass]="{'loser': rumbleGame.team2 | haslost : rumbleGame.team1, 'winner': rumbleGame.team1 | haslost : rumbleGame.team2}">
+                <!-- <div class="title">{{rumbleGame.team2.gameName}}</div> -->
+                <div class="player">{{rumbleGame.team2.numeJucator}}</div>
+                <img [src]="gameHolder.getImage(rumbleGame.team2.gameName)" class="picture">
+                <div class="alt-text" *ngIf="!gameHolder.hasImage(rumbleGame.team2.gameName)">{{rumbleGame.team2.gameName}}</div>
+                <div class="buy">Buy {{rumbleGame.team2.buyCost}}</div>
+                <div class="buy">Pay {{rumbleGame.team2.payout}}</div>
+                <div class="scor">Score {{(rumbleGame.team2.payout | score:rumbleGame.team2.buyCost) | currency : ' ' : 'symbol' : '1.2'}}</div>
+            </div>                
+        </div> 
+    </div>
+</div>

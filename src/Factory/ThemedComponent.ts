@@ -20,7 +20,7 @@ export class ThemedComponent {
             this.Theme = data;  
             this.SetTheme(); 
             this.IsAnimatedBorder = data.Options.animatedBorder; 
-            this._interval = 2000;
+            this._interval = 3000;
             this.timer$ = interval(this._interval);
             //recursiveRequests
             this.timer$.subscribe(()=>{	

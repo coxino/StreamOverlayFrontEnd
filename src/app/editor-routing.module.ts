@@ -7,6 +7,7 @@ import { BonushuntEditorComponent } from './frontend/bonushunt-editor/bonushunt-
 import { ConfigureObsComponent } from './frontend/configure-obs/configure-obs.component';
 import { CustomThemeEditorComponent } from './frontend/custom-theme-editor/custom-theme-editor.component';
 import { GiveawayComponent } from './frontend/giveaway/giveaway.component';
+import { RoyaleRumbleEditComponent } from './frontend/royale-rumble-edit/royale-rumble-edit.component';
 import { TournamentComponent } from './frontend/tournament/tournament.component';
 import { TranzactiiComponent } from './frontend/tranzactii/tranzactii.component';
 import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.component';
@@ -30,6 +31,7 @@ export const editorRoutes: Routes = [
       { path: 'shop', component:ShopEditorComponent },
       { path: 'redeems', component:RedeemspageComponent },
       { path: 'settings', component:SettingsPageComponent },
+      { path: 'rumble', component:RoyaleRumbleEditComponent },
     ]
   }];
   

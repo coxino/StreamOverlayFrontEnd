@@ -12,10 +12,14 @@ export class GameHolderService {
   
   public getImage(name:string)
   {
+    if(name == null || name==undefined)
+    {
+      return "/assets/img/image-not-found.png";
+    }
     var toReturn = this.games.filter(v => v.Name.toLowerCase() === name.toLowerCase())[0]?.Image ?? "";
     if(toReturn == "")
     {
-      toReturn = "/assets/img/image-not-found.jpg";
+      toReturn = "/assets/img/image-not-found.png";
     }
     return  toReturn;
   }

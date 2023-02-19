@@ -1,19 +1,25 @@
 <div class="header">
+    <button (click)="ViewTypeMode = ViewType.Redeems" class="btn btn-ligth">Redeems</button>
+    <button (click)="ViewTypeMode = ViewType.Ytmembers" class="btn btn-ligth">Ytmembers</button>
+    <button (click)="ViewTypeMode = ViewType.Twitchmembers" class="btn btn-ligth">Twitchmembers</button>
+  
     <div class="label"  *ngFor="let ft of filters"> {{ft}}
         <input type="checkbox" (click)="enableDisable(ft)" class="btn btn-light" value="" checked>
     </div>
    
 </div>
 
-<div class="redeemPage">
+<div class="redeemPage" *ngIf="ViewTypeMode == ViewType.Redeems">
     <div class="row headers">
+        <div class="col">#</div>
         <div class="col">Time</div>
         <div class="col">Winner Name</div>
         <div class="col">Shop Item</div>
         <div class="col">Has Won</div>
         <div class="col">User Settings</div>
     </div>
-    <div class="row" *ngFor="let item of redeems">  
+    <div class="row" *ngFor="let item of redeems;let i = index" [attr.data-index]="i">  
+        <div class="col">{{i+1}}</div>
         <div *ngIf="!item.hide" class="col">{{item.timeOfWin ?? 0}}</div>      
         <div *ngIf="!item.hide" class="col">{{item.winnerName}}</div>
         <div *ngIf="!item.hide" class="col">{{item.shopItem.nume}}</div>
@@ -23,6 +29,44 @@
                 {{set.key}}: {{set.value}}
             </div>
         </div>    
+    </div>
+</div>
+
+<div class="twitchsubs" *ngIf="ViewTypeMode == ViewType.Twitchmembers">
+    <div class="row headers">
+        <div class="col">#</div>
+        <div class="col">user_id</div>
+        <div class="col">user_name</div>
+        <div class="col">plan_name</div>
+        <div class="col">tier</div>
+        <div class="col">is_gift</div>
+        <div class="col">gifter_name</div>
+    </div>
+    <div class="row" *ngFor="let item of twitchmembers;let i = index" [attr.data-index]="i">  
+        <div class="col">{{i+1}}</div>
+        <div class="col">{{item.user_id}}</div>      
+        <div class="col">{{item.user_name}}</div>
+        <div class="col">{{item.plan_name}}</div>
+        <div class="col">{{item.tier}}</div>
+        <div class="col">{{item.is_gift}}</div>
+        <div class="col">{{item.gifter_name}}</div>
+        
+    </div>
+</div>
+<div class="ytmembers" *ngIf="ViewTypeMode == ViewType.Ytmembers">
+    <div class="row headers">
+        <div class="col">#</div>
+        <div class="col">MemberTier</div>
+        <div class="col">MemberId</div>
+        <div class="col">MemberName</div>
+        <div class="col">MemberSince</div>
+    </div>
+    <div class="row" *ngFor="let item of ytmembers;let i = index" [attr.data-index]="i">  
+        <div class="col">{{i+1}}</div>
+        <div class="col">{{item.memberTier}}</div>      
+        <div class="col">{{item.memberId}}</div>
+        <div class="col">{{item.memberName}}</div>
+        <div class="col">{{item.memberSince}}</div>        
     </div>
 </div>
 

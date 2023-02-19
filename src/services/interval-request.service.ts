@@ -7,6 +7,7 @@ import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { LigaUser } from 'src/assets/database/Models/LigaUser';
 import { Meci } from 'src/assets/database/Models/Meci';
 import { ShopItem } from 'src/assets/database/Models/ShopItem';
+import { SlotsRumbleModel } from 'src/assets/database/Models/SlotsRumbleModel';
 import { TournamentModel } from 'src/assets/database/Models/Tournament';
 import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
 import { ClasamentPacaniada } from 'src/assets/database/Models/UserPacaniada';
@@ -102,6 +103,18 @@ export class IntervalRequestService {
     return this.httpClient.post<any>(Settings.ApiServer + "loyalty/updateuser",EditUser,{headers});
   }
   
+  apiRumbleArchiveAndStartNewOne() {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.SlotsRumbleArchive,null,{headers});
+  }
+
+  apiRumbleUpdate(slotsRumbleModel:SlotsRumbleModel) {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.RumbleUpdate,slotsRumbleModel,{headers});
+  }
+
   apiAddLigaUser(user:any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};

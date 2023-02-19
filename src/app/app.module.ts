@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { BonusHuntComponent } from './obsViews/bonus-hunt/bonus-hunt.component';
 import { TournamentLivebattleComponent } from './obsViews/tournament-livebattle/tournament-livebattle.component';
 import { TournamentLivebattleNextComponent } from './obsViews/tournament-livebattle-next/tournament-livebattle-next.component';
-import { SumPipe } from 'src/pipes/sumpipe';
+import { HasLostPipe, SumPipe, SumPipeSimple } from 'src/pipes/sumpipe';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 import { AnimatedBorderComponent } from './obsViews/animated-border/animated-border.component';
 import { TheInnerBonushuntComponent } from './obsViews/the-inner-bonushunt/the-inner-bonushunt.component';
@@ -68,6 +68,8 @@ import { TwitchLoginSdkModule } from 'twitch-login-sdk';
 import { UserdataService } from './streamer/userdata.service';
 import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.component';
 import { SettingsPageComponent } from './shop-editor/settings-page/settings-page.component';
+import { RoyaleRumbleComponent } from './obs-views/royale-rumble/royale-rumble.component';
+import { RoyaleRumbleEditComponent } from './frontend/royale-rumble-edit/royale-rumble-edit.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { SettingsPageComponent } from './shop-editor/settings-page/settings-page
     TournamentLivebattleComponent,
     TournamentLivebattleNextComponent,
     SumPipe,
+    SumPipeSimple,
+    HasLostPipe,
     SafePipe,
     EmailAsteriskPipe,
     AnimatedBorderComponent,
@@ -121,6 +125,8 @@ import { SettingsPageComponent } from './shop-editor/settings-page/settings-page
     BonushuntTooltipComponent,
     RedeemspageComponent,
     SettingsPageComponent,
+    RoyaleRumbleComponent,
+    RoyaleRumbleEditComponent,
     ],
   imports: [    
     SocialLoginModule,
