@@ -2,11 +2,12 @@
     <button (click)="ViewTypeMode = ViewType.Redeems" class="btn btn-ligth">Redeems</button>
     <button (click)="ViewTypeMode = ViewType.Ytmembers" class="btn btn-ligth">Ytmembers</button>
     <button (click)="ViewTypeMode = ViewType.Twitchmembers" class="btn btn-ligth">Twitchmembers</button>
-  
+    <button (click)="ViewTypeMode = ViewType.AllViewers" class="btn btn-ligth">All Viewers</button>
+    
     <div class="label"  *ngFor="let ft of filters"> {{ft}}
         <input type="checkbox" (click)="enableDisable(ft)" class="btn btn-light" value="" checked>
     </div>
-   
+    
 </div>
 
 <div class="redeemPage" *ngIf="ViewTypeMode == ViewType.Redeems">
@@ -33,6 +34,10 @@
 </div>
 
 <div class="twitchsubs" *ngIf="ViewTypeMode == ViewType.Twitchmembers">
+   <div class="row  bg-dark p-4">
+    <label for="" class="col-3 text-light">Search</label>
+   <input type="text" [(ngModel)]="filterTerm" class="col-6 form-control" id="typeahead-basic"/> 
+</div>
     <div class="row headers">
         <div class="col">#</div>
         <div class="col">user_id</div>
@@ -42,7 +47,7 @@
         <div class="col">is_gift</div>
         <div class="col">gifter_name</div>
     </div>
-    <div class="row" *ngFor="let item of twitchmembers;let i = index" [attr.data-index]="i">  
+    <div class="row" *ngFor="let item of twitchmembers | filter: filterTerm;let i = index" [attr.data-index]="i">  
         <div class="col">{{i+1}}</div>
         <div class="col">{{item.user_id}}</div>      
         <div class="col">{{item.user_name}}</div>
@@ -54,6 +59,10 @@
     </div>
 </div>
 <div class="ytmembers" *ngIf="ViewTypeMode == ViewType.Ytmembers">
+    <div class="row  bg-dark p-4">
+        <label for="" class="col-3 text-light">Search</label>
+       <input type="text" [(ngModel)]="filterTerm" class="col-6 form-control" id="typeahead-basic"/> 
+    </div>
     <div class="row headers">
         <div class="col">#</div>
         <div class="col">MemberTier</div>
@@ -61,12 +70,39 @@
         <div class="col">MemberName</div>
         <div class="col">MemberSince</div>
     </div>
-    <div class="row" *ngFor="let item of ytmembers;let i = index" [attr.data-index]="i">  
+    <div class="row" *ngFor="let item of ytmembers | filter: filterTerm;let i = index" [attr.data-index]="i">  
         <div class="col">{{i+1}}</div>
         <div class="col">{{item.memberTier}}</div>      
         <div class="col">{{item.memberId}}</div>
         <div class="col">{{item.memberName}}</div>
         <div class="col">{{item.memberSince}}</div>        
+    </div>
+</div>
+
+<div class="ytmembers" *ngIf="ViewTypeMode == ViewType.AllViewers">
+    <div class="row  bg-dark p-4">
+        <label for="" class="col-3  text-light ">Search</label> 
+       <input type="text" [(ngModel)]="filterTerm" class="col-6 form-control" id="typeahead-basic" [ngbTypeahead]="nameSearch"/> 
+    </div>    
+    <div class="row headers">
+        <div class="col-1">#</div>
+        <div class="col-3">userId</div>
+        <div class="col-2">Name</div>
+        <div class="col-3">Email</div>
+        <div class="col-1">Coins</div>
+        <div class="col">Settings</div>
+    </div>
+    <div class="row" *ngFor="let item of AllViewers | filter: filterTerm;let i = index" [attr.data-index]="i">  
+        <div class="col-1">{{i+1}}</div>
+        <div class="col-3">{{item.userId}}</div>      
+        <div class="col-2">{{item.name}}</div>
+        <div class="col-3">{{item.email}}</div>
+        <div class="col-1">{{item.coins}}</div>
+        <div class="col">  
+            <div class="" *ngFor="let set of item.userSettings">
+                {{set.key}}: {{set.value}}
+            </div>
+        </div>       
     </div>
 </div>
 

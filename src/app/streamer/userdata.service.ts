@@ -42,7 +42,9 @@ export class UserdataService {
           this.ViewerLoginProfile.LocalUserToken = data.token,
           this.ViewerLoginProfile.ProfilePicture = data.profilePicture;
           this.ViewerLoginProfile.AuthPlatform = AuthPlatformEnum.Youtube;
-          this.cookieService.putObject('viwer-profile', this.ViewerLoginProfile);
+          var date = new Date();
+          date.setDate(date.getDate() + 28 );
+          this.cookieService.putObject('viwer-profile', this.ViewerLoginProfile, {expires:date});
           window.location.reload();
         });
       });
@@ -104,7 +106,9 @@ export class UserdataService {
           this.ViewerLoginProfile.ProfilePicture = this.userTwitchProfile.profile_image_url;
           this.ViewerLoginProfile.UserName = this.userTwitchProfile.display_name;
           this.ViewerLoginProfile.Email = this.userTwitchProfile.email;
-          this.cookieService.putObject('viwer-profile', this.ViewerLoginProfile);
+          var date = new Date();
+          date.setDate(date.getDate() + 28 );
+          this.cookieService.putObject('viwer-profile', this.ViewerLoginProfile, {expires:date});
           window.location.reload();    
         }
       });

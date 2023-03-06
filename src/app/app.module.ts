@@ -70,6 +70,7 @@ import { RedeemspageComponent } from './shop-editor/redeemspage/redeemspage.comp
 import { SettingsPageComponent } from './shop-editor/settings-page/settings-page.component';
 import { RoyaleRumbleComponent } from './obs-views/royale-rumble/royale-rumble.component';
 import { RoyaleRumbleEditComponent } from './frontend/royale-rumble-edit/royale-rumble-edit.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { RoyaleRumbleEditComponent } from './frontend/royale-rumble-edit/royale-
     RoyaleRumbleEditComponent,
     ],
   imports: [    
+    Ng2SearchPipeModule,
     SocialLoginModule,
     BrowserModule,
     AppRoutingModule,

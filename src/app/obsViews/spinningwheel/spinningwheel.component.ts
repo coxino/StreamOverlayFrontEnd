@@ -10,16 +10,17 @@ import { IntervalRequestService } from 'src/services/interval-request.service';
 })
 export class SpinningwheelComponent implements OnInit {
   @ViewChild(NgxWheelComponent, { static: false }) wheel:NgxWheelComponent;
+
+  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6ImNveGlubyAgICAiLCJQYXNzd29yZCI6IlczeU12SHlUNzQ1YVpuYUMiLCJVc2VySWQiOiI3OTYzZmYwOC04OGU2LTRjZTUtOGI0Zi1mN2MwYmNiOWU3ODMiLCJuYmYiOjE2NzUwODI4NjQsImV4cCI6MTY3NTY4NzY2NCwiaWF0IjoxNjc1MDgyODY0LCJpc3MiOiJodHRwOi8vbXlzaXRlLmNvbSIsImF1ZCI6Imh0dHA6Ly9teWF1ZGllbmNlLmNvbSJ9.zO73ElpatI-Vae3K_qFvkkznqyPLkDVL3ZwCkv0rvEs";
+
   password = "";
   idToLandOn = 0;
   spinDuration=12;
   items=[
-    {id:0, text:'5 Monede',fillStyle:'#9d9d9d',prize:5},
-    {id:1, text:'8 Monede',fillStyle:'#f337ff',prize:8},
-    {id:2, text:'10 Monede',fillStyle:'#ffffff',prize:10},
-    {id:3, text:'15 Monede',fillStyle:'#1eff00',prize:15},
-    {id:4, text:'20 Monede',fillStyle:'#0070dd',prize:20},
-    {id:5, text:'25 Monede',fillStyle:'#e6cc80',prize:25},    
+    {id:0, text:'5 Monede',fillStyle:'#7DB9B6',prize:5},
+    {id:1, text:'10 Monede',fillStyle:'#E96479',prize:10},
+    {id:2, text:'5 Monede',fillStyle:'#7DB9B6',prize:5},
+    {id:3, text:'10 Monede',fillStyle:'#E96479',prize:10},  
   ];
   constructor(private intervalRequest: IntervalRequestService,private activatedRoute: ActivatedRoute) { 
     this.activatedRoute.queryParams.subscribe(params => {
@@ -50,9 +51,10 @@ export class SpinningwheelComponent implements OnInit {
     this.wheel.spin();  
     
     if(this.items[this.idToLandOn].prize > 0){
-      this.intervalRequest.apiAddPointsAll(this.items[this.idToLandOn].prize,"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VybmFtZSI6ImNveGlubyAgICAiLCJQYXNzd29yZCI6IlczeU12SHlUNzQ1YVpuYUMiLCJVc2VySWQiOiI3OTYzZmYwOC04OGU2LTRjZTUtOGI0Zi1mN2MwYmNiOWU3ODMiLCJuYmYiOjE2NTk0NzQyNzUsImV4cCI6MTY2MDA3OTA3NSwiaWF0IjoxNjU5NDc0Mjc1LCJpc3MiOiJodHRwOi8vbXlzaXRlLmNvbSIsImF1ZCI6Imh0dHA6Ly9teWF1ZGllbmNlLmNvbSJ9.DejS2cDdqQnnjTCD0DnJiqssaYd3VhqfHntGtpYDtpk").subscribe(async (data)=>
+      await new Promise(resolve => setTimeout(resolve, 8000));
+      this.intervalRequest.apiAddPointsAll(this.items[this.idToLandOn].prize,this.token).subscribe(async (data)=>
       {      
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
         this.message = data.status;        
       })
     }

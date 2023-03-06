@@ -28,6 +28,7 @@
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
+    "ng2-search-filter": "^0.5.1",
     "ngx-clipboard": "^15.0.1",
     "ngx-cookie": "^5.0.2",
     "ngx-toastr": "^14.3.0",

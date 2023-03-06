@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     TwitchLoginSdkModule.forRoot({ 
       twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈      
-      redirect:  "http://localhost:4200/streamer" //<***** YOUR CALLBACK REDIRECT 👈redirect_uri
+      redirect:  "https://coxino.ro/streamer" //<***** YOUR CALLBACK REDIRECT 👈redirect_uri
   })
   ],
   providers: [StreamerpagerequestsService, UserdataService],
