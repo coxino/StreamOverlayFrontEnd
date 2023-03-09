@@ -1,0 +1,162 @@
+$color1:#121619;
+$color2:#7F5A83;
+$color3:#A188A6;
+$color4:#FFAF87;
+$color5:#4CE0B3;
+$color6:#33223a;
+
+.navigation-small
+{     
+    display: grid;
+    grid-template-columns: repeat(6,1fr);  
+    background-color: #000000;
+    height: 3rem;    
+}
+
+
+
+.streamer-login
+{        
+    font-size: 2rem;
+    grid-column:5;
+}
+
+.page
+{    
+    min-height: 100vh;
+    background: linear-gradient(180deg, $color1 0%, $color6 50%, $color3 100%);   
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: white;
+}
+
+.page-container
+{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(90deg, $color1 0%, $color6 50%, $color1 100%);
+    padding: 2%;
+    border-radius: 1rem;
+}
+
+.page-inside
+{   
+    width: 100%;
+    height: 78%;
+    display: grid;     
+    gap: 1rem;
+}
+
+.grid-auto
+{
+   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-5{
+    grid-template-columns: repeat(5,1fr);  
+}
+.grid-3{
+    grid-template-columns: repeat(3,1fr);  
+}
+
+.title
+{    
+    font-size: 4rem;
+    img{
+        width: 8rem;
+    }
+}
+
+h2{
+    color: $color1;
+}
+
+h5{
+    color: black;
+}
+
+.expand-row
+{    
+    grid-row: span 2;
+}
+
+.expand-column
+{
+    grid-column: span 2;
+}
+
+.hero
+{       
+    border-radius: 1rem;
+    background-color: #ffffff;
+    text-transform:full-width;
+    text-align: center;
+    color: white;   
+    img
+    {        
+        border-radius: 1rem;
+        padding: 0.5rem;
+        width: 100%;        
+        object-fit: cover;
+    }   
+}
+
+.hero-left
+{  
+    height: 60%;
+    img
+    {        
+        padding: 0;
+        height: 100%;
+        width: 100%;        
+        object-fit: cover;
+    }  
+    background-color: $color3;
+    clip-path: polygon(0 0px, 0 100%, 100% 96%, 100% 18px); 
+}
+.hero-center
+{
+    height: 60%;
+    img
+    {         
+        padding: 0;
+        height: 100%;
+        width: 100%;        
+        object-fit: cover;
+    }  
+    background-color: $color3;
+    clip-path: polygon(0 18px, 0 96%, 100% 96%, 100% 18px); 
+    
+}
+
+.hero-right
+{
+    height: 60%;
+    img
+    {         
+        padding: 0;
+        height: 100%;
+        width: 100%;        
+        object-fit: cover;
+    }  
+    background-color: $color3;
+    clip-path: polygon(0 18px, 0 96%, 100% 100%, 100% 0);
+}
+
+
+.editor-navbar
+{
+    background-color: rgba(245, 186, 113, 0.11);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:1rem;
+}
+
+button{
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+<div class="animate__animated animate__bounceInRight width-500" [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}" *ngIf="loadingOver">   
+    <div class="full-inplay">
+        <img class="game-img" [src]="gameHolderService.getImage(currentGame.name)">
+        <!-- game-component -->
+        <div class="game-component">  
+            <div class="title">
+                <div class="title-img" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/686/686589.png);"></div>
+                Current Game
+            </div>
+            <div class="game-name">{{currentGame.name}}</div>             
+            <div class="provider">{{currentGame.provider}}</div>
+        </div>
+        <!-- Game Info -->
+        <div class="game-component">
+            <div class="title">
+                <div class="title-img" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/2936/2936690.png);"></div>
+               Game Info
+            </div>
+            <div class="row">
+                <div class="col left-18px">Potential</div>
+                <div class="col right-18px">{{currentGame.potential ?? 'SOON'}}</div>
+            </div>
+            <div class="row">
+                <div class="col left-18px">RTP</div>
+                <div class="col right-18px">{{currentGame.volatility ?? 'SOON'}}</div>
+            </div>
+            <div class="row">
+                <div class="col left-18px">Volatility</div>
+                <div class="col right-18px">{{currentGame.volatility ?? 'SOON'}}</div>
+            </div>
+        </div>
+        <!-- Personal Record -->
+        <div class="game-component">
+            <div class="title">
+                <div class="title-img" style="-webkit-mask-box-image: url(https://cdn-icons-png.flaticon.com/512/969/969088.png);"></div>
+                Record
+            </div>
+            <div class="row">
+                <div class="col left-18px">Win</div>
+                <div class="col right-18px">{{topPayBet | currency:' ':'bet':'.0' }} {{topPayX | currency:' ':'x':'.0'}} = {{topPay | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
+            </div>
+            <div class="row">
+                <div class="col left-18px">x</div>
+                <div class="col right-18px">{{topMultyBet | currency:' ':'bet':'.0' }} {{topMultyX | currency:' ':'x':'.0'}} = {{topMultyPay | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
+            </div>
+            <div class="row">
+                <div class="col left-18px">AVG of {{rounds.length}} pays</div>
+                <div class="col right-18px">{{avgWins | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
+            </div>
+        </div>
+    </div>
+</div>

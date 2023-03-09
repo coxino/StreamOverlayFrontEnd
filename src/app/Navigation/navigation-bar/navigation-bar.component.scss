@@ -1,0 +1,64 @@
+$color1:#121619;
+$color6:#33223a;
+$color5:#4CE0B3;
+
+.login-box
+{
+    color: white;
+    background: linear-gradient(135deg, $color1 0%, $color6 50%, $color1 100%); 
+    width: 400px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    border-radius: 30px;
+}
+
+.navigation
+{
+    background-color: $color1;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 0.5fr auto 2fr auto 0.5fr;
+    color: #121619;
+    //border-bottom: 1px solid #33223a;
+
+    a:hover{
+        color: #6dd3b4;
+    }
+
+    button:hover
+    {
+        cursor: pointer;
+    }
+}
+
+.brand
+{
+    color: $color5;
+    font-size: 25px;
+    text-decoration: none;
+    :hover
+    {
+        color: #cec1d3;
+        img
+        {
+            box-shadow: 12px 10px $color5;
+        }
+    }
+    img
+    {
+        margin-top: -5px;
+        //width: 40px;
+        height: 36px;
+    }
+}
+
+.navigation-links
+{
+    display: inline;
+    flex-direction: column;    
+    :last-child
+    {
+         margin-left: 8px;
+    }    
+}

@@ -1,5 +1,60 @@
+
+
+.bonus-fight
+{
+    display: grid;
+    grid-template-rows: 2;
+}
+
+.entry
+{
+    display: grid;
+    grid-template-rows: 2;
+    border: 1px solid rgba(114, 114, 114, 0.075);
+    align-items: center;
+    text-align: center;
+    
+}
+
 .game
 {
-    font-size: 30px;
-    line-height: 31px;
+    overflow: hidden;
+    overflow-wrap: none;
+    word-wrap: unset;
+    display: grid;
+    grid-template-columns: 60px 240px 60px repeat(var(--repeatAmount),120px) 60px;
+    :nth-child(1){        
+        border-top-left-radius:  var(--borderRadiusInner);
+        border-bottom-left-radius:  var(--borderRadiusInner);
+    }
+    :last-child
+    {
+        border-top-right-radius:  var(--borderRadiusInner);
+        border-bottom-right-radius:  var(--borderRadiusInner);
+    }
+}
+
+.game-name
+{
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.scor-title{
+    align-self: center;
+}
+
+.round-image
+{
+    z-index: -1;
+    padding: 2px;
+    border-radius: var(--borderRadiusInner);
+    width: 100%;
+}
+
+.jucator
+{
+    font-size: 14px;
 }

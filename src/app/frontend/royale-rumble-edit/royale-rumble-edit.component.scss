@@ -1,0 +1,81 @@
+.fixed
+{
+    color: white;
+    background-color: rgb(8, 75, 75); 
+    padding: 20px;
+    z-index:600;
+    border-radius: 20px;
+}
+
+.meci
+{
+    display: flex;
+    justify-content: center;
+}
+
+.history
+{
+    padding: 1rem;
+    overflow-x: scroll;   
+    display: flex;
+    
+    gap: 1rem;
+}
+
+.iterator
+{
+    display: flex;
+    background-color: rgb(2, 12, 20);
+    padding: .4rem;
+    border: 2px solid red;
+    border-radius: 1rem;
+}
+
+.box
+{       
+    max-width: 140px;
+    padding: 1em;
+    //border: 2px solid red;
+    img
+    {
+        max-width: 100px;
+        min-height: 80px;
+    }
+}
+
+.loser
+{
+    background-color: rgba(255, 0, 0, 0.36);
+}
+.winner
+{
+    background-color: rgba(0, 128, 0, 0.36);
+}
+
+.vs
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   text-align: center;
+}
+
+
+.flex
+{
+    font-size: 18px;
+    display: flex;
+    input{
+        max-width: 50%;
+    }
+}
+
+.titl
+{
+    padding: 4px;
+    margin-left: -20px;
+    background-color: blueviolet;  
+    border-radius: 50%;
+    font-size: large;
+    height: fit-content;
+}

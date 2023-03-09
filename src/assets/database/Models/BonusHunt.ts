@@ -1,4 +1,5 @@
 export class BonusHunt{
+    huntInfo:string = '';
     huntNumber = 0;
     huntTotalBonuses = 0;
     huntValue = 0;

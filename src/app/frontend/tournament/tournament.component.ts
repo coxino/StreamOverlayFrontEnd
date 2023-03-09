@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { Meci } from 'src/assets/database/Models/Meci';
 import { TournamentModel } from 'src/assets/database/Models/Tournament';
+import { EditorBase } from 'src/Factory/EditorBase';
 import { LocalGame } from 'src/models/local-game';
+import { GameHolderService } from 'src/services/game-holder.service';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 
 @Component({
@@ -13,30 +16,23 @@ import { IntervalRequestService } from 'src/services/interval-request.service';
   styleUrls: ['./tournament.component.scss']
 })
 
-export class TournamentComponent implements OnInit {
+export class TournamentComponent extends EditorBase implements OnInit, AfterViewInit {
   id = 0;
   fights = 3;
   buyValue = 80;
-  games:LocalGame[] = [];
   currentFight:Meci;
   maxBet = 100;
   createnew = true;
+  hasPlayers = false;
   tournament:TournamentModel = new TournamentModel();
   
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      map(term => term.length < 2 ? []
-        : this.games.map(x=>x.Name).filter(v => v?.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-    )
-  
-  constructor(private intervalRequest: IntervalRequestService) {
+  constructor(intervalRequest: IntervalRequestService,gameHolder:GameHolderService, toastr:ToastrService) {
+    super(gameHolder,intervalRequest,toastr);
     this.LoadCurrentTournamentBraket();
     this.LoadCurrentFight();
-    this.intervalRequest.readLocaFile().subscribe((data:any)=>{
-      this.games = data;
-    });
+  }
+  ngAfterViewInit(): void {
+    this.themeWrapper.style.setProperty('--fit-content' ,'100%');  
   }
   LoadCurrentTournamentBraket() {
     this.intervalRequest.apiGetRequest(Settings.BonusBuyTournament).subscribe((data:any) =>{	
@@ -45,9 +41,7 @@ export class TournamentComponent implements OnInit {
 		});
   }
   
-  private themeWrapper:any = document.querySelector('html');
   ngOnInit(): void {
-    this.themeWrapper.style.setProperty('--overflow',     "visible");
   }
   saveTournament()
   {

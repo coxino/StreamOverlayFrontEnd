@@ -1,0 +1,17 @@
+<app-navigation-bar></app-navigation-bar>
+<div class="page">
+    <div class="page-container">
+        <div class="editor-navbar">
+            <button [routerLink]="['/editor/bonushunt']" class="btn btn-ligth"><i class="fa fa-list" aria-hidden="true">Bonus Hunt</i></button>
+            <button [routerLink]="['/editor/tournament']" class="btn btn-ligth"><i class="fa fa-code" aria-hidden="true">Tournament</i></button>
+            <button [routerLink]="['/editor/rumble']" class="btn btn-ligth"><i class="fa fa-code-fork" aria-hidden="true">Slots Rumble</i></button>
+            <button [routerLink]="['/editor/bettingedit']" class="btn btn-ligth"><i class="fa fa-align-left" aria-hidden="true">Betting Editor</i></button>
+            <button [routerLink]="['/editor/config']" class="btn btn-ligth"><i class="fa fa-window-restore" aria-hidden="true">OBS Configuration</i></button>    
+            <button [routerLink]="['/editor/theme']" class="btn btn-ligth"><i class="fa fa-pencil-square-o" aria-hidden="true">Theme Editor</i></button>
+            <button [routerLink]="['/editor/shop']" class="btn btn-ligth"><i class="fa fa-shopping-cart" aria-hidden="true">My Shop</i></button>
+            <button [routerLink]="['/editor/redeems']" class="btn btn-ligth"><i class="fa fa-list-ol" aria-hidden="true">Users Redeems</i></button>
+            <button [routerLink]="['/editor/settings']" class="btn btn-ligth"><i class="fa fa-cogs" aria-hidden="true">Settings</i></button>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

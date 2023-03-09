@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { IntervalRequestService } from 'src/services/interval-request.service';
 
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   isLogedIn = false;
   emailFail = false;
   IsRegister = false;
-  constructor(private intervalRequest: IntervalRequestService,private cookieService: CookieService) {
+  constructor(private router: Router,private intervalRequest: IntervalRequestService,private cookieService: CookieService) {
     
     
   }
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
     }
     else
     {
-      this.alertText = "Email must be in email format email@domain.hst";
+      this.alertText = "Email must be in email format *@*.*";
       this.emailFail = true;
     }
   }
@@ -71,7 +72,7 @@ export class LoginComponent implements OnInit {
       this.cookieService.put('token',data.token);
       this.cookieService.put('username',this.username);
       this.isLogedIn = true;
-      location.reload();
+      this.router.navigate(['/editor/'], { queryParams: { } });
     })
   }
   

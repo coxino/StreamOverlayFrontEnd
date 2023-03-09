@@ -6,6 +6,8 @@ import { BonusHunt } from 'src/assets/database/Models/BonusHunt';
 import { Settings } from 'src/assets/database/Models/databaseStructure';
 import { LigaUser } from 'src/assets/database/Models/LigaUser';
 import { Meci } from 'src/assets/database/Models/Meci';
+import { ShopItem } from 'src/assets/database/Models/ShopItem';
+import { SlotsRumbleModel } from 'src/assets/database/Models/SlotsRumbleModel';
 import { TournamentModel } from 'src/assets/database/Models/Tournament';
 import { UserLoyal } from 'src/assets/database/Models/UserLoyal';
 import { ClasamentPacaniada } from 'src/assets/database/Models/UserPacaniada';
@@ -15,13 +17,39 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  apiTwitchLogUserIn(_TwitchToken: any, id: any) {
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/settwitchtoken?token=${_token}&twitchtoken=${_TwitchToken}&twitchid=${id}`;
+    return this.httpClient.get(link);
+ 
+  }
+  getAllRedeems() {
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/getredeems?token=${_token}`;
+    return this.httpClient.get(link);
+  }
+  getStreamerSettings(){
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/getstreamersettings?token=${_token}`;
+    return this.httpClient.get(link);
+  }
+  setStreamerSettings(_settings:any){
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/savestreamersettings?token=${_token}`;
+    return this.httpClient.post<any>(link,_settings);
+  }
+  apiLogUserIn(authToken: string) {
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/setyoutubetoken?token=${_token}&youtubetoken=${authToken}`;
+    return this.httpClient.get(link);
+  }
   GetAllGames() {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
-    var coxiUrl = "https://coxino.go.ro:5000/api/getAllGames";
+    var coxiUrl = Settings.ApiServer + "getAllGames";
     return this.httpClient.get(coxiUrl,{headers:headers});    
   }
-  saveShopItems(shopItems: string) {
+  saveShopItems(shopItems: ShopItem[]) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
     return this.httpClient.post<any>(Settings.ApiServer + Settings.SaveShop,shopItems,{headers});
@@ -75,6 +103,18 @@ export class IntervalRequestService {
     return this.httpClient.post<any>(Settings.ApiServer + "loyalty/updateuser",EditUser,{headers});
   }
   
+  apiRumbleArchiveAndStartNewOne() {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.SlotsRumbleArchive,null,{headers});
+  }
+
+  apiRumbleUpdate(slotsRumbleModel:SlotsRumbleModel) {
+    var _token = this.cookieService.get("token") ?? "";
+    var headers = {token:_token};
+    return this.httpClient.post<any>(Settings.ApiServer + Settings.RumbleUpdate,slotsRumbleModel,{headers});
+  }
+
   apiAddLigaUser(user:any) {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};
@@ -213,7 +253,8 @@ export class IntervalRequestService {
 
   apiGetShopRequest()
   {
-    return this.httpClient.get(Settings.ApiServer + Settings.ShopItems);
+    var username = this.cookieService.get("username")
+    return this.httpClient.get(Settings.ApiServer + Settings.ShopItems + username);
   }
   
   apiSetCustomTheme(url:string,_customTheme:string)
@@ -235,5 +276,9 @@ export class IntervalRequestService {
     var _token = this.cookieService.get("token") ?? "";
     var headers = {token:_token};  
     return this.httpClient.post<any>(Settings.ApiServer + Settings.LiveBonusHuntUpdate,bonusHunt,{headers});
+  }
+
+  CheckIfStreamerExists(streamerID:string){
+    return this.httpClient.get(Settings.ApiServer + Settings.StreamerPage + streamerID);
   }
 }

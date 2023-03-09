@@ -1,0 +1,109 @@
+.edit-shop-item
+{
+    color: #121619;
+    display: grid;   
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.item-edit
+{
+    background:linear-gradient(90deg, #FFAF87 0%, #4CE0B3 50%, #FFAF87 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    gap: 1rem;
+    border-radius: 1rem;
+}
+
+.two-cols
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid3
+{
+    max-height: 50px;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    background-color: #02443049;
+    grid-column: span 2;
+    display: flex;
+    justify-content:space-evenly;
+    align-self: flex-end;
+    
+    height: fit-content;
+}
+
+.grid1 > * :is(img)
+{
+    padding: 8px;
+    border-radius: 1rem;
+    max-width: 100%;
+}
+
+.grid1 > * :is(select)
+{
+    width: 100% !important;
+}
+
+.shop-nav
+{
+    padding: 1rem;
+    display: flex;
+    gap:2rem;
+}
+
+.one-col
+{
+    padding: 1rem;
+    display: grid;   
+    background-color: #12161925; 
+    height: fit-content;
+} 
+
+.group-box
+{
+    display: grid;
+    grid-template-columns: .5fr 1fr .5fr .1fr;
+}
+
+.drops
+{
+    
+    border-radius: 1rem;
+}
+
+.flex-drop
+{
+    padding: .2rem;
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 0.5fr;      
+    
+}
+
+label > * :is(select,button){
+    width: 100%;
+}
+
+
+.label-mg40
+{
+    max-height: 40px;
+}
+
+.grid2
+{
+    height: fit-content;
+}
+
+.padd50rem
+{
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    margin: auto;
+}

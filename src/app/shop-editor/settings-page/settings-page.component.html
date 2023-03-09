@@ -1,0 +1,26 @@
+<div class="settings-container">    
+    <div class="groupbox-streamer-box">
+        <div class="setting-streamer">Streamer Settings</div>
+        <div class="label">ChannelId <input [(ngModel)]="streamerSettings.Infos.channelId"></div>
+        <div class="label">Channel Name<input [(ngModel)]="streamerSettings.Infos.channelName"></div>
+        <div class="label">Profile Picture <input [(ngModel)]="streamerSettings.Infos.profilePicture"></div>
+        <div class="label">Background Image <input [(ngModel)]="streamerSettings.Infos.backgroundImage"></div>
+        <div class="label">Loyalty Points Name <input [(ngModel)]="streamerSettings.Infos.loyaltySettings.loyaltyName"></div>
+        <div class="label">Reward / 10minutes <input [(ngModel)]="streamerSettings.Infos.loyaltySettings.rewardPerMinute"></div>
+    </div>
+    
+    
+    <div class="groupbox-user-box">       
+        <div class="setting-user">Users Settings</div>          
+        <div class="setting-of-user" *ngFor="let setting of streamerSettings.Infos.shopSettings">
+            <div class="label">Settings Key
+                <input [(ngModel)]="setting.key">
+            </div> 
+            <div class="label">Settings Reason
+                <input [(ngModel)]="setting.reason">
+            </div> 
+        </div>           
+    </div>
+    
+</div>
+<button (click)="SaveSettings()" class="btn btn-danger">Save All</button>

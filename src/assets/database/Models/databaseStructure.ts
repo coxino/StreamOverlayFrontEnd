@@ -1,8 +1,7 @@
 export class Settings{
         
-        
         public static readonly ApiServer = "https://coxino.go.ro:5000/api/";
-        // public static readonly ApiServer = "http://streamag.westeurope.cloudapp.azure.com:5000/api/";
+        //public static readonly ApiServer = "https://coxino.go.ro:8080/api/";
         public static readonly LoginUrl = "user/login";
         public static readonly RegisterUser = "user/register";
         // public static readonly ApiServer = "";
@@ -60,10 +59,16 @@ export class Settings{
         public static readonly GiveAwaysSetWinner: string = "giveaway/setWinner";
         public static readonly SaveShop: string = "shop/saveshop"
         
-        public static readonly ShopItems: string = "shop?username=coxino&viewerId=";
-
-
+        public static readonly ShopItems: string = "shop?username=";
+        
+        public static readonly StreamerPage: string =  "streamer/";
+        
+        public static readonly SlotsRumble: string = "RoyaleRumble";
+        public static readonly RumbleUpdate: string = "RoyaleRumble/RumbleUpdate";
+        public static readonly SlotsRumbleArchive: string = "RoyaleRumble/CreateNewRumble";
+        
         //public static readonly GetGiveawayCount: string = "hotwords/lmausers";
         public static readonly GetBalantaFinalaCount: string = "hotwords/bfusers";
         public static readonly Qualifier: string = "Bonushunt/qualifiers";
+        static SiteName: "Casino Streaming Companion";
 }

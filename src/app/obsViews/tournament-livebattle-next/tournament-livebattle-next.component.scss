@@ -1,17 +1,88 @@
-.loserImg
+.parent-container
 {
-    z-index: 9999;
-    position: absolute;
-    top: -70%;
-    right: 10px;
-    font-size: 186px;
-    color: red;
-    font-family: TournamentVersus;
-    animation-iteration-count:0;
+    font-size: 28px;
+    padding: 8px;
+    width: fit-content;
 }
 
-.div-header
+.fight-box-container
+{
+    display: grid;
+    grid-template-columns: 130px 30px 130px;
+    text-align: center;
+    align-items: center;
+}
+
+.vs
 {    
-    margin-top: -10px;
-    font-size: 20px;
+    background-color: var(--iconsForeColor); 
+    height: 30px;
+}
+
+.fight-box
+{
+    border-radius: 4px;
+    height: 100%;
+}
+
+.game-box
+{ padding: 2px;
+    display:grid;
+    grid-template-rows: 24px 1fr 24px;
+}
+
+.user-name
+{    
+    border-top: 1px solid rgba(255, 255, 255, 0.035);
+    font-size: 16px;
+}
+
+.scor{
+    font-size: 16px;
+}
+
+.image-box-fill
+{    
+    img
+    {
+        height: 100px;
+        border-radius: 1rem;
+        border-radius: 10%;
+    }
+}
+
+.loser
+{
+    img{
+        filter: grayscale(100%);
+    }
+    .scor
+    {
+        color: red;
+    }
+}
+
+.winner
+{
+    .scor
+    {
+        color: green;
+    }
+}
+
+.winner-box
+{       
+    text-align: center;
+    align-self: center;
+}
+
+.notKnown
+{  
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(18, 11, 51, 0.055) 50%, rgba(18, 11, 51, 0.425) 100%);   
+    font-size:18px;
+    overflow: hidden;
+    height: 100px;
+    border-radius: 1rem;
+    border-radius: 10%;
+    text-align:justify-all;
 }

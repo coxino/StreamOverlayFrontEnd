@@ -1,18 +1,32 @@
-#inneriframe
+.width-500
+{    
+    width: 495px;
+    height: 620px;
+}
+
+.full-frame
 {
+    margin-top: 10px;
+}
+
+#inneriframe
+{ 
+    overflow: hidden !important;
     position:absolute;
     top:0px;
-    width: 100%;  
+    width: 100%; 
+    
 }
 
 iframe
-{
+{ 
+    overflow: hidden !important;
     border: hidden;
 }
 
 #outerdiv
 {    
-    margin-left: -16px;
+    margin-left: -33px;
     height: 258px;
     width: 116%;
     overflow:hidden;
@@ -31,4 +45,61 @@ iframe
 {
     text-align: center;
     font-size: 20px;
+}
+
+//new-css
+
+.bonus-header-new
+{    
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    display: grid; 
+}
+
+.grid-col-top
+{
+    text-align:left;
+    grid-template-columns: 1fr 12fr 3fr 1fr;
+}
+
+.repeat-fr
+{   
+    text-align: center;
+    align-items: center;
+    grid-template-columns: repeat(3,1fr);   
+}
+
+.fullwidth
+{
+    width: 100% !important;
+}
+
+.col-x
+{           
+    background-color: var(--iconsBackColor);
+} 
+
+.grid
+{
+    display: grid;
+    gap: 0.5rem;
+}
+
+.grid-col-4
+{
+    grid-template-columns: repeat(4,1fr);
+}
+
+.new-stats
+{
+    font-size:  16px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.game-no
+{
+    display: grid;
+    grid-template-rows: auto auto;
 }

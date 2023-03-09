@@ -1,53 +1,92 @@
 
-  <div class="animate__animated animate__bounceInRight" [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}" *ngIf="loadingOver">   
-    <div class="bonus-hunt bonus-hunt-grid">
-      <div class="bonus-hunt-header"> 
-        <div class="container ">
-          <div class="row">
-            <div class="col-x top-radius">
-              <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/target2.png);"> </div>
-            </div>            
-            <div class="col-x top-radius">
-              <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/target.png);"> </div>
-            </div>
-            <div class="col-x top-radius">
-              <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/play-button.png);"> </div>
-            </div>
-            <div class="col-x top-radius">
-              <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/refund.png);"> </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-x bottom-radius">
-              <h3 class="bh-value">#{{bonusHunt.huntNumber}}</h3>       
-            </div>
-            <div class="col-x bottom-radius">
-              <h3 class="bh-value">{{bonusHunt.bonuses.length}}  </h3>       
-            </div>
-            <div class="col-x bottom-radius">
-              <h3 class="bh-value">{{bonusHunt.huntValue | currency:currencyCode:' ':'.0'}}   </h3>   
-            </div>
-            <div class="col-x bottom-radius">
-              <h3 class="bh-value">{{ bonusHunt.bonuses | sum:'payed' | currency:currencyCode:' ':'.0'}}   </h3>              
-            </div>
-          </div>
+<div class="animate__animated animate__bounceInRight width-500" [ngClass]="{'gradient-border': IsAnimatedBorder == true, 'staticBorder': IsAnimatedBorder == false}" *ngIf="loadingOver">   
+  <div class="bonus-hunt bonus-hunt-grid">
+    <div class="bonus-hunt-header"> 
+      <div class="bonus-header-new grid-col-top">   
+        <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/target2.png);"> </div>      
+        <div class="hunt-info">
+          <span>
+            <h2> Bonus Hunt #{{bonusHunt.huntNumber}} </h2>
+            {{bonusHunt.huntInfo}}
+          </span>
         </div> 
+        <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/controller.png);"></div>           
+        <div class="games-no">
+          <h4 style="text-align: center !important;" > {{OpenedBonuses.length}}/{{bonusHunt?.bonuses?.length}}</h4>
+          <h5 style="text-align: center !important;"  *ngIf="Hunting"> Hunting</h5>
+          <h5 style="text-align: center !important;"  *ngIf="!Hunting && RemainingBonuses.length > 0"> Opening</h5>
+          <h5 style="text-align: center !important;"  *ngIf="!Hunting && RemainingBonuses.length <= 0"> Finish</h5>
+        </div>
       </div>
-      <div style="text-align:center; margin-top: 18px;">  
-        <div class="container-flex">
-          <div class="row col-bg">
-            <div class="col-7 col-hd">Name</div>       
-            <div class="col-2 col-hd">Bet</div>         
-            <div class="col-3 col-hd">Pay</div>         
-            <!-- <div class="col col-hd">  X</div>   -->
+      <div class="old-stats-bar">
+        <div class="grid grid-col-4">
+          <div class="col-x top-radius">
+            <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/play-button.png);"> </div>
           </div>
-        </div>          
-      </div>          
-      <div class="container"> 
+          <div class="col-x top-radius">
+            <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/avgbet.png);"> </div>
+          </div>            
+          <div class="col-x top-radius">
+            <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/beven.png);"> </div>
+          </div>          
+          <div class="col-x top-radius">
+            <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/refund.png);"> </div>
+          </div>
+        </div>
+        <div class="grid grid-col-4">
+          <div class="col-x bottom-radius">
+            <h3 class="bh-value">{{bonusHunt.huntValue ?? 0 | currency:currencyCode:' ':'.0'}}   </h3>   
+          </div>
+          <div class="col-x bottom-radius">
+            <h3 class="bh-value">{{AverageBet ?? 0 | currency:'':currencyCode:'.0'}}</h3>       
+          </div>
+          <div class="col-x bottom-radius">
+            <h3 class="bh-value">{{AverageMultiToBreakEven ?? 0 | currency:'':'x':'.0'}}  </h3>       
+          </div>          
+          <div class="col-x bottom-radius">
+            <h3 class="bh-value">{{ bonusHunt.bonuses | sumarr:'payed' | currency:currencyCode:' ':'.0'}}   </h3>              
+          </div>
+        </div>
+      </div>     
+      <div class="bonus-header-new repeat-fr">
+        <div class="bonus-header-new">
+          <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/crown.png);"> </div>        
+          <div class="new-stats" *ngIf="BestPayGame"> {{BestPayGame.gameName }} </div>   
+          <div class="new-stats" *ngIf="BestPayGame">{{BestPayGame.payed | currency:'':currencyCode:'.0'}} ({{BestPayGame.betSize}}x{{BestPayGame.multiplier}})</div>         
+        </div>
+        <div class="bonus-header-new" *ngIf="RemainingBonuses.length > 0">
+          <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/multi.png);"> </div>        
+          <div class="new-stats"  *ngIf="LiveAverageMultiToBreakEven > '0'"> Live Break Even X </div>
+          <div class="new-stats"  *ngIf="LiveAverageMultiToBreakEven > '0'">  {{LiveAverageMultiToBreakEven | currency:'':'x':'.0'}}  </div>      
+          <div class="new-stats"  *ngIf="LiveAverageMultiToBreakEven < '0'"> Profit </div>
+          <div class="new-stats"  *ngIf="LiveAverageMultiToBreakEven < '0'">  {{TotalPayed - bonusHunt.huntValue | currency:'':currencyCode:'.0'}}  </div>
+        </div>
+        <div class="bonus-header-new" *ngIf="RemainingBonuses.length <= 0">
+          <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/multi.png);"> </div> 
+          <div class="new-stats"  *ngIf="TotalPayed - bonusHunt.huntValue > 0"> Profit </div>
+          <div class="new-stats"  *ngIf="TotalPayed - bonusHunt.huntValue > 0">  {{TotalPayed - bonusHunt.huntValue | currency:'':currencyCode:'.0'}}  </div>
+          <div class="new-stats"  *ngIf="TotalPayed - bonusHunt.huntValue < 0"> Loss </div>
+          <div class="new-stats"  *ngIf="TotalPayed - bonusHunt.huntValue < 0">  {{bonusHunt.huntValue - TotalPayed | currency:'':currencyCode:'.0'}}  </div>
+        </div>
+        <div class="bonus-header-new">
+          <div class="header-image" style="-webkit-mask-box-image: url(../../assets/img/shit.png);"> </div>        
+          <div class="new-stats" *ngIf="ShitPayGame"> {{ShitPayGame.gameName}} </div>
+          <div class="new-stats" *ngIf="ShitPayGame"> {{ShitPayGame.multiplier | currency:'':'x':'.0'}}</div>
+        </div>
+      </div>
+      <div class="container-flex">
+        <div class="row col-bg">
+          <div class="col-7 col-hd">Name</div>       
+          <div class="col-3 col-hd">Bet</div>         
+          <div class="col-2 col-hd">Pay</div>         
+        </div>      
+      </div>        
+      <div  class="container fullwidth" style="overflow: hidden !important;"> 
         <div id="outerdiv">
           <iframe id="inneriframe" [ngStyle]="{'height': customHeight}" [src]="href | safe">   
           </iframe>    
         </div>
-      </div>
-    </div>
-  </div>
+      </div>         
+    </div> 
+  </div> 
+</div> 

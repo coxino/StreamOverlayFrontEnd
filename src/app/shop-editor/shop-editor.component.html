@@ -1,59 +1,206 @@
-<div class="">
-
-<div class="row" *ngFor="let item of ShopItems;let i = index" [attr.data-index]="i">
-    {{i + 1}}.
-    <div  style="border-style: solid; border-width: 1px;" class="col-0">
-        <div class="label">  Item ID
-            <input (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.itemID" id="typeahead-basic"/>                
-        </div>        
+    
+    <div class="shop-nav">   
+        <button class="btn btn-primary" (click)="viewMyPage()"> View My Personal Page</button>        
+        <button class="btn btn-primary" (click)="setYoutoubeToken()"> Set Youtoube Token </button> 
+        <twitch-login scopes="user:read:email+openid+channel:read:subscriptions" (callback)="twitchLoginCallback($event)" label="Setup Twitch Profile 🚀"></twitch-login>       
+        
     </div>
-    <div  style="border-style: solid; border-width: 1px;" class="col-3">
+    <div class="edit-shop-item">
+        <div class="item-edit" *ngFor="let item of ShopItems;let i = index" [attr.data-index]="i">            
+            <div class="grid1">
+                <div class="label"> ID 
+                    <input type="text" class="form-control" [(ngModel)]="item.itemID" id="typeahead-basic"/>
+                </div>
+                <div class="label"> Name
+                    <input type="text" class="form-control" [(ngModel)]="item.nume" id="typeahead-basic"/>                
+                </div> 
+                <div class="label"> Image
+                    <input type="text" class="form-control" [(ngModel)]="item.imagine" id="typeahead-basic"/>                
+                </div>  
+                <div class="label">                    
+                    <img [src]="item.imagine">             
+                </div>  
+                
+                <label class="itemtype" for="itemtype"> Item Type
+                    <select class="itemtype btn btn-light" [(ngModel)]="item.itemType" name="itemtype">
+                        <option class="btn btn-light" *ngFor="let itemType of ItemTypes"
+                        [ngValue]="itemType"> {{ ItemTypeEnum[Number(itemType)] }} </option>
+                    </select>
+                </label>             
+            </div>
+            <div class="grid2">
+                <div class="label two-cols"> Members Only
+                    <div class="toggle-switch" [class.toggle-on]="item.onlyMembers" [class.toggle-off]="!item.onlyMembers" (click)="toogle(i,'om')">
+                        <div class="toggle-wrap">
+                            <div class="toggle-bg-on"></div>
+                        </div>
+                        <div class="toggle-handler"></div>
+                    </div>               
+                </div> 
+                <div class="label two-cols"> Require Aditional                     
+                    <div class="toggle-switch" [class.toggle-on]="item.requireAditional" [class.toggle-off]="!item.requireAditional" (click)="toogle(i,'ra')">
+                        <div class="toggle-wrap">
+                            <div class="toggle-bg-on"></div>
+                        </div>
+                        <div class="toggle-handler"></div>
+                    </div>                
+                </div>  
+                <div class="label two-cols"> Is Visible  
+                    <div class="toggle-switch" [class.toggle-on]="item.isVisible" [class.toggle-off]="!item.isVisible" (click)="toogle(i,'iv')">
+                        <div class="toggle-wrap">
+                            <div class="toggle-bg-on"></div>
+                        </div>
+                        <div class="toggle-handler"></div>
+                    </div>              
+                </div>
+                <div  class="label"> Description
+                    <textarea style="min-height: 150px;"  type="text" class="form-control" [(ngModel)]="item.descriere" id="typeahead-basic"></textarea>                
+                </div>  
+                <div class="label"> Price
+                    <input  type="number" class="form-control" [(ngModel)]="item.pret" id="typeahead-basic"/>                
+                </div>
+                <div class="label"> Stoc
+                    <input  type="number" class="form-control" [(ngModel)]="item.stoc" id="typeahead-basic"/>                
+                </div> 
+                <div class="label"> Cooldown(minutes)
+                    <input  type="number" class="form-control" [(ngModel)]="item.cooldown" id="typeahead-basic"/>                
+                </div>     
+            </div>
+            <hr>  
+            <div class="one-col span-col2 drops" *ngIf="item.itemType == ItemTypeEnum.MysteryBox">    
+                <div class="flex-drop" *ngFor="let drop of item.drops;let j = index" [attr.data-index]="j">                   
+                    <div class="label">Name
+                        <input autocomplete="off" name="drop-name" type="text" class="form-control" [(ngModel)]="drop.name" id="typeahead-basic"/> 
+                    </div>
+                    <div class="label">Type
+                        <select class="itemtype btn btn-light" [(ngModel)]="drop.dropType" name="itemtype">
+                            <option class="btn btn-light" *ngFor="let dropType of DropTypes"
+                            [ngValue]="dropType">  {{ DropTypeEnum[dropType] }} </option>
+                        </select>
+                    </div>                        
+                    <div class="lave">Value
+                        <input [disabled]="drop.dropType == DropTypeEnum.Code" autocomplete="off" name="drop-value" type="text" class="form-control" [(ngModel)]="drop.dropList" id="typeahead-basic"/> 
+                    </div>
+                    
+                    <div class="label"> Rate
+                        <input autocomplete="off" name="drop-luck" type="number" class="form-control" [(ngModel)]="drop.luck" id="typeahead-basic"/> 
+                    </div>
+                    <div class="label">Delete
+                        <button (click)="removeDrop(i,j)" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+                </div>  
+                <div class="label-mg40">
+                    <button (click)="addDrop(i)" class="btn btn-primary ">Add Drops</button>  
+                </div>                       
+            </div>  
+            <hr>
+            <div class="grid3"> 
+                <input type="button" (click)="DeleteShop(item.itemID)" class="btn btn-danger" value="Delete" id="typeahead-basic"/>                
+                <input type="button" (click)="SaveShop()" class="btn btn-primary" value="Save" id="typeahead-basic"/>  
+            </div>
+        </div>
+        <div class="item-edit">
+            <button class="btn btn-primary padd50rem span-col2" (click)="addNewShopItem()"> Add New Item </button>
+        </div>
+    </div>
+    <!--         
+        <select
+        class="btn btn-light"
+        id="pCategory"
+        name="pCategory"
+        [(ngModel)]="currentItem"
+        aria-placeholder="Chose Item"
+        >
+        <option value="" [selected]="true" disabled>Chose Item</option>
+        <option *ngFor="let item of ShopItems" [ngValue]="item">{{ item.nume }}</option>
+    </select>    -->
+    
+    
+    
+    
+    <!-- *ngFor="let item of ShopItems;let i = index" [attr.data-index]="i"
+        
+        <div class="label"> ID
+            <input type="text" class="form-control" [(ngModel)]="item.itemID" id="typeahead-basic"/>
+        </div>
         <div class="label"> Name
-            <input (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.nume" id="typeahead-basic"/>                
-        </div>    
+            <input type="text" class="form-control" [(ngModel)]="item.nume" id="typeahead-basic"/>                
+        </div>  
         <div  class="label"> Descriere
-            <textarea  (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.descriere" id="typeahead-basic"></textarea>                
-        </div>      
-    </div>
-    <div  style="border-style: solid; border-width: 1px;" class="col-2">
+            <textarea  type="text" class="form-control" [(ngModel)]="item.descriere" id="typeahead-basic"></textarea>                
+        </div>  
         <div class="label"> Imagine
-            <input (keydown.enter)="SaveShop()" type="text" class="form-control" [(ngModel)]="item.imagine" id="typeahead-basic"/>                
-        </div>        
-    </div>
-    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+            <input type="text" class="form-control" [(ngModel)]="item.imagine" id="typeahead-basic"/>                
+        </div>     
         <div class="label"> MembersOnly
-            <input (change)="SaveShop()" type="checkbox" class="form-control" [(ngModel)]="item.onlyMembers" id="typeahead-basic"/>                
-        </div>    
+            <input  type="checkbox" class="form-control" [(ngModel)]="item.onlyMembers" id="typeahead-basic"/>                
+        </div> 
         <div class="label"> RequireAditional
-            <input (change)="SaveShop()" type="checkbox" class="form-control" [(ngModel)]="item.requireAditional" id="typeahead-basic"/>                
+            <input  type="checkbox" class="form-control" [(ngModel)]="item.requireAditional" id="typeahead-basic"/>                
         </div>  
         <div class="label"> IsVisible
-            <input (change)="SaveShop()" type="checkbox" class="form-control" [(ngModel)]="item.isVisible" id="typeahead-basic"/>                
-        </div>   
-    </div>
-    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+            <input  type="checkbox" class="form-control" [(ngModel)]="item.isVisible" id="typeahead-basic"/>                
+        </div>  
         <div class="label"> Pret
-            <input (change)="SaveShop()" type="number" class="form-control" [(ngModel)]="item.pret" id="typeahead-basic"/>                
+            <input  type="number" class="form-control" [(ngModel)]="item.pret" id="typeahead-basic"/>                
         </div>
         <div class="label"> Stoc
-            <input (change)="SaveShop()" type="number" class="form-control" [(ngModel)]="item.stoc" id="typeahead-basic"/>                
+            <input  type="number" class="form-control" [(ngModel)]="item.stoc" id="typeahead-basic"/>                
         </div> 
         <div class="label"> Cooldown(minutes)
-            <input (change)="SaveShop()" type="number" class="form-control" [(ngModel)]="item.cooldown" id="typeahead-basic"/>                
-        </div>           
-    </div>   
-    <div  style="border-style: solid; border-width: 1px;" class="col-0">
+            <input  type="number" class="form-control" [(ngModel)]="item.cooldown" id="typeahead-basic"/>                
+        </div>   
         <div class="label"> Delete
             <input type="button" (click)="DeleteShop(item.itemID)" class="form-control" value="DELETE" id="typeahead-basic"/>                
-        </div>        
-    </div>
-</div>
-</div>
-<!-- descriere: "Contine unul din urmatoarele 50COX, 100COX, 250COX, 1000COX, 50RON SHINIG CROWN. POTI DESCHIDE 1 PE ZI - VALABIL PENTRU ABONATII NOI SAU ATUNCI CAND FACEM 100 LIKES"
-imagine: "/assets/img/cadou.gif"
-itemID: "gift100"
-nume: "CADOU 100 LIKES"
-onlyMembers: false
-pret: 0
-requireAditional: false
-stoc: 996 -->
+        </div>      -->
+        
+        
+        <!-- <div class="col-0"> #
+            <div class="label"> {{i + 1}} </div>
+            
+        </div>
+        <div class="col-0">
+            <div class="label">  ID
+                <input type="text" class="form-control" [(ngModel)]="item.itemID" id="typeahead-basic"/>                
+            </div>        
+        </div>
+        <div class="col-3">
+            <div class="label"> Name
+                <input type="text" class="form-control" [(ngModel)]="item.nume" id="typeahead-basic"/>                
+            </div>    
+            <div  class="label"> Descriere
+                <textarea  type="text" class="form-control" [(ngModel)]="item.descriere" id="typeahead-basic"></textarea>                
+            </div>      
+        </div>
+        <div class="col-2">
+            <div class="label"> Imagine
+                <input type="text" class="form-control" [(ngModel)]="item.imagine" id="typeahead-basic"/>                
+            </div>        
+        </div>
+        <div class="col-0">
+            <div class="label"> MembersOnly
+                <input  type="checkbox" class="form-control" [(ngModel)]="item.onlyMembers" id="typeahead-basic"/>                
+            </div>    
+            <div class="label"> RequireAditional
+                <input  type="checkbox" class="form-control" [(ngModel)]="item.requireAditional" id="typeahead-basic"/>                
+            </div>  
+            <div class="label"> IsVisible
+                <input  type="checkbox" class="form-control" [(ngModel)]="item.isVisible" id="typeahead-basic"/>                
+            </div>   
+        </div>
+        <div class="col-0">
+            <div class="label"> Pret
+                <input  type="number" class="form-control" [(ngModel)]="item.pret" id="typeahead-basic"/>                
+            </div>
+            <div class="label"> Stoc
+                <input  type="number" class="form-control" [(ngModel)]="item.stoc" id="typeahead-basic"/>                
+            </div> 
+            <div class="label"> Cooldown(minutes)
+                <input  type="number" class="form-control" [(ngModel)]="item.cooldown" id="typeahead-basic"/>                
+            </div>           
+        </div>   
+        <div class="col-0">
+            <div class="label"> Delete
+                <input type="button" (click)="DeleteShop(item.itemID)" class="form-control" value="DELETE" id="typeahead-basic"/>                
+            </div>        
+        </div> -->
