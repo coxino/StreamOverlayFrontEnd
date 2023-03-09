@@ -40,10 +40,10 @@ export class ConfigureObsComponent implements OnInit {
     {
       nume:"Current Game",
       path:"obs/inplay",      
-      description:"Join our discord server to download the chrome extension that automaticaly update games.",
+      description:"Join our discord server to download the chrome extension that automaticaly update games. Add 18px foreach character that your curency chars",
       displaypos:"two-rows",
-      width:800,
-      height:150,
+      width:900,
+      height:200,
     }, 
     {
       nume:"Tournament Bracket",
