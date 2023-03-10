@@ -9,7 +9,6 @@
         <div class="label">Reward / 10minutes <input [(ngModel)]="streamerSettings.Infos.loyaltySettings.rewardPerMinute"></div>
     </div>
     
-    
     <div class="groupbox-user-box">       
         <div class="setting-user">Users Settings</div>          
         <div class="setting-of-user" *ngFor="let setting of streamerSettings.Infos.shopSettings">
@@ -20,6 +19,19 @@
                 <input [(ngModel)]="setting.reason">
             </div> 
         </div>           
+    </div>
+    <div class="member-level-map-box">
+        <div class="setting-user">Member Level Maping</div>    
+           
+        <div class=" " *ngFor="let setting of MemberLevelsMap">
+            <div class="col">Perk Name 
+                <input [(ngModel)]="setting.memberLevelString">
+                <div class="text-secondary">Exactly like on youtube</div>
+            </div> 
+            <div class="col">Perk Level
+                <input class="text-light" [(ngModel)]="setting.memberLevelEnum" readonly disabled="">
+            </div> 
+        </div>        
     </div>
     
 </div>

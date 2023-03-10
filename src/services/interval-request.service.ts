@@ -38,6 +38,11 @@ export class IntervalRequestService {
     var link = Settings.ApiServer +  `streamersettings/savestreamersettings?token=${_token}`;
     return this.httpClient.post<any>(link,_settings);
   }
+  saveMemberLevelsMap(levelMaps:any){
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/savemembermap?token=${_token}`;
+    return this.httpClient.post<any>(link,levelMaps);
+  }
   apiLogUserIn(authToken: string) {
     var _token = this.cookieService.get("token") ?? "";
     var link = Settings.ApiServer +  `streamersettings/setyoutubetoken?token=${_token}&youtubetoken=${authToken}`;
