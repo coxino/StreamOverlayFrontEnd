@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditorComponent } from './editor/editor.component';
 import { NewInplayComponent } from './obs-views/new-inplay/new-inplay.component';
+import { PromotionalComponent } from './obs-views/promotional/promotional.component';
 import { RoyaleRumbleComponent } from './obs-views/royale-rumble/royale-rumble.component';
 import { ObsviewerComponent } from './obsviewer/obsviewer.component';
 import { AnimatedBorderComponent } from './obsViews/animated-border/animated-border.component';
@@ -27,6 +28,7 @@ export const obsRoutes: Routes = [
       { path: 'hotwords', component: HotwordsComponent },
       { path: 'variante', component: VarianteComponent },
       { path: 'rumble', component: RoyaleRumbleComponent },
+      { path: 'offer', component: PromotionalComponent },
     ]
   }];
   

@@ -13,7 +13,8 @@ import { UserdataService } from './userdata.service';
 export class StreamerComponent extends StreamerPageBase implements OnInit, AfterViewInit {  
   
   IsModalOpen: boolean = false;
-  
+  IsGDPRModalOpen: boolean = false;
+  agreeGDPR = false;
   constructor(requestService:StreamerpagerequestsService,
     routeService:ActivatedRoute,
     toastrService:ToastrService,
@@ -29,6 +30,11 @@ export class StreamerComponent extends StreamerPageBase implements OnInit, After
   OpenSettings()
   {
    this.IsModalOpen = !this.IsModalOpen;
+  }
+
+  ToggleGRPRModal()
+  {
+    this.IsGDPRModalOpen = !this.IsGDPRModalOpen;
   }
 
   SaveSettings()

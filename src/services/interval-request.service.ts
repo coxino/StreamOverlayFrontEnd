@@ -17,6 +17,15 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  requestPromotions() {
+    var streamerID = "";
+    this.activatedRoute.queryParams.subscribe(params => {
+      streamerID = params['username'];
+    });
+    var link = Settings.ApiServer + `promo/getallpromo?streamerid=${streamerID}`;
+    return this.httpClient.get(link);
+  }
+
   apiTwitchLogUserIn(_TwitchToken: any, id: any) {
     var _token = this.cookieService.get("token") ?? "";
     var link = Settings.ApiServer +  `streamersettings/settwitchtoken?token=${_token}&twitchtoken=${_TwitchToken}&twitchid=${id}`;

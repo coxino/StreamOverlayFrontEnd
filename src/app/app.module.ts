@@ -72,6 +72,8 @@ import { RoyaleRumbleComponent } from './obs-views/royale-rumble/royale-rumble.c
 import { RoyaleRumbleEditComponent } from './frontend/royale-rumble-edit/royale-rumble-edit.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RtptovolPipe } from './commonpipes/rtptovol.pipe';
+import { PromotionalComponent } from './obs-views/promotional/promotional.component';
+import { LinkifyPipe2 } from './commonpipes/linkify.pipe';
 
 @NgModule({
   declarations: [
@@ -130,6 +132,7 @@ import { RtptovolPipe } from './commonpipes/rtptovol.pipe';
     RoyaleRumbleComponent,
     RoyaleRumbleEditComponent,
     RtptovolPipe,
+    PromotionalComponent,LinkifyPipe2
     ],
   imports: [    
     Ng2SearchPipeModule,

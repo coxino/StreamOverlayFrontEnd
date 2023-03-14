@@ -9,13 +9,20 @@
                     <div class="grid-details green-50o"> 
                         <h3> <b>{{userdataService.StreamerProfilePage.Infos.channelName}}</b> </h3> 
                         <p> <b>{{userdataService.StreamerProfilePage.Infos.loyaltySettings.rewardPerMinute | currency:'':userdataService.StreamerProfilePage.Infos.loyaltySettings.loyaltyName:'.0'}}</b> <b></b> / 10 minutes</p>
+                        <a target="_blank" href="https://www.youtube.com/channel/{{userdataService.StreamerProfilePage.Infos.channelId}}"><button style="cursor: pointer;" class="btn btn-light">
+                            <img height="30px" src="https://www.freeiconspng.com/thumbs/youtube-logo-png/hd-youtube-logo-png-transparent-background-20.png"> Watch on Youtube
+                        </button></a>
                     </div>
                 </div>
                 <div class="profile-details"  *ngIf="!IsLoggedin()"> 
-                    <div class="login-buttons">                          
+                    <div class="login-buttons" *ngIf="agreeGDPR">                          
                         <button class="btn-google" (click)="loginWithGoogle()"></button>                    
                         <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="twitchLoginCallback($event)" label="Login Twitch 🚀"></twitch-login> 
+                        
+                        
                     </div>
+                    <button *ngIf="!agreeGDPR" class="btn btn-danger container-fluid"
+                    (click)="ToggleGRPRModal()">AGREE GDPR</button>
                 </div>
                 <div class="profile-details" *ngIf="IsLoggedin()">
                     <img [src]="ProfilePicture()" class="profile-picture">
@@ -63,11 +70,37 @@
         </div>
         
     </div>
+    
+    <div class="gdpr-modal" *ngIf="IsGDPRModalOpen">   
+        <div class="options-page">
+            <h1 class="text-center mb-5">Privacy Policy & TOS</h1>
+            <h2>Google Login</h2>  
+            <h5>-By signing in with your Google (Youtube) Account, you also agree to receive emails from <b>coxino.ro</b>.</h5>
+            <h5>-By signing in with your Google (Youtube) Account, you agree to the processing and storage of your data from Google, which includes:</h5>
+            <div class="mb-5">
+                <ul class="ml-5 mb-4">
+                    <li><h5>Name and surname</h5></li>
+                    <li><h5>Email address</h5></li>
+                    <li><h5>Youtube account information</h5></li>
+                </ul>
+                
+                <h2>GDPR</h2>   
+                <h5 class="mb-4">According to GDPR, you have the right to request the deletion of your data and to withdraw your participation in any campaigns carried out on <b>coxino.ro</b>. Please note that <b>coxino.ro</b> cannot be held responsible for any third-party access to your data.</h5>
+                <h2>TOS</h2>   
+                <h5 class="text-danger">Please be aware that <b>coxino.ro</b> cannot be held liable for any giveaway, casino promotion, or shop item that a streamer may offer and subsequently fail to provide. This includes but is not limited to any loss, damage, or inconvenience that may result from the streamer's failure to fulfill their obligations. While we make every effort to ensure that all streamers comply with our policies and guidelines, we cannot guarantee their behavior or actions. We strongly advise that you exercise caution and prudence when participating in any promotions or giveaways, and that you report any suspicious or fraudulent activity to us immediately.</h5>
+            </div>
+            <div class="options-page-buttons">
+                <button (click)="agreeGDPR = true;ToggleGRPRModal()" class="btn btn-danger">Agree</button>          
+                <button (click)="ToggleGRPRModal()" class="btn btn-dark">Cancel</button>          
+            </div>   
+        </div>
+        
+    </div>
     <div class="navbar-streamer">
         <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/shop']"><i class="fa fa-shopping-cart" aria-hidden="true"> </i> Shop</button>
-        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/history']"><i class="fa fa-bar-chart" aria-hidden="true"></i> History</button>
+        <!-- <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/history']"><i class="fa fa-bar-chart" aria-hidden="true"></i> History</button> -->
         <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/giveaways']"><i class="fa fa-ticket" aria-hidden="true"></i> Giveaways</button>
-        <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/casinos']"><i class="fa fa-gift" aria-hidden="true"></i> Casinos </button>
+        <!-- <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/casinos']"><i class="fa fa-gift" aria-hidden="true"></i> Casinos </button> -->
     </div>
     <div class="">
         <router-outlet></router-outlet>
@@ -79,32 +112,18 @@
     <h1>Looks like this streamer is not in our database, or he did not set up a shop page.</h1>
 </div>
 
-<footer class="footer bg-dark">
-    <div style="justify-content: space-between; color: white;" class="container" style="color: white;">   
-      <div class="row">
-        <div class="col">    
-          <br>
-          <div class="g-ytsubscribe" data-channelid="UCVys2Q0f659A5EutSddgcDA" style="height: 60px;" data-layout="full" data-theme="dark" data-count="default"></div>
-          <br>
-          v 00 - LTS 1.0 - Comes In March
-          <br>
-          <span>Want a licence? Join Discord 
+<footer class="footer bg-light text-dark text-center">
+    <div class="container">   
+        <br> Casino Streamer - <b>{{userdataService.StreamerProfilePage.Infos.channelName}} </b> - Shop Page
+        <h2>Coxino Casino Stream Overlay </h2>
+        <span>Want a licence? Join Discord 
             <span> 
-              <a href="https://discord.gg/UvtsVmevEg">
-                <img alt="JOIN OUR DISCORD TO CREATE AN ACCOUNT FOR OUR Casino Stream Overlay - Bonus Hunt Overlay - Slots Tournaments Overlay" style="height: 63px;" src="assets/img/discord_1.png">
-              </a>
+                <a href="https://discord.gg/UvtsVmevEg">
+                    <img alt="JOIN OUR DISCORD TO CREATE AN ACCOUNT FOR OUR Casino Stream Overlay - Bonus Hunt Overlay - Slots Tournaments Overlay" style="height: 63px;" src="assets/img/discord_1.png">
+                </a>
             </span>            
-          </span> 
-          <br>
-          Some content of this website may be used without any permisions, if you have any copyright issues please adress to coxinotv@gmail.com
-          <br>
-        </div>
-        <div class="col">
-        
-          <a style="max-width: 200px;" href="https://coxino.ro/streamer/coxino/shop">  <h2>Coxino.Ro Shop</h2> <img alt="coxino.ro shop bonusuri casino gratuite chiar daca ai cont - cel mai bun streamer de casino din romania" src="./assets/img/bonusuri casino.png"/></a>
-        </div>
-      </div>
+        </span> 
     </div>
     <img class="CasinoStreamOverlayLogo" alt="The most easy to use Casino Stream Overlay - BonusHunt Overlay - best Slots Tournaments - slots royale rumble overlay - casino stream loialty sistem - bonusuri casino gratuite chiar daca ai cont" src="./assets/img/Landing/logo.png"/>
     <img class="CasinoStreamOverlayLogo" alt="The most easy to use Casino Stream Overlay - BonusHunt Overlay - best Slots Tournaments - slots royale rumble overlay - casino stream loialty sistem - bonusuri casino gratuite chiar daca ai cont" src="./assets/img/Landing/logo.png"/>
-  </footer>
+</footer>

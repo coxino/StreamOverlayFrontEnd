@@ -180,12 +180,30 @@
     align-items: center;
 }
 
+.gdpr-modal
+{
+    z-index: 100;
+    background-color: #0e2c539a;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 .options-page
 {       
     border-radius: 1rem;
     z-index: 105;
     padding: 6rem;
     background-color: white;
+    max-width: 60%;
+    overflow-y: visible;
 }
 
 .option{

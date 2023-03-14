@@ -13,6 +13,7 @@ import { UserdataService } from './userdata.service';
 import { GiveawaysComponent } from './giveaways/giveaways.component';
 import { CasinosComponent } from './casinos/casinos.component';
 import { FormsModule } from '@angular/forms';
+import { LinkifyPipe, LinkifyTitlePipe } from '../commonpipes/linkify.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     HistoryBonusHuntsComponent,
     StreamerComponent,
     GiveawaysComponent,
-    CasinosComponent
+    CasinosComponent,
+    LinkifyPipe,
+    LinkifyTitlePipe
   ],
   imports: [
     CommonModule,
