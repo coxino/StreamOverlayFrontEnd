@@ -82,4 +82,10 @@ export class StreamerpagerequestsService {
     var coxiUrl = `https://coxino.go.ro:5000/api/giveaway/buyTiket?localUserToken=` + localUserToken + `&givewayId=${gid}&streamerid=${streamerID}`;    
     return this.httpClient.get(coxiUrl,{headers:this.defaultHeader});
   }
+
+  getUserHystory(localUserToken:string, streamerId:string, pageId:number)
+  {
+    var link = Settings.ApiServer + `streamerpage/hystory?localUserToken=${localUserToken}&streamerid=${streamerId}&pageId=${pageId}`;
+    return this.httpClient.get(link);
+  }
 }

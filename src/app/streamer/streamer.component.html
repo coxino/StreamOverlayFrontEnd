@@ -17,9 +17,7 @@
                 <div class="profile-details"  *ngIf="!IsLoggedin()"> 
                     <div class="login-buttons" *ngIf="agreeGDPR">                          
                         <button class="btn-google" (click)="loginWithGoogle()"></button>                    
-                        <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="twitchLoginCallback($event)" label="Login Twitch 🚀"></twitch-login> 
-                        
-                        
+                        <twitch-login scopes="user:read:email+openid+analytics:read:games" (callback)="twitchLoginCallback($event)" label="Login Twitch 🚀"></twitch-login>                         
                     </div>
                     <button *ngIf="!agreeGDPR" class="btn btn-danger container-fluid"
                     (click)="ToggleGRPRModal()">AGREE GDPR</button>
@@ -41,8 +39,8 @@
                             <button (click)="OpenSettings()" class="small-button"><i class="fa fa-cogs" aria-hidden="true"></i>
                                 Settings<sup *ngIf="userdataService.ViewerLoginProfile.HasNotifications" style="color: red;">●</sup>
                             </button>
-                            
-                            <button (click)="userdataService.logOut()" class="small-button"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</button>
+                            <button class="small-button" (click)="ToggleHystory()"><i class="fa fa-history" aria-hidden="true"></i> Hystory</button>
+                            <button (click)="userdataService.logOut()" class="small-button"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</button>
                         </div>             
                     </div>
                 </div>         
@@ -72,7 +70,7 @@
     </div>
     
     <div class="gdpr-modal" *ngIf="IsGDPRModalOpen">   
-        <div class="options-page col-md-5">
+        <div class="options-page col-md-8">
             <h1 class="text-center mb-5">Privacy Policy & TOS</h1>
             <h2>Google Login</h2>  
             <h5>-By signing in with your Google (Youtube) Account, you also agree to receive emails from <b>coxino.ro</b>.</h5>
@@ -94,8 +92,38 @@
                 <button (click)="ToggleGRPRModal()" class="btn btn-dark">Cancel</button>          
             </div>   
         </div>
-        
     </div>
+    
+    
+    <div class="hystoryModal" *ngIf="hystoryModal"> 
+        <div class="options-page col-md-8"> 
+            <div class="close">
+                <button (click)="ToggleHystory()" style="cursor: pointer;" class="btn btn-outline-dark">Close</button>
+            </div> 
+            <h1 class="text-center">Hystory</h1>
+            <h6 class="text-center">Your win hystory on <b>{{userdataService.StreamerProfilePage.Infos.channelName}}</b> shop page</h6>
+            <h6 class="text-center text-secondary">The streamer has the flexibility to clear their records at any point and arrange them either weekly or monthly. Hence, the current prize list you see may represent only a portion of the entire history.</h6>
+            <div class="hystory-list card bg-dark text-light text-center my-3">
+                <div class="row">
+                    <div class="col-2">#</div>
+                    <div class="col-6">Date Time</div>
+                    <div class="col-3">Item Name</div>
+                </div>
+                <div class="row py-1" *ngFor="let item of hystory;let i = index" [attr.data-index]="i">
+                    <div class="col-2">{{(i+1) + (currentPage * 10)}}</div>
+                    <div class="col-6"> {{item.timeOfWin}}</div>
+                    <div class="col-3"> {{item.itemName}}</div>
+                </div>
+            </div>
+            <div class="options-page-buttons">                
+                <button (click)="FirstHystory()" class="btn btn-danger">Latest</button>       
+                <button (click)="PreviusHystory()" class="btn btn-danger">{{'<'}}</button>       
+                <button (click)="NextHystory()" class="btn btn-danger">></button>       
+            </div>   
+        </div>
+    </div>
+    
+    
     <div class="navbar-streamer">
         <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/shop']"><i class="fa fa-shopping-cart" aria-hidden="true"> </i> Shop</button>
         <!-- <button class="btn btn-light" [routerLink]="['/streamer/'+userdataService.StreamerProfilePage.streamerID+'/history']"><i class="fa fa-bar-chart" aria-hidden="true"></i> History</button> -->

@@ -14,6 +14,7 @@ import { GiveawaysComponent } from './giveaways/giveaways.component';
 import { CasinosComponent } from './casinos/casinos.component';
 import { FormsModule } from '@angular/forms';
 import { LinkifyPipe, LinkifyTitlePipe } from '../commonpipes/linkify.pipe';
+import { UserInventoryComponent } from './user-inventory/user-inventory.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LinkifyPipe, LinkifyTitlePipe } from '../commonpipes/linkify.pipe';
     GiveawaysComponent,
     CasinosComponent,
     LinkifyPipe,
-    LinkifyTitlePipe
+    LinkifyTitlePipe,
+    UserInventoryComponent
   ],
   imports: [
     CommonModule,
