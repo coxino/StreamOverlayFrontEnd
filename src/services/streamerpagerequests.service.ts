@@ -74,12 +74,12 @@ export class StreamerpagerequestsService {
   }
 
   requestGiveaways(localUserToken:string, streamerID:string) {
-    var coxiUrl = `https://coxino.go.ro:5000/api/giveaway?localUserToken=` + localUserToken + `&streamerid=${streamerID}`;
+    var coxiUrl = `${Settings.ApiServer}giveaway?localUserToken=` + localUserToken + `&streamerid=${streamerID}`;
     return this.httpClient.get(coxiUrl,{headers:this.defaultHeader});    
   }
 
   buyTicket(gid: any, localUserToken: string, streamerID:string) {
-    var coxiUrl = `https://coxino.go.ro:5000/api/giveaway/buyTiket?localUserToken=` + localUserToken + `&givewayId=${gid}&streamerid=${streamerID}`;    
+    var coxiUrl = `${Settings.ApiServer}giveaway/buyTiket?localUserToken=` + localUserToken + `&givewayId=${gid}&streamerid=${streamerID}`;    
     return this.httpClient.get(coxiUrl,{headers:this.defaultHeader});
   }
 

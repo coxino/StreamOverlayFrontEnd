@@ -12,8 +12,7 @@ export class GiveawayComponent implements OnInit {
   timer$ = interval(1000);
   GiveAways: any;
   
-  constructor(private intervalRequest: IntervalRequestService) { 
-    var coxiUrl = "https://coxino.go.ro:5000/api/giveaway?viewerID=";
+  constructor(private intervalRequest: IntervalRequestService) {     
     this.getGiveaways();
     this.timer$.subscribe(()=>{
       this.processGiveaways();
