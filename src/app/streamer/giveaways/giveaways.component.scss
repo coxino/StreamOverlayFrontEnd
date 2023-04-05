@@ -1,0 +1,32 @@
+.giveway-box
+{
+    border:  2px solid rebeccapurple;
+    border-radius: 1rem;
+    display: flex; 
+    flex-direction: column;
+    
+}
+
+.d-flex
+{
+    gap: 1rem;
+}
+
+.title
+{    
+    border-radius: 1rem;
+}
+
+hr {
+    margin-left: 0;
+    margin-right: 0; 
+}
+.div-ftr
+{
+    display: flex;
+    flex-direction: column;   
+    flex-grow: 1;
+    overflow: auto;
+    justify-content: end;
+}
+

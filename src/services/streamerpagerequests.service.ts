@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
@@ -8,8 +8,13 @@ import { Settings } from 'src/assets/database/Models/databaseStructure';
   providedIn: 'root'
 })
 export class StreamerpagerequestsService {
-
-  constructor(private httpClient: HttpClient,private cookieService: CookieService,private activatedRoute: ActivatedRoute) {}
+  
+  defaultHeader:HttpHeaders = new HttpHeaders;
+  constructor(private httpClient: HttpClient,private cookieService: CookieService,private activatedRoute: ActivatedRoute) {
+    this.defaultHeader.append('Access-Control-Allow-Origin', '*');
+    this.defaultHeader.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    this.defaultHeader.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  }
   
   apiGetShopRequest(streamerID:string,localUserToken:string)
   {
@@ -48,6 +53,16 @@ export class StreamerpagerequestsService {
     return this.httpClient.post<any>(link,viewerForm);
   }
 
+  requestPromotions(streamerID:string) {
+    var link = Settings.ApiServer + `promo/getallpromo?streamerid=${streamerID}`;
+    return this.httpClient.get(link);
+  }
+
+  hasClicked(streamerID:string,promoname:string) {
+    var link = Settings.ApiServer + `promo/hasclicked?streamerid=${streamerID}&promoname=${promoname}`;
+    return this.httpClient.get(link);
+  }
+
   apiGetUserSettingsForStreamerPage(localUserToken:string,streamerId:string){
     var link = Settings.ApiServer +  `streamersettings/getusersettingsforstreamerpage?localUserToken=${localUserToken}&streamerId=${streamerId}`;
     return this.httpClient.get(link);
@@ -55,6 +70,22 @@ export class StreamerpagerequestsService {
 
   apiVerifyUserAccount(userID: string,redirect:string) {    
     var link = Settings.ApiServer + `shop/genvalcode?userID=${userID}&redirect=${redirect}`;
+    return this.httpClient.get(link);
+  }
+
+  requestGiveaways(localUserToken:string, streamerID:string) {
+    var coxiUrl = `${Settings.ApiServer}giveaway?localUserToken=` + localUserToken + `&streamerid=${streamerID}`;
+    return this.httpClient.get(coxiUrl,{headers:this.defaultHeader});    
+  }
+
+  buyTicket(gid: any, localUserToken: string, streamerID:string) {
+    var coxiUrl = `${Settings.ApiServer}giveaway/buyTiket?localUserToken=` + localUserToken + `&givewayId=${gid}&streamerid=${streamerID}`;    
+    return this.httpClient.get(coxiUrl,{headers:this.defaultHeader});
+  }
+
+  getUserHystory(localUserToken:string, streamerId:string, pageId:number)
+  {
+    var link = Settings.ApiServer + `streamerpage/hystory?localUserToken=${localUserToken}&streamerid=${streamerId}&pageId=${pageId}`;
     return this.httpClient.get(link);
   }
 }

@@ -17,6 +17,15 @@ import { BettingModel } from 'src/models/betting-model';
   providedIn: 'root'
 })
 export class IntervalRequestService {
+  requestPromotions() {
+    var streamerID = "";
+    this.activatedRoute.queryParams.subscribe(params => {
+      streamerID = params['username'];
+    });
+    var link = Settings.ApiServer + `promo/getallpromo?streamerid=${streamerID}`;
+    return this.httpClient.get(link);
+  }
+
   apiTwitchLogUserIn(_TwitchToken: any, id: any) {
     var _token = this.cookieService.get("token") ?? "";
     var link = Settings.ApiServer +  `streamersettings/settwitchtoken?token=${_token}&twitchtoken=${_TwitchToken}&twitchid=${id}`;
@@ -37,6 +46,11 @@ export class IntervalRequestService {
     var _token = this.cookieService.get("token") ?? "";
     var link = Settings.ApiServer +  `streamersettings/savestreamersettings?token=${_token}`;
     return this.httpClient.post<any>(link,_settings);
+  }
+  saveMemberLevelsMap(levelMaps:any){
+    var _token = this.cookieService.get("token") ?? "";
+    var link = Settings.ApiServer +  `streamersettings/savemembermap?token=${_token}`;
+    return this.httpClient.post<any>(link,levelMaps);
   }
   apiLogUserIn(authToken: string) {
     var _token = this.cookieService.get("token") ?? "";

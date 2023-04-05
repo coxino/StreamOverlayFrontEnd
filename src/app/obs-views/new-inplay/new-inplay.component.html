@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col left-18px">Volatility</div>
-                <div class="col right-18px">{{currentGame.volatility ?? 'SOON'}}</div>
+                <div class="col right-18px">{{currentGame.volatility | rtptovol}}</div>
             </div>
         </div>
         <!-- Personal Record -->
@@ -36,11 +36,11 @@
                 Record
             </div>
             <div class="row">
-                <div class="col left-18px">Win</div>
+                <div class="col-2 left-18px">Win</div>
                 <div class="col right-18px">{{topPayBet | currency:' ':'bet':'.0' }} {{topPayX | currency:' ':'x':'.0'}} = {{topPay | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
             </div>
             <div class="row">
-                <div class="col left-18px">x</div>
+                <div class="col-2 left-18px">x</div>
                 <div class="col right-18px">{{topMultyBet | currency:' ':'bet':'.0' }} {{topMultyX | currency:' ':'x':'.0'}} = {{topMultyPay | currency:' ':currencyCode:'.0' ?? 'SOON'}}</div>
             </div>
             <div class="row">

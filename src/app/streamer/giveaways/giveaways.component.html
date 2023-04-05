@@ -1,1 +1,51 @@
-<img style="width: 100%;" src="assets/img/soon.jpg">
+<h3 class="bg-danger p-0 m-0 text-center text-light">Poti sustine doar un singur streamer!</h3>  
+    <div class="d-flex p-3 flex-wrap mx-auto bg-dark justify-content-center"> 
+              
+        <div class="giveway-box text-dark justify-content-center text-center  
+        p-3  bg-light text-light col-md-3" 
+        *ngFor="let item of GivewayItems; index as i;">
+            
+            <h3 class="title bg-danger text-light p-2" [innerHTML]="item.givewayModel.name | linkifytitle"></h3> 
+            <div class="row ">
+                <div class="col">
+                    <h6>
+                        <p class="description" [innerHTML]="item.givewayModel.description | linkify"></p>
+                    </h6>
+                </div>
+            </div>    
+            
+            <div class="div-ftr">
+                <hr>
+                <h5 class="b text-secondadary">{{item.time ?? '---'}}</h5>      
+                <hr>
+                <div class="sanse" *ngIf="isActive(item.givewayModel.endTime) === true">
+                    <p class="tikets">                      
+                        <b>Winners: {{item.givewayModel.winnersCount}}</b><br> 
+                        <b>Sold Tikets:</b><i class="fa fa-ticket">{{item.totalTikets}}</i><br>
+                        <b>Your Tikets:</b><i class="fa fa-ticket">{{item.userTikets}} / {{item.givewayModel.maxTikets}}</i><br>
+                        <!-- <b>Your Chances: </b>{{ item.userTikets / item.totalTikets * 100 | currency : ' ' : 'symbol' : '1.0-2'}} %</p>     -->
+                        <hr>                        
+                        <b class="text-danger p-3">Price {{item.givewayModel.price}} {{userdataService.StreamerProfilePage.Infos.loyaltySettings.loyaltyName}}</b><br>  
+                        <b class="text-dark p-3">Mai multe bilete mai multe sanse de castig!</b><br>  
+                    </div>
+                    <div class="winners" *ngIf="isActive(item.givewayModel.endTime) == false">
+                        <p class="tikets">
+                            <b>Sold Tikets:</b><i class="fa fa-ticket">{{item.totalTikets}}</i><br>
+                            <b>Your Tikets:</b><i class="fa fa-ticket">{{item.userTikets}} / {{item.givewayModel.maxTikets}}</i><br>
+                        </p>  
+                        <div class="card bg-dark text-light">
+                            <h4>  Winner(s) : </h4>
+                            <div class="winner"  *ngFor="let winner of item.winners; index as i;">
+                                <p class="tikets"> 
+                                    <b> {{i+1}}. {{winner}}  </b>
+                                </p>                            
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <button class="btn btn-primary" (click)="buyTiket(item.givewayModel.id)" *ngIf="isActive(item.givewayModel.endTime)">Buy Tiket</button>
+                </div>
+                
+            </div>
+        </div>

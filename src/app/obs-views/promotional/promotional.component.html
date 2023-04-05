@@ -1,0 +1,16 @@
+<div class="animate__animated animate__bounceInRight staticBorder">
+    <div class="d-flex p-2 text-center text-light m-3">
+        <img class="imggg" [src]="offer.image" alt="">
+        <div class="card-body">
+            <div class="card-title mx-auto">
+                <h1>{{offer.nameCard}}</h1>
+            </div>
+            <div class="card-body">
+                <h4 [innerHTML]="offer.descriereCard | linkify2"></h4>
+            </div>
+            <div class="card-text">
+                <h4 [innerHTML]="offer.command | linkify2"></h4>
+            </div>
+        </div>
+    </div>
+</div>

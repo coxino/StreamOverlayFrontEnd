@@ -71,6 +71,9 @@ import { SettingsPageComponent } from './shop-editor/settings-page/settings-page
 import { RoyaleRumbleComponent } from './obs-views/royale-rumble/royale-rumble.component';
 import { RoyaleRumbleEditComponent } from './frontend/royale-rumble-edit/royale-rumble-edit.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RtptovolPipe } from './commonpipes/rtptovol.pipe';
+import { PromotionalComponent } from './obs-views/promotional/promotional.component';
+import { LinkifyPipe2 } from './commonpipes/linkify.pipe';
 
 @NgModule({
   declarations: [
@@ -128,6 +131,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SettingsPageComponent,
     RoyaleRumbleComponent,
     RoyaleRumbleEditComponent,
+    RtptovolPipe,
+    PromotionalComponent,LinkifyPipe2
     ],
   imports: [    
     Ng2SearchPipeModule,
@@ -149,7 +154,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ToastrModule.forRoot(),
     TwitchLoginSdkModule.forRoot({ 
       twitchId:  "nhtoulxff6s02iv9kw9ztfmmciqz2r", //<******* YOUR TWITCH_ID 👈      
-      redirect:  "http://localhost:4200/editor/shop" //<***** YOUR CALLBACK REDIRECT 👈redirect_uri
+      redirect:  "https://coxino.ro/editor/shop" //<***** YOUR CALLBACK REDIRECT 👈redirect_uri
   })
   ],
   providers: [IntervalRequestService,UserdataService,
